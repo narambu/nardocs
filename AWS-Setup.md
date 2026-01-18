@@ -1,3 +1,9 @@
+---
+layout: default
+title: AWS Setup
+nav_order: 2
+---
+
 # Setting Up AWS for Nar
 
 This guide walks you through creating AWS credentials so Nar can deploy to your account.
@@ -89,7 +95,8 @@ This guide walks you through creating AWS credentials so Nar can deploy to your 
 5. Check the confirmation checkbox at the bottom
 6. Click **Next**, then **Create access key**
 
-**Important:** Copy both the **Access key ID** and **Secret access key** somewhere safe. You won't be able to see the secret again.
+{: .warning }
+Copy both the **Access key ID** and **Secret access key** somewhere safe. You won't be able to see the secret again.
 
 ---
 
@@ -162,7 +169,7 @@ aws_secret_access_key = PASTE_YOUR_SECRET_KEY_HERE
 ## Troubleshooting
 
 | Problem | Solution |
-|---------|----------|
+|:--------|:---------|
 | "Unable to locate credentials" | Check that `~/.aws/credentials` exists and has the right format |
 | "AccessDenied" when running init | Make sure you added the `nar_iam_bootstrap` policy in Step 2 |
 | "InvalidClientTokenId" | Your access key ID is wrong — create new access keys in AWS |
