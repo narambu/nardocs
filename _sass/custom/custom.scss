@@ -1,0 +1,21 @@
+// Hide "This site uses Just the Docs" footer
+.site-footer {
+  display: none !important;
+}
+
+// Narrower sidebar
+.side-bar {
+  width: 200px !important;
+  min-width: 200px !important;
+}
+
+@media (min-width: 66.5rem) {
+  .side-bar {
+    width: 200px !important;
+    min-width: 200px !important;
+  }
+
+  .main {
+    margin-left: 200px !important;
+  }
+}
