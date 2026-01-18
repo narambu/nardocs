@@ -1,0 +1,93 @@
+{"0": {
+    "doc": "AWS Setup",
+    "title": "Setting Up AWS for Nar",
+    "content": "This guide walks you through creating AWS credentials so Nar can deploy to your account. Time: About 10 minutes . ",
+    "url": "/AWS-Setup.html#setting-up-aws-for-nar",
+    
+    "relUrl": "/AWS-Setup.html#setting-up-aws-for-nar"
+  },"1": {
+    "doc": "AWS Setup",
+    "title": "What You’ll Need",
+    "content": ". | An AWS account (create one here if you don’t have one) | Your laptop | . ",
+    "url": "/AWS-Setup.html#what-youll-need",
+    
+    "relUrl": "/AWS-Setup.html#what-youll-need"
+  },"2": {
+    "doc": "AWS Setup",
+    "title": "Step 1: Create a User for Nar",
+    "content": ". | Sign in to AWS Console | In the search bar at the top, type IAM and click on it | Click Users in the left menu | Click Create user | For username, type: nar-deployer | Click Next | Select Attach policies directly | Don’t select anything yet — click Next | Click Create user | . ",
+    "url": "/AWS-Setup.html#step-1-create-a-user-for-nar",
+    
+    "relUrl": "/AWS-Setup.html#step-1-create-a-user-for-nar"
+  },"3": {
+    "doc": "AWS Setup",
+    "title": "Step 2: Give the User Permissions",
+    "content": ". | Click on your new user nar-deployer | Click the Permissions tab | Click Add permissions → Create inline policy | Click the JSON tab | Delete everything in the box and paste this: | . { \"Version\": \"2012-10-17\", \"Statement\": [ { \"Sid\": \"NarIamBootstrap\", \"Effect\": \"Allow\", \"Action\": [ \"iam:AttachRolePolicy\", \"iam:CreatePolicy\", \"iam:CreateRole\", \"iam:DeleteAccessKey\", \"iam:DeletePolicy\", \"iam:DeleteRole\", \"iam:DeleteRolePolicy\", \"iam:DeleteUser\", \"iam:DeleteUserPolicy\", \"iam:DetachRolePolicy\", \"iam:DetachUserPolicy\", \"iam:GetPolicy\", \"iam:GetRole\", \"iam:ListAccessKeys\", \"iam:ListAttachedRolePolicies\", \"iam:ListAttachedUserPolicies\", \"iam:ListPolicies\", \"iam:ListRolePolicies\", \"iam:ListRoles\", \"iam:ListUserPolicies\", \"iam:ListUsers\", \"iam:PutRolePolicy\", \"iam:PutUserPolicy\", \"iam:UpdateAssumeRolePolicy\" ], \"Resource\": \"*\" } ] } . | Click Next | Name it: nar_iam_bootstrap | Click Create policy | . ",
+    "url": "/AWS-Setup.html#step-2-give-the-user-permissions",
+    
+    "relUrl": "/AWS-Setup.html#step-2-give-the-user-permissions"
+  },"4": {
+    "doc": "AWS Setup",
+    "title": "Step 3: Get Your Access Keys",
+    "content": ". | Still on the nar-deployer user page, click Security credentials | Scroll down to Access keys | Click Create access key | Select Command Line Interface (CLI) | Check the confirmation checkbox at the bottom | Click Next, then Create access key | . Copy both the Access key ID and Secret access key somewhere safe. You won’t be able to see the secret again. ",
+    "url": "/AWS-Setup.html#step-3-get-your-access-keys",
+    
+    "relUrl": "/AWS-Setup.html#step-3-get-your-access-keys"
+  },"5": {
+    "doc": "AWS Setup",
+    "title": "Step 4: Save Keys on Your Laptop",
+    "content": "Open Terminal and run: . mkdir -p ~/.aws . Create the config file: . cat &gt; ~/.aws/config &lt;&lt; 'EOF' [default] region = us-east-1 EOF . Create the credentials file (replace with YOUR keys): . cat &gt; ~/.aws/credentials &lt;&lt; 'EOF' [default] aws_access_key_id = PASTE_YOUR_ACCESS_KEY_HERE aws_secret_access_key = PASTE_YOUR_SECRET_KEY_HERE EOF . ",
+    "url": "/AWS-Setup.html#step-4-save-keys-on-your-laptop",
+    
+    "relUrl": "/AWS-Setup.html#step-4-save-keys-on-your-laptop"
+  },"6": {
+    "doc": "AWS Setup",
+    "title": "Done!",
+    "content": "Nar uses the default AWS profile. You’re ready to run Init. ",
+    "url": "/AWS-Setup.html#done",
+    
+    "relUrl": "/AWS-Setup.html#done"
+  },"7": {
+    "doc": "AWS Setup",
+    "title": "Using a Different Profile",
+    "content": "If you already use AWS and want to keep Nar separate: . 1. Update ~/.aws/config: . [default] region = us-east-1 [profile myprofile] region = us-east-1 . 2. Update ~/.aws/credentials: . [default] aws_access_key_id = YOUR_OTHER_KEY aws_secret_access_key = YOUR_OTHER_SECRET [myprofile] aws_access_key_id = PASTE_YOUR_ACCESS_KEY_HERE aws_secret_access_key = PASTE_YOUR_SECRET_KEY_HERE . 3. In Nar, update awsProfile.json: . { \"profile\": \"myprofile\" } . ",
+    "url": "/AWS-Setup.html#using-a-different-profile",
+    
+    "relUrl": "/AWS-Setup.html#using-a-different-profile"
+  },"8": {
+    "doc": "AWS Setup",
+    "title": "Troubleshooting",
+    "content": "| Problem | Solution | . | “Unable to locate credentials” | Check that ~/.aws/credentials exists and has the right format | . | “AccessDenied” when running init | Make sure you added the nar_iam_bootstrap policy in Step 2 | . | “InvalidClientTokenId” | Your access key ID is wrong — create new access keys in AWS | . ",
+    "url": "/AWS-Setup.html#troubleshooting",
+    
+    "relUrl": "/AWS-Setup.html#troubleshooting"
+  },"9": {
+    "doc": "AWS Setup",
+    "title": "AWS Setup",
+    "content": " ",
+    "url": "/AWS-Setup.html",
+    
+    "relUrl": "/AWS-Setup.html"
+  },"10": {
+    "doc": "Home",
+    "title": "Nar Documentation",
+    "content": "Welcome to the Nar documentation. Follow these guides to get started. ",
+    "url": "/#nar-documentation",
+    
+    "relUrl": "/#nar-documentation"
+  },"11": {
+    "doc": "Home",
+    "title": "Before You Init",
+    "content": "| Guide | Description | . | AWS Setup | Configure AWS credentials on your laptop | . ",
+    "url": "/#before-you-init",
+    
+    "relUrl": "/#before-you-init"
+  },"12": {
+    "doc": "Home",
+    "title": "Home",
+    "content": " ",
+    "url": "/",
+    
+    "relUrl": "/"
+  }
+}
