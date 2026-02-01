@@ -9,16 +9,22 @@ has_toc: false
 
 # Control Panel
 
-The Nar Control Panel is your mission control for AWS. It provides a visual and intuitive way to manage professional-grade cloud infrastructure and deployments without needing to be an AWS expert.
+The Control Panel is Nar's visual interface for managing your AWS deployments. It lets you provision infrastructure, deploy code, and manage multiple environments without touching the AWS console. Every action available in the Control Panel can also be run via the CLI for scripted or pipeline-based workflows.
 
 ![Control Panel](../assets/images/control-panel-expanded.png)
 
-## Why Use the Control Panel?
+## Workflow
 
-While Nar supports full automation, the Control Panel is the best way to visualize your entire deployment stack at a glance and manage multiple environments like Dev, Staging, and Production. It allows you to update your services and UI with a single click, effectively abstracting away the complexity of the AWS console.
+The typical deployment flow through the Control Panel:
 
-### Reference & Tools
+1. **[Context (Init)](control-panel/init.html)** — One-time setup: create IAM role and state bucket in your AWS account.
+2. **[Sites](control-panel/sites.html)** — Create and switch between environments (dev, staging, prod).
+3. **[Data Layer](control-panel/data-layer.html)** — Provision S3 storage buckets.
+4. **[App Layer](control-panel/app-layer.html)** — Provision compute resources (Lambda, API Gateway, CloudFront) and deploy your code.
 
-To get started, you'll first establish your **[Context](control-panel/init.html)** to grant Nar the necessary AWS permissions. From there, you can define your **[Sites](control-panel/sites.html)**, provision your **[Data Layer](control-panel/data-layer.html)**, and deploy your latest logic and interfaces through the **[App Layer](control-panel/app-layer.html)**.
+## Maintenance
 
-If you move source code (e.g. point it to a repo), **[Fix Paths](control-panel/fix-paths.html)** will keep your configurations in sync. For ongoing maintenance, our **[Tools](control-panel/tools.html)** provide site health checks and state recovery. To understand the core logic behind your projects, explore the **[Vertical](control-panel/vertical.html)** definition. Finally, when you need to retire a site, **[Destructive Actions](control-panel/destructive-actions.html)** allows you to safely and permanently remove resources.
+- **[Fix Paths](control-panel/fix-paths.html)** — Update configuration paths after moving your project folder.
+- **[Tools](control-panel/tools.html)** — State recovery, resource listing, CORS configuration.
+- **[Vertical](control-panel/vertical.html)** — Understand and manage the active vertical.
+- **[Destructive Actions](control-panel/destructive-actions.html)** — Delete resources and tear down sites.

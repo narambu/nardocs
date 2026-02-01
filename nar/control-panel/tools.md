@@ -6,28 +6,30 @@ grand_parent: Nar
 nav_order: 6
 ---
 
-# Management Tools
+# Tools
 
-Nar includes a suite of utilities to help you maintain your sites, monitor their health, and resolve common configuration issues.
+Utilities for inspecting and maintaining your deployed infrastructure.
 
-## State Recovery & Monitoring
+## State Recovery
 
 ### Recover
-Cloud systems track their resources in a local "state file". If a deployment is interrupted or the local file becomes out of sync, click **Recover**. Nar will scan your real-time cloud account and update your local project to perfectly match the current state of your AWS resources.
+If a deployment was interrupted or your local state is out of sync with AWS, click **Recover**. Nar scans your AWS account for resources tagged with this site and re-imports them into the state file, bringing your local state back in sync with reality.
 
 ### State List
-For an in-depth look at your project's infrastructure, click **State List**. This provides a transparent inventory of every professional resource Nar is managing for the selected site.
+Displays a list of every AWS resource Nar is currently tracking for the selected site. Useful for auditing exactly what's been provisioned.
 
-## Storage Management
+## Storage
 
 ### List Buckets
-This utility provides an audit report of your file storage buckets, verifying that each represents a healthy, active cloud resource.
+Lists all S3 buckets associated with the selected site and verifies they exist in AWS.
 
-## Connectivity & CORS
+## CORS
 
-### Enable/Disable CORS
-If your website encounters cross-origin errors (CORS) in the browser console, it means your cloud storage is protecting your files from unauthorized access. To authorize your website to communicate with your storage buckets:
-1. Select the appropriate bucket prefix.
+### Enable / Disable CORS
+Configures Cross-Origin Resource Sharing (CORS) headers on your S3 storage buckets.
+
+If your frontend is getting CORS errors when accessing files from a bucket:
+1. Select the bucket prefix.
 2. Click **Enable**.
 
-Nar will automatically configure the necessary security headers so your application can securely and seamlessly serve its assets.
+Nar sets the appropriate CORS policy on the bucket so your application can access its contents from the browser.

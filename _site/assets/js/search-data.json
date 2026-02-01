@@ -1,681 +1,1290 @@
 {"0": {
     "doc": "apex.json",
     "title": "apex.json",
-    "content": "The apex.json file is used to configure root (apex) domains. Example location: ral/nnet/apex.json . ",
+    "content": "The apex.json file points your root (apex) domain — e.g., yourdomain.com without any prefix — to a specific site. Location: {vertical}/nnet/apex.json . ",
     "url": "/nar/workspace/apex-json.html",
     
     "relUrl": "/nar/workspace/apex-json.html"
   },"1": {
-    "doc": "App Layer",
-    "title": "Application Layer",
-    "content": "The App Layer is the engine room of your project. If the Data Layer is your hard drive, the App Layer is the processor that runs your application logic and serves your user interface. ",
-    "url": "/nar/control-panel/app-layer.html#application-layer",
+    "doc": "apex.json",
+    "title": "Example",
+    "content": "To serve a specific site at the root domain: . { \"site\": \"prod\", \"awsRegion\": \"us-east-1\" } . To disable apex domain routing: . {} . ",
+    "url": "/nar/workspace/apex-json.html#example",
     
-    "relUrl": "/nar/control-panel/app-layer.html#application-layer"
+    "relUrl": "/nar/workspace/apex-json.html#example"
   },"2": {
-    "doc": "App Layer",
-    "title": "Infrastructure Provisioning",
-    "content": "Once your storage is ready, you need to set up the specialized cloud compute resources that will run your code. Clicking Setup builds the professional “skeleton” of your backend, including the secure API endpoints where your code lives and executes. ",
-    "url": "/nar/control-panel/app-layer.html#infrastructure-provisioning",
+    "doc": "apex.json",
+    "title": "Fields",
+    "content": "| Field | Description | . | site | The site name to serve at the root domain (e.g., prod, dev). | . | awsRegion | The AWS region of that site (e.g., us-east-1). | . ",
+    "url": "/nar/workspace/apex-json.html#fields",
     
-    "relUrl": "/nar/control-panel/app-layer.html#infrastructure-provisioning"
+    "relUrl": "/nar/workspace/apex-json.html#fields"
   },"3": {
-    "doc": "App Layer",
-    "title": "Deploying Your Interface (Deploy UI)",
-    "content": "This action publishes the visual part of your website—everything your users interact with in their browser. When you make a frontend change (e.g., in React or Vue) and are ready to share it with the world, simply click Deploy UI. Nar builds your project, uploads it to the global CloudFront CDN, and clears old caches so your users see the update instantly. ",
-    "url": "/nar/control-panel/app-layer.html#deploying-your-interface-deploy-ui",
+    "doc": "apex.json",
+    "title": "How It Works",
+    "content": "When configured, Nar adds yourdomain.com as an alias on the CloudFront distribution for the specified site. Visitors to yourdomain.com see the same content as {region}.{site}.{vertical}.yourdomain.com. ",
+    "url": "/nar/workspace/apex-json.html#how-it-works",
     
-    "relUrl": "/nar/control-panel/app-layer.html#deploying-your-interface-deploy-ui"
+    "relUrl": "/nar/workspace/apex-json.html#how-it-works"
   },"4": {
-    "doc": "App Layer",
-    "title": "Deploying Your Logic (Deploy Service)",
-    "content": "Use this for backend updates—the “brain” of your application. If you’ve updated your backend code: . | Select the specific service (e.g., auth) from the dropdown. | Click Deploy Service. | . Nar zips and publishes your new logic directly to the cloud, providing a fast and reliable deployment without rebuilding your entire system. ",
-    "url": "/nar/control-panel/app-layer.html#deploying-your-logic-deploy-service",
+    "doc": "apex.json",
+    "title": "Prerequisites",
+    "content": ". | domain.json must be configured first — apex routing requires a custom domain. | The domain’s hosted zone must exist in Route 53. | . ",
+    "url": "/nar/workspace/apex-json.html#prerequisites",
     
-    "relUrl": "/nar/control-panel/app-layer.html#deploying-your-logic-deploy-service"
+    "relUrl": "/nar/workspace/apex-json.html#prerequisites"
   },"5": {
     "doc": "App Layer",
     "title": "App Layer",
-    "content": " ",
+    "content": "The App Layer contains the compute, delivery, and build resources that run your application. ",
     "url": "/nar/control-panel/app-layer.html",
     
     "relUrl": "/nar/control-panel/app-layer.html"
   },"6": {
-    "doc": "Auth Service",
-    "title": "Auth Service",
-    "content": "The authentication logic for this vertical is provided by the shared Auth Service. View Auth Service Guide . ",
-    "url": "/verticals/ral/auth.html",
+    "doc": "App Layer",
+    "title": "Setup",
+    "content": "Clicking Setup provisions the following AWS resources for the selected site: . | Lambda functions — One per service defined in code.json. | API Gateway (HTTP) — Public HTTPS endpoints for each Lambda function. | CloudFront distribution — CDN for serving your frontend UI globally. | ECR repository — Container registry for Lambda deployment images. | CodeBuild project — Builds and packages your service code for Lambda. | IAM roles — Execution roles for Lambda and CodeBuild. | CloudWatch log groups — Logs for Lambda, API Gateway, and CodeBuild. | Route 53 records + ACM certificates — If you’ve configured a custom domain. | . You typically run Setup once per site. After that, use Deploy UI and Deploy Service for updates. ",
+    "url": "/nar/control-panel/app-layer.html#setup",
     
-    "relUrl": "/verticals/ral/auth.html"
+    "relUrl": "/nar/control-panel/app-layer.html#setup"
   },"7": {
+    "doc": "App Layer",
+    "title": "Deploy UI",
+    "content": "Publishes your React + Vite frontend to the CloudFront CDN. When you click Deploy UI, Nar: . | Builds your Vite project. | Uploads the output to the site’s S3 bucket. | Invalidates the CloudFront cache so users see the latest version. | . ",
+    "url": "/nar/control-panel/app-layer.html#deploy-ui",
+    
+    "relUrl": "/nar/control-panel/app-layer.html#deploy-ui"
+  },"8": {
+    "doc": "App Layer",
+    "title": "Deploy Service",
+    "content": "Updates a specific backend Lambda function. | Select the service (e.g., auth, sbcs) from the dropdown. | Click Deploy Service. | . Nar packages the service code along with shared libraries, pushes a container image to ECR, and triggers a CodeBuild job to update the Lambda function. ",
+    "url": "/nar/control-panel/app-layer.html#deploy-service",
+    
+    "relUrl": "/nar/control-panel/app-layer.html#deploy-service"
+  },"9": {
     "doc": "Auth Service",
     "title": "Auth Service",
     "content": "The authentication logic for this vertical is provided by the shared Auth Service. View Auth Service Guide . ",
     "url": "/verticals/ppay/auth.html",
     
     "relUrl": "/verticals/ppay/auth.html"
-  },"8": {
+  },"10": {
     "doc": "Auth Service",
     "title": "Auth Service",
-    "content": "The auth service is a backend codebase provided by Nar that implements secure Google OAuth authentication as a Lambda service. It is designed as a standardized component that can be integrated into any Nar vertical. ",
+    "content": "The auth service is a Python Lambda that handles Google OAuth authentication. The same source code is duplicated to all verticals provided by Nar. ",
     "url": "/verticals/common/auth.html",
     
     "relUrl": "/verticals/common/auth.html"
-  },"9": {
+  },"11": {
     "doc": "Auth Service",
-    "title": "Configuration",
-    "content": "The auth service requires valid Google OAuth credentials to function. 1. Get Google Credentials . | Go to the Google Cloud Console. | Create an OAuth 2.0 Client ID (Web application). | Securely copy your Client ID and Client Secret. | . 2. Update Environment Configuration . Add your credentials to the environment file for your vertical: Workspace/[vertical]/nnet/services_config/nn_env.json or Workspace/[vertical]/nnet/auth/config/nn_env.json . { \"GOOGLE_CLIENT_ID\": \"YOUR_CLIENT_ID\", \"GOOGLE_CLIENT_SECRET\": \"YOUR_CLIENT_SECRET\" } . 3. Set Redirect URIs . In the Google Cloud Console, set the Authorized redirect URI: . | With custom domain: https://auth.REGION.SITE.[vertical].yourdomain.com/callback | Without custom domain: https://RANDOM_ID.execute-api.REGION.amazonaws.com/callback | . Check your terminal output after deployment for the exact API URL and append /callback. 4. Deploy . In the Nar Control Panel: . | Select auth from the Service dropdown. | Click Deploy Service. | . ",
-    "url": "/verticals/common/auth.html#configuration",
+    "title": "What It Does",
+    "content": ". | OAuth login flow with Google | Session management via JWT tokens | Session validation for authenticated API requests | Logout | . ",
+    "url": "/verticals/common/auth.html#what-it-does",
     
-    "relUrl": "/verticals/common/auth.html#configuration"
-  },"10": {
+    "relUrl": "/verticals/common/auth.html#what-it-does"
+  },"12": {
+    "doc": "Auth Service",
+    "title": "API Endpoints",
+    "content": "| Method | Path | Description | . | GET | /oauth/login | Initiate Google OAuth flow (redirects to Google) | . | GET | /oauth/loggedin | OAuth callback — exchanges code for JWT, sets session cookie | . | GET | /oauth/nn/session | Get current session (requires auth) — returns username and token | . | POST | /oauth/logout | Clear session cookie | . | GET | /test | Health check | . | GET | /version | Service version | . ",
+    "url": "/verticals/common/auth.html#api-endpoints",
+    
+    "relUrl": "/verticals/common/auth.html#api-endpoints"
+  },"13": {
+    "doc": "Auth Service",
+    "title": "Project Structure",
+    "content": "auth/src/ ├── lambda_handler.py # Entry point + routing └── lfn/ ├── routes_impl.py # OAuth route handlers └── serviceenv.py # Environment variable getters . ",
+    "url": "/verticals/common/auth.html#project-structure",
+    
+    "relUrl": "/verticals/common/auth.html#project-structure"
+  },"14": {
+    "doc": "Auth Service",
+    "title": "Setup",
+    "content": "1. Get Google OAuth Credentials . | Go to the Google Cloud Console. | Create an OAuth 2.0 Client ID (type: Web application). | Copy your Client ID and Client Secret. | . 2. Add Credentials to Your Config . Add the credentials to the service environment config. The exact path depends on your vertical’s code.json — specifically the services.configDir.location field. Typically: . {workspace}/{vertical}/services_config/nn_env.json . { \"GOOGLE_CLIENT_ID\": \"your-client-id.apps.googleusercontent.com\", \"GOOGLE_CLIENT_SECRET\": \"your-client-secret\" } . 3. Set Redirect URIs in Google Console . In the Google Cloud Console, add the Authorized redirect URI: . | With a custom domain: https://auth.{region}.{site}.{vertical}.yourdomain.com/oauth/loggedin . | Without a custom domain: https://{api-id}.execute-api.{region}.amazonaws.com/oauth/loggedin . | . After deploying the auth service for the first time, check the terminal output for the exact API Gateway URL. Append /oauth/loggedin to get the redirect URI. 4. Deploy . In the Control Panel: . | Select auth from the Service dropdown. | Click Deploy Service. | . ",
+    "url": "/verticals/common/auth.html#setup",
+    
+    "relUrl": "/verticals/common/auth.html#setup"
+  },"15": {
+    "doc": "Auth Service",
+    "title": "Auth Service",
+    "content": "The authentication logic for this vertical is provided by the shared Auth Service. View Auth Service Guide . ",
+    "url": "/verticals/ral/auth.html",
+    
+    "relUrl": "/verticals/ral/auth.html"
+  },"16": {
+    "doc": "AWS Architectures",
+    "title": "Supported AWS Architectures",
+    "content": "Nar deploys your application using proven, serverless AWS architectures. Each architecture is fully provisioned and managed through the Nar UI or CLI. ",
+    "url": "/nar/aws-architectures.html#supported-aws-architectures",
+    
+    "relUrl": "/nar/aws-architectures.html#supported-aws-architectures"
+  },"17": {
+    "doc": "AWS Architectures",
+    "title": "Services: Lambda (non-VPC) via API Gateway",
+    "content": "Backend services run as AWS Lambda functions fronted by HTTP API Gateway endpoints. Client Request │ ▼ API Gateway (HTTP) │ ▼ Lambda Function (Container Image) │ ├── Reads/writes to S3 └── CloudWatch Logs . How it works: . | Each service defined in your code.json becomes its own Lambda function. | Lambda functions run as container images stored in ECR (Elastic Container Registry). | CodeBuild handles packaging and deploying new versions when you click Deploy Service. | API Gateway provides a public HTTPS endpoint for each service. | If you configure a custom domain, each service gets a subdomain: {service}.{region}.{site}.{vertical}.yourdomain.com | . AWS resources created: Lambda, API Gateway (HTTP), ECR repository, CodeBuild project, IAM roles, CloudWatch log groups, and optionally Route 53 records + ACM certificates for custom domains. ",
+    "url": "/nar/aws-architectures.html#services-lambda-non-vpc-via-api-gateway",
+    
+    "relUrl": "/nar/aws-architectures.html#services-lambda-non-vpc-via-api-gateway"
+  },"18": {
+    "doc": "AWS Architectures",
+    "title": "UI: CloudFront → S3",
+    "content": "Frontend assets are built locally and served globally through CloudFront CDN backed by an S3 origin bucket. User Browser │ ▼ CloudFront CDN (Edge Locations) │ ▼ S3 Bucket (Origin, via OAC) . How it works: . | When you click Deploy UI, Nar builds your React + Vite project and uploads the output to an S3 bucket. | CloudFront distributes the assets to edge locations worldwide for fast delivery. | Origin Access Control (OAC) ensures the S3 bucket is only accessible through CloudFront, not directly. | Cache invalidation runs automatically after each deployment so users see the latest version. | If you configure a custom domain, your site is accessible at {site}.yourdomain.com | . AWS resources created: S3 bucket, CloudFront distribution, Origin Access Control, and optionally Route 53 records + ACM certificates for custom domains. ",
+    "url": "/nar/aws-architectures.html#ui-cloudfront--s3",
+    
+    "relUrl": "/nar/aws-architectures.html#ui-cloudfront--s3"
+  },"19": {
+    "doc": "AWS Architectures",
+    "title": "Coming Soon",
+    "content": "We’re actively expanding the set of supported architectures. Stay tuned. ",
+    "url": "/nar/aws-architectures.html#coming-soon",
+    
+    "relUrl": "/nar/aws-architectures.html#coming-soon"
+  },"20": {
+    "doc": "AWS Architectures",
+    "title": "AWS Architectures",
+    "content": " ",
+    "url": "/nar/aws-architectures.html",
+    
+    "relUrl": "/nar/aws-architectures.html"
+  },"21": {
     "doc": "AWS Setup",
     "title": "Setting Up AWS for Nar",
-    "content": "This guide walks you through creating AWS credentials so Nar can deploy to your account. ",
+    "content": "Create AWS credentials so Nar can deploy to your account. ",
     "url": "/prerequisites/aws-setup.html#setting-up-aws-for-nar",
     
     "relUrl": "/prerequisites/aws-setup.html#setting-up-aws-for-nar"
-  },"11": {
+  },"22": {
     "doc": "AWS Setup",
     "title": "What You’ll Need",
-    "content": ". | An AWS account (create one here if you don’t have one) | Your laptop | . ",
+    "content": ". | An AWS account (create one here if you don’t have one) | . ",
     "url": "/prerequisites/aws-setup.html#what-youll-need",
     
     "relUrl": "/prerequisites/aws-setup.html#what-youll-need"
-  },"12": {
+  },"23": {
     "doc": "AWS Setup",
     "title": "Step 1: Create a User for Nar",
-    "content": ". | Sign in to AWS Console | In the search bar at the top, type IAM and click on it | Click Users in the left menu | Click Create user | For username, type: nar-deployer | Click Next | Select Attach policies directly | Don’t select anything yet — click Next | Click Create user | . ",
+    "content": ". | Sign in to AWS Console | Search for IAM and open it | Click Users → Create user | Username: nar-deployer | Click Next | Select Attach policies directly | Don’t select anything yet — click Next | Click Create user | . ",
     "url": "/prerequisites/aws-setup.html#step-1-create-a-user-for-nar",
     
     "relUrl": "/prerequisites/aws-setup.html#step-1-create-a-user-for-nar"
-  },"13": {
+  },"24": {
     "doc": "AWS Setup",
     "title": "Step 2: Give the User Permissions",
-    "content": ". | Click on your new user nar-deployer | Click the Permissions tab | Click Add permissions → Create inline policy | Click the JSON tab | Delete everything in the box and paste this: | . { \"Version\": \"2012-10-17\", \"Statement\": [ { \"Sid\": \"NarIamBootstrap\", \"Effect\": \"Allow\", \"Action\": [ \"iam:AttachRolePolicy\", \"iam:CreatePolicy\", \"iam:CreateRole\", \"iam:DeleteAccessKey\", \"iam:DeletePolicy\", \"iam:DeleteRole\", \"iam:DeleteRolePolicy\", \"iam:DeleteUser\", \"iam:DeleteUserPolicy\", \"iam:DetachRolePolicy\", \"iam:DetachUserPolicy\", \"iam:GetPolicy\", \"iam:GetRole\", \"iam:ListAccessKeys\", \"iam:ListAttachedRolePolicies\", \"iam:ListAttachedUserPolicies\", \"iam:ListPolicies\", \"iam:ListRolePolicies\", \"iam:ListRoles\", \"iam:ListUserPolicies\", \"iam:ListUsers\", \"iam:PutRolePolicy\", \"iam:PutUserPolicy\", \"iam:UpdateAssumeRolePolicy\" ], \"Resource\": \"*\" } ] } . | Click Next | Name it: nar_iam_bootstrap | Click Create policy | . ",
+    "content": ". | Click on your new user nar-deployer | Go to the Permissions tab | Click Add permissions → Create inline policy | Switch to the JSON tab and paste: | . { \"Version\": \"2012-10-17\", \"Statement\": [ { \"Sid\": \"NarIamBootstrap\", \"Effect\": \"Allow\", \"Action\": [ \"iam:AttachRolePolicy\", \"iam:CreatePolicy\", \"iam:CreateRole\", \"iam:DeleteAccessKey\", \"iam:DeletePolicy\", \"iam:DeleteRole\", \"iam:DeleteRolePolicy\", \"iam:DeleteUser\", \"iam:DeleteUserPolicy\", \"iam:DetachRolePolicy\", \"iam:DetachUserPolicy\", \"iam:GetPolicy\", \"iam:GetRole\", \"iam:ListAccessKeys\", \"iam:ListAttachedRolePolicies\", \"iam:ListAttachedUserPolicies\", \"iam:ListPolicies\", \"iam:ListRolePolicies\", \"iam:ListRoles\", \"iam:ListUserPolicies\", \"iam:ListUsers\", \"iam:PutRolePolicy\", \"iam:PutUserPolicy\", \"iam:UpdateAssumeRolePolicy\" ], \"Resource\": \"*\" } ] } . | Click Next | Name it: nar_iam_bootstrap | Click Create policy | . ",
     "url": "/prerequisites/aws-setup.html#step-2-give-the-user-permissions",
     
     "relUrl": "/prerequisites/aws-setup.html#step-2-give-the-user-permissions"
-  },"14": {
+  },"25": {
     "doc": "AWS Setup",
     "title": "Step 3: Get Your Access Keys",
-    "content": ". | Still on the nar-deployer user page, click Security credentials | Scroll down to Access keys | Click Create access key | Select Command Line Interface (CLI) | Check the confirmation checkbox at the bottom | Click Next, then Create access key | . Copy both the Access key ID and Secret access key somewhere safe. You won’t be able to see the secret again. ",
+    "content": ". | On the nar-deployer user page, click Security credentials | Scroll to Access keys → Create access key | Select Command Line Interface (CLI) | Check the confirmation box, click Next, then Create access key | . Copy both the Access key ID and Secret access key now. The secret won’t be shown again. ",
     "url": "/prerequisites/aws-setup.html#step-3-get-your-access-keys",
     
     "relUrl": "/prerequisites/aws-setup.html#step-3-get-your-access-keys"
-  },"15": {
+  },"26": {
     "doc": "AWS Setup",
-    "title": "Step 4: Save Keys on Your Laptop",
-    "content": "Open Terminal and run: . mkdir -p ~/.aws . Create the config file: . cat &gt; ~/.aws/config &lt;&lt; 'EOF' [default] region = us-east-1 EOF . Create the credentials file (replace with YOUR keys): . cat &gt; ~/.aws/credentials &lt;&lt; 'EOF' [default] aws_access_key_id = PASTE_YOUR_ACCESS_KEY_HERE aws_secret_access_key = PASTE_YOUR_SECRET_KEY_HERE EOF . ",
-    "url": "/prerequisites/aws-setup.html#step-4-save-keys-on-your-laptop",
+    "title": "Step 4: Save Keys on Your Machine",
+    "content": "Open Terminal: . mkdir -p ~/.aws . Create ~/.aws/config: . cat &gt; ~/.aws/config &lt;&lt; 'EOF' [default] region = us-east-1 EOF . Create ~/.aws/credentials (replace with your keys): . cat &gt; ~/.aws/credentials &lt;&lt; 'EOF' [default] aws_access_key_id = PASTE_YOUR_ACCESS_KEY_HERE aws_secret_access_key = PASTE_YOUR_SECRET_KEY_HERE EOF . ",
+    "url": "/prerequisites/aws-setup.html#step-4-save-keys-on-your-machine",
     
-    "relUrl": "/prerequisites/aws-setup.html#step-4-save-keys-on-your-laptop"
-  },"16": {
+    "relUrl": "/prerequisites/aws-setup.html#step-4-save-keys-on-your-machine"
+  },"27": {
     "doc": "AWS Setup",
-    "title": "Done!",
-    "content": "Nar uses the default AWS profile. You’re ready to run Init. ",
+    "title": "Done",
+    "content": "Nar uses the default AWS profile by default. You’re ready to run Init. ",
     "url": "/prerequisites/aws-setup.html#done",
     
     "relUrl": "/prerequisites/aws-setup.html#done"
-  },"17": {
+  },"28": {
     "doc": "AWS Setup",
     "title": "Using a Different Profile",
-    "content": "If you already use AWS and want to keep Nar separate: . 1. Update ~/.aws/config: . [default] region = us-east-1 [profile myprofile] region = us-east-1 . 2. Update ~/.aws/credentials: . [default] aws_access_key_id = YOUR_OTHER_KEY aws_secret_access_key = YOUR_OTHER_SECRET [myprofile] aws_access_key_id = PASTE_YOUR_ACCESS_KEY_HERE aws_secret_access_key = PASTE_YOUR_SECRET_KEY_HERE . 3. Update your workspace to use the profile. See awsprofile.json. ",
+    "content": "If you already use AWS and want a separate profile for Nar: . 1. Add to ~/.aws/config: . [profile myprofile] region = us-east-1 . 2. Add to ~/.aws/credentials: . [myprofile] aws_access_key_id = PASTE_YOUR_ACCESS_KEY_HERE aws_secret_access_key = PASTE_YOUR_SECRET_KEY_HERE . 3. Set the profile in your vertical’s nnet/awsprofile.json: . { \"iamAwsProfile\": \"myprofile\" } . ",
     "url": "/prerequisites/aws-setup.html#using-a-different-profile",
     
     "relUrl": "/prerequisites/aws-setup.html#using-a-different-profile"
-  },"18": {
+  },"29": {
     "doc": "AWS Setup",
     "title": "Troubleshooting",
-    "content": "| Problem | Solution | . | “Unable to locate credentials” | Check that ~/.aws/credentials exists and has the right format | . | “AccessDenied” when running init | Make sure you added the nar_iam_bootstrap policy in Step 2 | . | “InvalidClientTokenId” | Your access key ID is wrong — create new access keys in AWS | . ",
+    "content": "| Problem | Solution | . | “Unable to locate credentials” | Check that ~/.aws/credentials exists and has the right format. | . | “AccessDenied” when running Init | Verify you added the nar_iam_bootstrap policy in Step 2. | . | “InvalidClientTokenId” | The access key ID is wrong — create new access keys in AWS. | . ",
     "url": "/prerequisites/aws-setup.html#troubleshooting",
     
     "relUrl": "/prerequisites/aws-setup.html#troubleshooting"
-  },"19": {
+  },"30": {
     "doc": "AWS Setup",
     "title": "AWS Setup",
     "content": " ",
     "url": "/prerequisites/aws-setup.html",
     
     "relUrl": "/prerequisites/aws-setup.html"
-  },"20": {
+  },"31": {
+    "doc": "awsprofile.json",
+    "title": "awsprofile.json",
+    "content": "The awsprofile.json file tells Nar which AWS CLI profile to use for deployments. Location: {vertical}/nnet/awsprofile.json . ",
+    "url": "/nar/workspace/awsprofile-json.html",
+    
+    "relUrl": "/nar/workspace/awsprofile-json.html"
+  },"32": {
+    "doc": "awsprofile.json",
+    "title": "Example",
+    "content": "To use a specific profile: . { \"iamAwsProfile\": \"myprofile\" } . To use the default profile: . { \"iamAwsProfile\": \"default\" } . ",
+    "url": "/nar/workspace/awsprofile-json.html#example",
+    
+    "relUrl": "/nar/workspace/awsprofile-json.html#example"
+  },"33": {
+    "doc": "awsprofile.json",
+    "title": "Fields",
+    "content": "| Field | Description | . | iamAwsProfile | The name of the AWS CLI profile from ~/.aws/credentials that Nar should use. | . ",
+    "url": "/nar/workspace/awsprofile-json.html#fields",
+    
+    "relUrl": "/nar/workspace/awsprofile-json.html#fields"
+  },"34": {
+    "doc": "awsprofile.json",
+    "title": "When to Use",
+    "content": "If you have multiple AWS accounts or profiles configured in ~/.aws/credentials and want Nar to use a specific one instead of default, set it here. See AWS Setup for how to configure multiple AWS profiles. ",
+    "url": "/nar/workspace/awsprofile-json.html#when-to-use",
+    
+    "relUrl": "/nar/workspace/awsprofile-json.html#when-to-use"
+  },"35": {
+    "doc": "byv/buckets.json",
+    "title": "byv/buckets.json",
+    "content": "The buckets.json file defines additional S3 buckets beyond the built-in ones that Nar creates automatically. Location: {vertical}/nnet/byv/buckets.json . ",
+    "url": "/nar/workspace/buckets-json.html",
+    
+    "relUrl": "/nar/workspace/buckets-json.html"
+  },"36": {
+    "doc": "byv/buckets.json",
+    "title": "Example",
+    "content": "[ { \"name\": \"uploads\", \"versioning\": true, \"force_destroy\": false }, { \"name\": \"temp\", \"versioning\": false, \"ttl_days\": 30, \"force_destroy\": true } ] . To not create any additional buckets: . [] . ",
+    "url": "/nar/workspace/buckets-json.html#example",
+    
+    "relUrl": "/nar/workspace/buckets-json.html#example"
+  },"37": {
+    "doc": "byv/buckets.json",
+    "title": "Fields",
+    "content": "Each entry in the array is a bucket definition: . | Field | Description | Required | . | name | Bucket name prefix. The full bucket name includes the site, vertical, region, and account ID. | Yes | . | versioning | Enable S3 versioning on this bucket. | No (default: false) | . | ttl_days | Lifecycle rule — automatically delete objects after this many days. | No | . | force_destroy | Allow Nar to destroy this bucket even if it contains objects. | No (default: false) | . ",
+    "url": "/nar/workspace/buckets-json.html#fields",
+    
+    "relUrl": "/nar/workspace/buckets-json.html#fields"
+  },"38": {
+    "doc": "byv/buckets.json",
+    "title": "Built-in Buckets",
+    "content": "Nar automatically creates these buckets without any configuration: . | Prefix | Purpose | Layer | . | perm | Protected persistent data (versioning enabled) | Data | . | uico | UI assets served by CloudFront | App | . | arti | Build artifacts (7-day TTL) | App | . | scra | Scratch/temporary files (7-day TTL) | App | . Use byv/buckets.json when you need buckets beyond these defaults. ",
+    "url": "/nar/workspace/buckets-json.html#built-in-buckets",
+    
+    "relUrl": "/nar/workspace/buckets-json.html#built-in-buckets"
+  },"39": {
     "doc": "code.json",
     "title": "code.json",
-    "content": "The code.json file defines the source paths and service types for your project. Example location: ral/nnet/code.json . ",
+    "content": "The code.json file tells Nar what to deploy. It defines two composites — service_lambda for backend services and ui_vite for the frontend — along with their shared libraries and configuration directories. Location: {vertical}/nnet/code.json . ",
     "url": "/nar/workspace/code-json.html",
     
     "relUrl": "/nar/workspace/code-json.html"
-  },"21": {
-    "doc": "Common Components",
-    "title": "Common Components",
-    "content": "Shared services and resources used across Nar verticals. | Auth Service: Google OAuth backend. | . ",
+  },"40": {
+    "doc": "code.json",
+    "title": "Example",
+    "content": "{ \"services\": { \"lambda\": [ { \"name\": \"auth\", \"location\": \"orig/auth\" }, { \"name\": \"sbcs\", \"location\": \"orig/sbcs\" } ], \"sharedLibs\": [ { \"name\": \"common\", \"location\": \"orig/common\" } ], \"configDir\": { \"name\": \"services_config\", \"location\": \"orig/services_config\" } }, \"ui\": { \"vite\": { \"name\": \"ui\", \"location\": \"orig/ui\" }, \"common\": { \"name\": \"uicommon\", \"location\": \"orig/uicommon\" }, \"configDir\": { \"name\": \"ui_config\", \"location\": \"orig/ui_config\" } } } . All paths are relative to the vertical folder. If you want to deploy code from an existing repo instead of the bundled vertical source, change any location to point there. For example, to use your own UI project: . \"vite\": { \"name\": \"ui\", \"location\": \"/Users/you/repos/my-app/frontend\" } . After updating paths, run Fix Paths to apply the changes. ",
+    "url": "/nar/workspace/code-json.html#example",
+    
+    "relUrl": "/nar/workspace/code-json.html#example"
+  },"41": {
+    "doc": "code.json",
+    "title": "Supported Composites",
+    "content": "As of writing, Nar supports the following composites: . | service_lambda — Backend services deployed as Lambda functions behind API Gateway. | ui_vite — Frontend deployed as a Vite build to S3 behind CloudFront. | . ",
+    "url": "/nar/workspace/code-json.html#supported-composites",
+    
+    "relUrl": "/nar/workspace/code-json.html#supported-composites"
+  },"42": {
+    "doc": "Common Sources",
+    "title": "Common Sources",
+    "content": "The same source code for these components is duplicated to all verticals provided by Nar. | Auth Service — Google OAuth authentication backend, deployed as a Lambda service. | UI Packages — Shared React components and utilities imported by vertical UIs. | . ",
     "url": "/verticals/common.html",
     
     "relUrl": "/verticals/common.html"
-  },"22": {
+  },"43": {
     "doc": "Configuration (nnet/)",
     "title": "Configuration (nnet/)",
-    "content": "User-customized configurations live under the nnet/ directory within your vertical folder. ral/ └── nnet/ ├── code.json ├── domains.json └── apex.json . ",
+    "content": "Each vertical has an nnet/ directory that contains all user-editable configuration. This is how you tell Nar what to deploy, where to deploy it, and under what domain. ral/ └── nnet/ ├── code.json # What services and UI to deploy ├── domain.json # Custom domain name ├── apex.json # Root (apex) domain settings ├── awsprofile.json # Which AWS CLI profile to use ├── cors.json # Extra CORS origins per bucket (optional) ├── byv/ │ └── buckets.json # Additional S3 buckets to create └── site/ └── dev_us-east-1.json # Site definition (one file per site+region) . | File | Purpose | . | code.json | Defines your Lambda services, shared libraries, UI location, and config directories. | . | domain.json | Sets a custom domain for your deployment (requires a Route 53 hosted zone). | . | apex.json | Ties your root domain (e.g., yourdomain.com) to a specific site. | . | awsprofile.json | Specifies which AWS CLI profile Nar should use (defaults to default). | . | cors.json | Extra allowed origins for CORS on your S3 buckets (optional). | . | byv/buckets.json | Defines additional S3 buckets beyond the built-in ones. | . | site/*.json | Each file represents a deployable site+region combination. Filename format: {site}_{region}.json. | . Nar preserves the nnet/ directory when you re-import or update a vertical — your configuration is never overwritten. ",
     "url": "/nar/workspace/config.html",
     
     "relUrl": "/nar/workspace/config.html"
-  },"23": {
+  },"44": {
     "doc": "Control Panel",
     "title": "Control Panel",
-    "content": "The Nar Control Panel is your mission control for AWS. It provides a visual and intuitive way to manage professional-grade cloud infrastructure and deployments without needing to be an AWS expert. ",
+    "content": "The Control Panel is Nar’s visual interface for managing your AWS deployments. It lets you provision infrastructure, deploy code, and manage multiple environments without touching the AWS console. Every action available in the Control Panel can also be run via the CLI for scripted or pipeline-based workflows. ",
     "url": "/nar/control-panel.html",
     
     "relUrl": "/nar/control-panel.html"
-  },"24": {
+  },"45": {
     "doc": "Control Panel",
-    "title": "Why Use the Control Panel?",
-    "content": "While Nar supports full automation, the Control Panel is the best way to visualize your entire deployment stack at a glance and manage multiple environments like Dev, Staging, and Production. It allows you to update your services and UI with a single click, effectively abstracting away the complexity of the AWS console. Reference &amp; Tools . To get started, you’ll first establish your Context to grant Nar the necessary AWS permissions. From there, you can define your Sites, provision your Data Layer, and deploy your latest logic and interfaces through the App Layer. If you move source code (e.g. point it to a repo), Fix Paths will keep your configurations in sync. For ongoing maintenance, our Tools provide site health checks and state recovery. To understand the core logic behind your projects, explore the Vertical definition. Finally, when you need to retire a site, Destructive Actions allows you to safely and permanently remove resources. ",
-    "url": "/nar/control-panel.html#why-use-the-control-panel",
+    "title": "Workflow",
+    "content": "The typical deployment flow through the Control Panel: . | Context (Init) — One-time setup: create IAM role and state bucket in your AWS account. | Sites — Create and switch between environments (dev, staging, prod). | Data Layer — Provision S3 storage buckets. | App Layer — Provision compute resources (Lambda, API Gateway, CloudFront) and deploy your code. | . ",
+    "url": "/nar/control-panel.html#workflow",
     
-    "relUrl": "/nar/control-panel.html#why-use-the-control-panel"
-  },"25": {
-    "doc": "Data Layer",
-    "title": "Data Storage",
-    "content": "Behind every great application is a reliable place to store information—from user profiles to file uploads. In Nar, this is your Data Layer. ",
-    "url": "/nar/control-panel/data-layer.html#data-storage",
+    "relUrl": "/nar/control-panel.html#workflow"
+  },"46": {
+    "doc": "Control Panel",
+    "title": "Maintenance",
+    "content": ". | Fix Paths — Update configuration paths after moving your project folder. | Tools — State recovery, resource listing, CORS configuration. | Vertical — Understand and manage the active vertical. | Destructive Actions — Delete resources and tear down sites. | . ",
+    "url": "/nar/control-panel.html#maintenance",
     
-    "relUrl": "/nar/control-panel/data-layer.html#data-storage"
-  },"26": {
-    "doc": "Data Layer",
-    "title": "Setting Up Your Infrastructure",
-    "content": "When you start a new site, your storage resources don’t yet exist in the cloud. Clicking Setup commands AWS to build the actual data resources and file buckets your application needs. You generally only need to run this once per environment. Nar handles the complex configuration and security settings, ensuring your data is stored in a scalable and best-practice architecture. ",
-    "url": "/nar/control-panel/data-layer.html#setting-up-your-infrastructure",
+    "relUrl": "/nar/control-panel.html#maintenance"
+  },"47": {
+    "doc": "cors.json",
+    "title": "cors.json",
+    "content": "The cors.json file lets you add extra allowed origins for Cross-Origin Resource Sharing (CORS) on your S3 buckets. This is optional — Nar automatically configures CORS with your deployment URLs and localhost origins when you use the CORS tool. Location: {vertical}/nnet/cors.json . ",
+    "url": "/nar/workspace/cors-json.html",
     
-    "relUrl": "/nar/control-panel/data-layer.html#setting-up-your-infrastructure"
-  },"27": {
+    "relUrl": "/nar/workspace/cors-json.html"
+  },"48": {
+    "doc": "cors.json",
+    "title": "Example",
+    "content": "{ \"buckets\": { \"perm\": [ \"https://myapp.example.com\", \"https://staging.example.com\" ], \"uploads\": [ \"https://myapp.example.com\" ] } } . To not add any extra origins (or if you don’t need custom CORS): . {} . Or simply omit the file — it’s entirely optional. ",
+    "url": "/nar/workspace/cors-json.html#example",
+    
+    "relUrl": "/nar/workspace/cors-json.html#example"
+  },"49": {
+    "doc": "cors.json",
+    "title": "Fields",
+    "content": "| Field | Description | Required | . | buckets | An object where each key is a bucket prefix and each value is a list of allowed origin URLs. | No | . Each key under buckets is a bucket prefix (e.g., perm, uico, arti, scra, or any custom bucket defined in byv/buckets.json). The value is an array of origin URLs that should be allowed to make cross-origin requests to that bucket. ",
+    "url": "/nar/workspace/cors-json.html#fields",
+    
+    "relUrl": "/nar/workspace/cors-json.html#fields"
+  },"50": {
+    "doc": "cors.json",
+    "title": "How It Works",
+    "content": "When you click Enable CORS in the Tools panel for a bucket, Nar merges three sets of origins: . | Deployment origins — Your CloudFront and custom domain URLs (detected automatically). | Localhost origins — http://localhost:5173, http://localhost:3000, and their 127.0.0.1 equivalents (for local development). | Extra origins from cors.json — Any additional origins you specify here for that bucket prefix. | . All three are combined and applied as the CORS policy on the S3 bucket. ",
+    "url": "/nar/workspace/cors-json.html#how-it-works",
+    
+    "relUrl": "/nar/workspace/cors-json.html#how-it-works"
+  },"51": {
     "doc": "Data Layer",
     "title": "Data Layer",
-    "content": " ",
+    "content": "The Data Layer creates the S3 storage buckets your application needs for persistent data. ",
     "url": "/nar/control-panel/data-layer.html",
     
     "relUrl": "/nar/control-panel/data-layer.html"
-  },"28": {
+  },"52": {
+    "doc": "Data Layer",
+    "title": "Setup",
+    "content": "Clicking Setup provisions versioned S3 buckets for the selected site. These buckets are protected — they have versioning enabled and force_destroy disabled, meaning they survive App Layer deletion and cannot be accidentally removed with data still inside. You typically run this once per site. The Data Layer is separate from the App Layer so that your stored data is safe even if you tear down and rebuild your application infrastructure. ",
+    "url": "/nar/control-panel/data-layer.html#setup",
+    
+    "relUrl": "/nar/control-panel/data-layer.html#setup"
+  },"53": {
+    "doc": "Data Layer",
+    "title": "What’s Created",
+    "content": ". | Protected S3 buckets with versioning enabled. | Any additional buckets defined in nnet/byv/buckets.json. | . ",
+    "url": "/nar/control-panel/data-layer.html#whats-created",
+    
+    "relUrl": "/nar/control-panel/data-layer.html#whats-created"
+  },"54": {
+    "doc": "Data Layer",
+    "title": "Relationship to the App Layer",
+    "content": "The App Layer references the Data Layer’s state to discover bucket names and pass them as environment variables to your Lambda functions. This means you must set up the Data Layer before the App Layer. ",
+    "url": "/nar/control-panel/data-layer.html#relationship-to-the-app-layer",
+    
+    "relUrl": "/nar/control-panel/data-layer.html#relationship-to-the-app-layer"
+  },"55": {
+    "doc": "Default Dockerfile",
+    "title": "Default Dockerfile",
+    "content": "Nar’s default Dockerfile builds a Python 3.13 Lambda container image. It expects the following project layout for each service and shared library: . {service}/ ├── src/ # Python source code │ └── lambda_handler.py # Lambda entry point └── scripts/ └── requirements.txt # pip dependencies . Shared libraries follow the same convention: . {shared_lib}/ ├── src/ # Reusable Python modules └── scripts/ └── requirements.txt # pip dependencies . During the build, Nar: . | Installs requirements.txt from each shared library | Installs requirements.txt from the service | Copies all src/ directories to the Lambda task root (/var/task/) | Sets the entrypoint with Nar-generated environment variables | . To use a different Python version, add system packages, or use a non-Python language, provide a custom Dockerfile. View the default Dockerfile # syntax=docker/dockerfile:1.6 FROM public.ecr.aws/docker/library/python:3.13-slim-bookworm ENV PYTHONPATH=/var/task ARG API_NAME ARG SHARED_DIRS ENV PIP_DISABLE_PIP_VERSION_CHECK=1 \\ PYTHONDONTWRITEBYTECODE=1 \\ HOME=/tmp RUN apt-get update &amp;&amp; apt-get install -y --no-install-recommends \\ ca-certificates \\ fontconfig \\ fonts-dejavu \\ fonts-liberation \\ fonts-noto-cjk \\ fonts-noto-color-emoji \\ &amp;&amp; rm -rf /var/lib/apt/lists/* \\ &amp;&amp; fc-cache -f RUN pip install --no-cache-dir awslambdaric==3.1.1 # Copy everything to temp build directory COPY . /tmp/build/ # Install requirements from each shared directory (if SHARED_DIRS is provided) RUN if [ -n \"$SHARED_DIRS\" ]; then \\ for dir in $(echo \"$SHARED_DIRS\" | tr ',' ' '); do \\ if [ -f \"/tmp/build/${dir}/scripts/requirements.txt\" ] &amp;&amp; [ -s \"/tmp/build/${dir}/scripts/requirements.txt\" ]; then \\ pip install --no-cache-dir -r \"/tmp/build/${dir}/scripts/requirements.txt\"; \\ fi; \\ done; \\ fi # Install service-specific requirements RUN if [ -f \"/tmp/build/${API_NAME}/scripts/requirements.txt\" ] &amp;&amp; [ -s \"/tmp/build/${API_NAME}/scripts/requirements.txt\" ]; then \\ pip install --no-cache-dir -r \"/tmp/build/${API_NAME}/scripts/requirements.txt\"; \\ fi # Copy shared directories to /var/task RUN if [ -n \"$SHARED_DIRS\" ]; then \\ for dir in $(echo \"$SHARED_DIRS\" | tr ',' ' '); do \\ if [ -d \"/tmp/build/${dir}/src\" ]; then \\ cp -r /tmp/build/${dir}/src/. /var/task/; \\ fi; \\ done; \\ fi # Copy service source RUN cp -r /tmp/build/${API_NAME}/src/. /var/task/ # Cleanup RUN rm -rf /tmp/build WORKDIR /var/task ENTRYPOINT [\"/var/task/start_lambda.sh\"] . ",
+    "url": "/nar/workspace/default-dockerfile.html",
+    
+    "relUrl": "/nar/workspace/default-dockerfile.html"
+  },"56": {
     "doc": "Destructive Actions",
     "title": "Destructive Actions",
-    "content": "⚠ Warning: These buttons effectively delete your website and data. ",
+    "content": "These operations permanently delete AWS resources and data. They cannot be undone. ",
     "url": "/nar/control-panel/destructive-actions.html",
     
     "relUrl": "/nar/control-panel/destructive-actions.html"
-  },"29": {
+  },"57": {
     "doc": "Destructive Actions",
     "title": "Empty Bucket",
-    "content": "Cloud rules prevent you from deleting a storage bucket if it still has files inside. If you are trying to delete a site and it fails, it might be because the buckets are full. Select the bucket and click Empty to permanently wipe all files inside it. ",
+    "content": "AWS prevents deleting an S3 bucket that still contains objects. If a layer deletion fails because of non-empty buckets, select the bucket and click Empty to delete all objects inside it. ",
     "url": "/nar/control-panel/destructive-actions.html#empty-bucket",
     
     "relUrl": "/nar/control-panel/destructive-actions.html#empty-bucket"
-  },"30": {
+  },"58": {
     "doc": "Destructive Actions",
-    "title": "Delete App/Data Layer",
-    "content": "Use these to dismantle parts of your site. | Delete App Layer: Removes the compute resources and API endpoints. Your user data remains safe. | Delete Data Layer: Removes the data resources and file storage. Your data will be deleted forever. | . ",
-    "url": "/nar/control-panel/destructive-actions.html#delete-appdata-layer",
+    "title": "Delete App Layer",
+    "content": "Removes the compute and delivery resources for the selected site — Lambda functions, API Gateway, CloudFront, ECR, CodeBuild, and associated IAM roles. Your Data Layer (storage buckets and their contents) is not affected. ",
+    "url": "/nar/control-panel/destructive-actions.html#delete-app-layer",
     
-    "relUrl": "/nar/control-panel/destructive-actions.html#delete-appdata-layer"
-  },"31": {
+    "relUrl": "/nar/control-panel/destructive-actions.html#delete-app-layer"
+  },"59": {
+    "doc": "Destructive Actions",
+    "title": "Delete Data Layer",
+    "content": "Removes the storage buckets and their contents for the selected site. All data in these buckets will be permanently deleted. Make sure you have backups if needed. ",
+    "url": "/nar/control-panel/destructive-actions.html#delete-data-layer",
+    
+    "relUrl": "/nar/control-panel/destructive-actions.html#delete-data-layer"
+  },"60": {
     "doc": "Destructive Actions",
     "title": "Nuke",
-    "content": "When standard deletion fails. If “Delete” isn’t working—maybe the tracking file is corrupt—click Nuke. This is the “Force Delete” option. It ignores the tracking files, scans the cloud for anything tagged with this site, and destroys it immediately. Use with extreme caution. ",
+    "content": "Force-deletes all resources for a site when standard deletion fails — for example, if the state file is corrupt or missing. Nuke uses the discover action to scan AWS for resources tagged with this site and destroys them directly, bypassing the state file. Use this as a last resort. ",
     "url": "/nar/control-panel/destructive-actions.html#nuke",
     
     "relUrl": "/nar/control-panel/destructive-actions.html#nuke"
-  },"32": {
-    "doc": "domains.json",
-    "title": "domains.json",
-    "content": "To enable custom domains, enter your custom domain in this file. Example location: ral/nnet/domains.json . ",
+  },"61": {
+    "doc": "Can I use my own Dockerfile?",
+    "title": "Can I use my own Dockerfile for services?",
+    "content": "Yes. The service_lambda composite deploys services as container images. Nar provides a default Dockerfile for Python 3.13 Lambdas, but you can bring your own. ",
+    "url": "/nar/faq/dockerfile-faq.html#can-i-use-my-own-dockerfile-for-services",
+    
+    "relUrl": "/nar/faq/dockerfile-faq.html#can-i-use-my-own-dockerfile-for-services"
+  },"62": {
+    "doc": "Can I use my own Dockerfile?",
+    "title": "How to Use a Custom Dockerfile",
+    "content": "Add a dockerfile field to your service entry in code.json: . { \"name\": \"my_service\", \"location\": \"orig/my_service\", \"dockerfile\": \"/your/location/for/Dockerfile\" } . ",
+    "url": "/nar/faq/dockerfile-faq.html#how-to-use-a-custom-dockerfile",
+    
+    "relUrl": "/nar/faq/dockerfile-faq.html#how-to-use-a-custom-dockerfile"
+  },"63": {
+    "doc": "Can I use my own Dockerfile?",
+    "title": "Why Bring Your Own Dockerfile",
+    "content": ". | Different language — Use Node.js, Go, Rust, or any language that supports the AWS Lambda runtime interface. The deploy pipeline (CodeBuild, ECR, Lambda) is language-agnostic. | Different Python version — Pin to a specific Python version instead of the default 3.13. | System dependencies — Install packages like ffmpeg, imagemagick, or native libraries your code depends on. | Binary compilation — Build native extensions or compiled binaries that require a specific build environment. | Custom project layout — If your service doesn’t follow the default src/ and scripts/requirements.txt conventions. | . ",
+    "url": "/nar/faq/dockerfile-faq.html#why-bring-your-own-dockerfile",
+    
+    "relUrl": "/nar/faq/dockerfile-faq.html#why-bring-your-own-dockerfile"
+  },"64": {
+    "doc": "Can I use my own Dockerfile?",
+    "title": "What Your Custom Dockerfile Receives",
+    "content": "When Nar deploys a service, it packages your source code, shared libraries, and generated files into a zip and sends it to CodeBuild. CodeBuild extracts the zip and runs docker build with your Dockerfile. The build context looks like this: . build context/ ├── auth/ ← service source (name from code.json) │ ├── src/ │ └── scripts/ ├── common/ ← shared library (if any) │ ├── src/ │ └── scripts/ ├── nar_env.sh ← environment variables as shell exports └── lambda_dockerfile ← the Dockerfile being used . Nar also passes two build arguments so your Dockerfile can locate the right directories: . | API_NAME — the service name (e.g., auth) | SHARED_DIRS — comma-separated shared library names (e.g., common) | . Environment Variables . Nar generates nar_env.sh containing all environment variables as shell exports (bucket names, service URLs, nn_env.json values). Your Dockerfile should source this file in its entrypoint: . ARG API_NAME COPY . /tmp/build/ RUN cp -r /tmp/build/${API_NAME}/src/. /var/task/ RUN cp /tmp/build/${API_NAME}/src/nar_env.sh /var/task/ ENTRYPOINT [\"/bin/bash\", \"-c\", \"source /var/task/nar_env.sh &amp;&amp; exec /var/task/bootstrap\"] . See the default Dockerfile for a complete working example. ",
+    "url": "/nar/faq/dockerfile-faq.html#what-your-custom-dockerfile-receives",
+    
+    "relUrl": "/nar/faq/dockerfile-faq.html#what-your-custom-dockerfile-receives"
+  },"65": {
+    "doc": "Can I use my own Dockerfile?",
+    "title": "Can I use my own Dockerfile?",
+    "content": " ",
+    "url": "/nar/faq/dockerfile-faq.html",
+    
+    "relUrl": "/nar/faq/dockerfile-faq.html"
+  },"66": {
+    "doc": "domain.json",
+    "title": "domain.json",
+    "content": "The domain.json file connects your deployment to a custom domain name. Location: {vertical}/nnet/domain.json . ",
     "url": "/nar/workspace/domains-json.html",
     
     "relUrl": "/nar/workspace/domains-json.html"
-  },"33": {
-    "doc": "domains.json",
-    "title": "Configuration",
-    "content": "Enter your domain mapping here to connect your site to a professional domain. ",
-    "url": "/nar/workspace/domains-json.html#configuration",
+  },"67": {
+    "doc": "domain.json",
+    "title": "Example",
+    "content": "To use a custom domain: . { \"name\": \"yourdomain.com\" } . To deploy without a custom domain (uses default AWS-generated URLs): . {} . ",
+    "url": "/nar/workspace/domains-json.html#example",
     
-    "relUrl": "/nar/workspace/domains-json.html#configuration"
-  },"34": {
+    "relUrl": "/nar/workspace/domains-json.html#example"
+  },"68": {
+    "doc": "domain.json",
+    "title": "What Happens When You Set a Domain",
+    "content": "Nar creates Route 53 DNS records and ACM certificates to map your deployment to the domain. The URL patterns generated are: . | Resource | URL Pattern | . | UI (CloudFront) | {region}.{site}.{vertical}.yourdomain.com | . | Service (API Gateway) | {service}.{region}.{site}.{vertical}.yourdomain.com | . For example, with domain example.com, vertical ral, site dev, region us-east-1: . | UI: us-east-1.dev.ral.example.com | Auth service: auth.us-east-1.dev.ral.example.com | . ",
+    "url": "/nar/workspace/domains-json.html#what-happens-when-you-set-a-domain",
+    
+    "relUrl": "/nar/workspace/domains-json.html#what-happens-when-you-set-a-domain"
+  },"69": {
+    "doc": "domain.json",
+    "title": "Prerequisites",
+    "content": ". | The domain must have a hosted zone in Route 53. If you registered your domain elsewhere, create a hosted zone in Route 53 and update your domain’s nameservers to point to it. | DNS propagation and certificate validation can add a few minutes to the first deployment with a new domain. | . ",
+    "url": "/nar/workspace/domains-json.html#prerequisites",
+    
+    "relUrl": "/nar/workspace/domains-json.html#prerequisites"
+  },"70": {
+    "doc": "domain.json",
+    "title": "Without a Custom Domain",
+    "content": "If domain.json is empty ({}), your services and UI are accessible through default AWS-generated URLs: . | UI: A CloudFront distribution URL (e.g., d1234abcdef.cloudfront.net) | Services: API Gateway URLs (e.g., abc123.execute-api.us-east-1.amazonaws.com) | . ",
+    "url": "/nar/workspace/domains-json.html#without-a-custom-domain",
+    
+    "relUrl": "/nar/workspace/domains-json.html#without-a-custom-domain"
+  },"71": {
+    "doc": "Environment Variables",
+    "title": "Environment Variables",
+    "content": "Nar generates environment variables for both services and the UI at build time. See the relevant section for details: . | Service Environment Variables — variables available to Lambda functions at runtime | Vite Environment Variables — VITE_ variables available to React code via import.meta.env | . ",
+    "url": "/nar/workspace/environment-variables.html",
+    
+    "relUrl": "/nar/workspace/environment-variables.html"
+  },"72": {
+    "doc": "FAQ",
+    "title": "Frequently Asked Questions",
+    "content": " ",
+    "url": "/nar/faq.html#frequently-asked-questions",
+    
+    "relUrl": "/nar/faq.html#frequently-asked-questions"
+  },"73": {
+    "doc": "FAQ",
+    "title": "FAQ",
+    "content": " ",
+    "url": "/nar/faq.html",
+    
+    "relUrl": "/nar/faq.html"
+  },"74": {
     "doc": "Fix Paths",
     "title": "Fix Paths",
-    "content": "Configuration files in Nar use absolute paths to link resources correctly. ",
+    "content": "The location fields in code.json can point to directories inside or outside the workspace. Nar resolves these paths and creates symlinks in your workspace that point to the actual source code directories. Whenever you update a location in code.json, click Fix Paths to recreate the symlinks. ",
     "url": "/nar/control-panel/fix-paths.html",
     
     "relUrl": "/nar/control-panel/fix-paths.html"
-  },"35": {
-    "doc": "Fix Paths",
-    "title": "Fix Paths",
-    "content": "Configuration files in Nar often rely on absolute paths. This means if you move your project folder, rename a parent directory, or clone the repo to a new machine, things might break. If you’ve moved your project, just click Fix Paths. Nar will scan the nnet configuration files and automatically update all the old paths to match your current workspace location. It’s a quick fix that saves you from manually editing config files. ",
-    "url": "/nar/control-panel/fix-paths.html",
-    
-    "relUrl": "/nar/control-panel/fix-paths.html"
-  },"36": {
+  },"75": {
     "doc": "Nar",
-    "title": "Nar: Cloud Deployment, Simplified",
-    "content": "Nar abstracts away deployment complexity, letting developers focus on building features. Whether you prefer the simplicity of a user interface (UI) or the power of automated CI/CD, Nar ensures you can deploy professional-grade applications to AWS with ease. ",
-    "url": "/#nar-cloud-deployment-simplified",
+    "title": "Nar: Deploy to AWS without the complexity",
+    "content": "Nar is a deployment tool that ships serverless applications to your own AWS account — without wrestling with the AWS console or writing complex IaC. Use the visual interface to deploy interactively, or run the CLI to automate deployments in your CI/CD pipelines. ",
+    "url": "/#nar-deploy-to-aws-without-the-complexity",
     
-    "relUrl": "/#nar-cloud-deployment-simplified"
-  },"37": {
+    "relUrl": "/#nar-deploy-to-aws-without-the-complexity"
+  },"76": {
     "doc": "Nar",
-    "title": "The Nar Philosophy",
-    "content": "Nar is built on the principle of True Ownership, ensuring everything runs in your own AWS account—you own the code, the data, and the infrastructure. With Zero Lock-in (including Nar itself), you can build with Nar without being trapped by proprietary dependencies, relying instead on clean cloud architecture. Nar provides Expertise on Tap, allowing you to deploy complex stacks like Lambda, CloudFront, and secure Data Layers with professional-grade configurations by default. ",
-    "url": "/#the-nar-philosophy",
+    "title": "Philosophy",
+    "content": ". | True Ownership — Everything runs in your AWS account. You own the code, the data, and the infrastructure. | Zero Lock-in — Nar provisions standard AWS resources (Lambda, CloudFront, S3, API Gateway). There’s no proprietary runtime or abstraction layer. If you stop using Nar, your infrastructure keeps running — and you can import your resources into any IaC tool of your choice and continue from there. | Opinionated by Design — Nar makes deliberate choices about how your application is deployed. That means fewer decisions for you and tested paths that work every time. We’re confident that once you experience the simplicity, you’ll want to stay. | . ",
+    "url": "/#philosophy",
     
-    "relUrl": "/#the-nar-philosophy"
-  },"38": {
+    "relUrl": "/#philosophy"
+  },"77": {
     "doc": "Nar",
-    "title": "What Nar Delivers",
-    "content": "Nar handles the “heavy lifting” of cloud deployment so you don’t have to. The Intuitive Control Panel provides a user interface (UI) for managing sites, environments, and deployments with a single click. For teams, Nar is CI/CD Ready, seamlessly integrating into automated pipelines for consistent, reliable releases. You can jumpstart your project with Curated Verticals, which are production-ready features like Google OAuth or Subscription payments. Best of all, Nar provides Automated Cloud Infrastructure, provisioning and connecting the AWS resources required to run your application so you can focus entirely on your code. ",
-    "url": "/#what-nar-delivers",
+    "title": "What Nar Does",
+    "content": "| Feature | Description | . | Control Panel | Visual interface for managing sites, environments, and deployments. | . | CLI | Run nar.sh with --auto-approve for scripted or pipeline-based deployments. | . | Verticals | Ready-to-deploy application stacks — like Google OAuth or Paddle-based subscription billing — that you can activate and customize. | . | Infrastructure Management | Provisions and connects the AWS resources your application needs: Lambda, API Gateway, CloudFront, S3, ECR, CodeBuild, IAM roles, and more. | . ",
+    "url": "/#what-nar-does",
     
-    "relUrl": "/#what-nar-delivers"
-  },"39": {
+    "relUrl": "/#what-nar-does"
+  },"78": {
     "doc": "Nar",
     "title": "Quick Start",
-    "content": "Ready to see it in action? 2 Minutes to Prod will walk you through deploying a React app with Google OAuth to AWS in record time. ",
+    "content": "2 Minutes to Prod — Deploy a React app with Google OAuth to AWS from scratch. ",
     "url": "/#quick-start",
     
     "relUrl": "/#quick-start"
-  },"40": {
+  },"79": {
     "doc": "Nar",
     "title": "Nar",
     "content": " ",
     "url": "/",
     
     "relUrl": "/"
-  },"41": {
+  },"80": {
     "doc": "Context",
-    "title": "AWS Context",
-    "content": "The Context section establishes the professional permissions required for Nar to deploy your vertical to AWS. ",
-    "url": "/nar/control-panel/init.html#aws-context",
+    "title": "Context (Init)",
+    "content": "Before Nar can create resources in your AWS account, it needs a one-time initialization. ",
+    "url": "/nar/control-panel/init.html#context-init",
     
-    "relUrl": "/nar/control-panel/init.html#aws-context"
-  },"42": {
+    "relUrl": "/nar/control-panel/init.html#context-init"
+  },"81": {
     "doc": "Context",
-    "title": "Initializing Your Account (Init)",
-    "content": "Before you can build on AWS, your account needs to know that this project is authorized. If this is your first time deploying this project to a specific AWS account, simply click Init. This is a one-time “handshake” that grants Nar the permission to create and manage the professional-grade resources your application needs. Once done, you’re set for all future deployments on this account. ",
-    "url": "/nar/control-panel/init.html#initializing-your-account-init",
+    "title": "What Init Does",
+    "content": "Clicking Init performs these steps: . | Creates a DeployIAM role — A temporary IAM role that Nar assumes to provision infrastructure. | Creates the state bucket — An S3 bucket (nar-tfstate-{account}) that stores deployment state, so Nar can track what it has created. | Initializes configurations — Prepares both the Data Layer and App Layer for deployment. | . ",
+    "url": "/nar/control-panel/init.html#what-init-does",
     
-    "relUrl": "/nar/control-panel/init.html#initializing-your-account-init"
-  },"43": {
+    "relUrl": "/nar/control-panel/init.html#what-init-does"
+  },"82": {
+    "doc": "Context",
+    "title": "When to Run",
+    "content": ". | First time deploying from this workspace to a given AWS account. | If you switch AWS accounts or profiles. | Answer Y to any terminal prompts during the process. | . Once Init completes, you won’t need to run it again for this account unless you change your AWS configuration. ",
+    "url": "/nar/control-panel/init.html#when-to-run",
+    
+    "relUrl": "/nar/control-panel/init.html#when-to-run"
+  },"83": {
     "doc": "Context",
     "title": "Context",
     "content": " ",
     "url": "/nar/control-panel/init.html",
     
     "relUrl": "/nar/control-panel/init.html"
-  },"44": {
+  },"84": {
     "doc": "Node.js",
     "title": "Installing Node.js",
-    "content": "Nar requires Node.js 20 or later. ",
+    "content": "Nar requires Node.js 20 or later to build frontend assets. ",
     "url": "/prerequisites/node.html#installing-nodejs",
     
     "relUrl": "/prerequisites/node.html#installing-nodejs"
-  },"45": {
+  },"85": {
     "doc": "Node.js",
     "title": "Option 1: Direct Download (Recommended)",
-    "content": "Download and install from nodejs.org: . | Go to nodejs.org | Download the LTS version (20.x or later) | Run the installer | . Verify installation: . node --version . You should see v20.x.x or higher. ",
+    "content": ". | Go to nodejs.org | Download the LTS version (20.x or later) | Run the installer | . Verify: . node --version . You should see v20.x.x or higher. ",
     "url": "/prerequisites/node.html#option-1-direct-download-recommended",
     
     "relUrl": "/prerequisites/node.html#option-1-direct-download-recommended"
-  },"46": {
+  },"86": {
     "doc": "Node.js",
-    "title": "Option 2: Using nvm (Node Version Manager)",
-    "content": "nvm lets you install and switch between multiple Node versions. Install nvm . curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash . Close and reopen your terminal, then: . nvm install 20 nvm use 20 . Set Default Version . To always use Node 20: . nvm alias default 20 . ",
-    "url": "/prerequisites/node.html#option-2-using-nvm-node-version-manager",
+    "title": "Option 2: nvm (Node Version Manager)",
+    "content": "nvm lets you install and switch between multiple Node versions. curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.0/install.sh | bash . Close and reopen your terminal, then: . nvm install 20 nvm use 20 nvm alias default 20 . ",
+    "url": "/prerequisites/node.html#option-2-nvm-node-version-manager",
     
-    "relUrl": "/prerequisites/node.html#option-2-using-nvm-node-version-manager"
-  },"47": {
+    "relUrl": "/prerequisites/node.html#option-2-nvm-node-version-manager"
+  },"87": {
     "doc": "Node.js",
-    "title": "Option 3: Using Homebrew (macOS)",
+    "title": "Option 3: Homebrew (macOS)",
     "content": "brew install node@20 . ",
-    "url": "/prerequisites/node.html#option-3-using-homebrew-macos",
+    "url": "/prerequisites/node.html#option-3-homebrew-macos",
     
-    "relUrl": "/prerequisites/node.html#option-3-using-homebrew-macos"
-  },"48": {
+    "relUrl": "/prerequisites/node.html#option-3-homebrew-macos"
+  },"88": {
     "doc": "Node.js",
-    "title": "What About npm?",
-    "content": "npm (Node Package Manager) comes bundled with Node.js. When you install Node.js, you automatically get npm. Verify npm: . npm --version . ",
-    "url": "/prerequisites/node.html#what-about-npm",
+    "title": "npm",
+    "content": "npm comes bundled with Node.js — no separate install needed. npm --version . ",
+    "url": "/prerequisites/node.html#npm",
     
-    "relUrl": "/prerequisites/node.html#what-about-npm"
-  },"49": {
+    "relUrl": "/prerequisites/node.html#npm"
+  },"89": {
     "doc": "Node.js",
     "title": "Troubleshooting",
-    "content": "| Problem | Solution | . | node: command not found | Restart your terminal, or check that Node is in your PATH | . | Wrong Node version | Use nvm to switch: nvm use 20 | . | Permission errors with npm | Don’t use sudo with npm. Fix with: sudo chown -R $(whoami) ~/.npm | . ",
+    "content": "| Problem | Solution | . | node: command not found | Restart your terminal, or check that Node is in your PATH. | . | Wrong Node version | Use nvm to switch: nvm use 20 | . | Permission errors with npm | Don’t use sudo with npm. Fix with: sudo chown -R $(whoami) ~/.npm | . ",
     "url": "/prerequisites/node.html#troubleshooting",
     
     "relUrl": "/prerequisites/node.html#troubleshooting"
-  },"50": {
+  },"90": {
     "doc": "Node.js",
     "title": "Node.js",
     "content": " ",
     "url": "/prerequisites/node.html",
     
     "relUrl": "/prerequisites/node.html"
-  },"51": {
+  },"91": {
+    "doc": "payments",
+    "title": "payments",
+    "content": "Used by PPay vertical. Provides billing pages and Paddle API client for subscriptions and one-time purchases. ",
+    "url": "/verticals/common/payments.html",
+    
+    "relUrl": "/verticals/common/payments.html"
+  },"92": {
+    "doc": "payments",
+    "title": "Project Structure",
+    "content": "payments/ ├── pages/Payment/ │ ├── Admin.tsx # Admin dashboard │ └── Paddle/ │ ├── Billing.tsx # Subscription, purchase, and billing management │ ├── Invoices.tsx # Invoice history │ ├── Entities.tsx # Entity/customer management │ └── AdminProducts.tsx # Product and pricing configuration ├── services/ │ ├── sbcs_paddle/ # SBCS API client │ │ ├── products.ts # Product queries │ │ ├── subscriptions.ts # Subscription operations │ │ ├── billing.ts # Billing history │ │ ├── entities.ts # Entity management │ │ ├── config.ts # Credentials and product config │ │ └── admin.ts # Admin operations │ ├── sbcs_config.ts # Active provider config, admin check │ └── paddle/ │ └── paddleService.ts # Paddle SDK integration └── components/ └── Notice.tsx # Alert/notification component . ",
+    "url": "/verticals/common/payments.html#project-structure",
+    
+    "relUrl": "/verticals/common/payments.html#project-structure"
+  },"93": {
     "doc": "Paddle Payments",
     "title": "Paddle Payments",
-    "content": "A complete payment integration vertical using Paddle for subscriptions and license management. | Payments UI: Frontend documentation. | SBCS Service: Backend billing service. | Auth Service: Shared backend auth service. | . ",
+    "content": "A complete payment integration vertical using Paddle for subscriptions, one-time purchases, and license management. Includes: . | Payments UI — React frontend for checkout, billing, subscriptions, and admin. | SBCS Service — Backend Lambda for Paddle webhook processing, license logic, and customer management. | Auth Service — Shared Google OAuth authentication. | . ",
     "url": "/verticals/ppay.html",
     
     "relUrl": "/verticals/ppay.html"
-  },"52": {
+  },"94": {
     "doc": "Prerequisites",
     "title": "Prerequisites",
-    "content": "Before using Nar, you need: . | Node.js 20 - Required for building and running your application | AWS Credentials - So Nar can deploy to your AWS account | . ",
+    "content": "Before using Nar, you need: . | Node.js 20 — Required for building your frontend UI. | AWS Credentials — So Nar can deploy resources to your AWS account. | . ",
     "url": "/prerequisites.html",
     
     "relUrl": "/prerequisites.html"
-  },"53": {
+  },"95": {
     "doc": "2 Minutes to Prod",
-    "title": "2 Minutes to Prod",
-    "content": "Ship a production-ready React application with Google OAuth to AWS—from zero to live—in record time. ",
-    "url": "/nar/quickstart.html",
+    "title": "Quick Start",
+    "content": "Deploy a React application with Google OAuth to your AWS account from scratch. ",
+    "url": "/nar/quickstart.html#quick-start",
     
-    "relUrl": "/nar/quickstart.html"
-  },"54": {
+    "relUrl": "/nar/quickstart.html#quick-start"
+  },"96": {
     "doc": "2 Minutes to Prod",
-    "title": "Your Deployment at a Glance",
-    "content": "By the end of this guide, you’ll have a fully functional project featuring: . | Instant Frontend: A React UI served globally via CloudFront CDN. | Secure Backend: A Google OAuth authentication service running as a Lambda service. | Professional Setup: Best-practice cloud infrastructure, automatically configured. | . No complex AWS dashboards. No manual terminal setup. Just a smooth, professional path to production. ",
-    "url": "/nar/quickstart.html#your-deployment-at-a-glance",
+    "title": "What You’ll End Up With",
+    "content": ". | A React + Vite frontend served globally via CloudFront CDN. | A Python Lambda auth service handling Google OAuth login and session management. | S3 buckets, API Gateway endpoints, IAM roles, and all the supporting infrastructure — provisioned automatically. | . ",
+    "url": "/nar/quickstart.html#what-youll-end-up-with",
     
-    "relUrl": "/nar/quickstart.html#your-deployment-at-a-glance"
-  },"55": {
+    "relUrl": "/nar/quickstart.html#what-youll-end-up-with"
+  },"97": {
     "doc": "2 Minutes to Prod",
     "title": "Prerequisites",
-    "content": "Before diving in, ensure your environment is ready by checking the Prerequisites. ",
+    "content": "Make sure you’ve completed the Prerequisites (Node.js 20 + AWS credentials). ",
     "url": "/nar/quickstart.html#prerequisites",
     
     "relUrl": "/nar/quickstart.html#prerequisites"
-  },"56": {
+  },"98": {
     "doc": "2 Minutes to Prod",
     "title": "Step 1: Launch Nar &amp; Select Workspace",
-    "content": ". | Launch Nar: Open the Nar app locally. | Open Workspace: Click Open and select an empty folder where your code will live. | . Now that your workspace is set, the Control Panel is ready for action. ",
+    "content": ". | Open the Nar app. | Click Open and select an empty folder — this becomes your workspace. | . ",
     "url": "/nar/quickstart.html#step-1-launch-nar--select-workspace",
     
     "relUrl": "/nar/quickstart.html#step-1-launch-nar--select-workspace"
-  },"57": {
+  },"99": {
     "doc": "2 Minutes to Prod",
-    "title": "Step 2: Activate",
-    "content": "The React Auth Lambda vertical comes pre-bundled and ready to deploy. | In the Vertical dropdown, select React Auth Lambda. | Click Activate. | . Nar will instantly unpack your React UI and Python OAuth service code into your project folder. ",
-    "url": "/nar/quickstart.html#step-2-activate",
+    "title": "Step 2: Activate the Vertical",
+    "content": "The React Auth Lambda vertical comes bundled with Nar. | In the Vertical dropdown, select React Auth Lambda. | Click Activate. | . Nar unpacks the React UI and Python auth service code into your workspace folder. ",
+    "url": "/nar/quickstart.html#step-2-activate-the-vertical",
     
-    "relUrl": "/nar/quickstart.html#step-2-activate"
-  },"58": {
+    "relUrl": "/nar/quickstart.html#step-2-activate-the-vertical"
+  },"100": {
     "doc": "2 Minutes to Prod",
-    "title": "Step 3: Connect Your AWS Account",
-    "content": ". | Expand + Context. | Click Init. | Answer Y to any terminal prompts. | . | . This is a one-time “handshake” that grants Nar the professional permissions needed to build on your behalf. ",
-    "url": "/nar/quickstart.html#step-3-connect-your-aws-account",
+    "title": "Step 3: Initialize (Connect AWS)",
+    "content": ". | Expand + Context. | Click Init. | Answer Y to any terminal prompts. | . This creates a DeployIAM role and state bucket in your AWS account. It’s a one-time step per AWS account. ",
+    "url": "/nar/quickstart.html#step-3-initialize-connect-aws",
     
-    "relUrl": "/nar/quickstart.html#step-3-connect-your-aws-account"
-  },"59": {
+    "relUrl": "/nar/quickstart.html#step-3-initialize-connect-aws"
+  },"101": {
     "doc": "2 Minutes to Prod",
     "title": "Step 4: Verify Your Site",
-    "content": "React Auth Lambda includes a pre-configured dev site in the us-east-1 region. Ensure this site appears in the Site dropdown. ",
+    "content": "React Auth Lambda includes a pre-configured dev site in us-east-1. Confirm it appears in the Site dropdown. ",
     "url": "/nar/quickstart.html#step-4-verify-your-site",
     
     "relUrl": "/nar/quickstart.html#step-4-verify-your-site"
-  },"60": {
+  },"102": {
     "doc": "2 Minutes to Prod",
-    "title": "Step 5: Provision Your Cloud Stack",
-    "content": ". | Setup Data Layer: Expand + Data Layer and click Setup. | Answer Y to any prompts and wait for the secure storage resources to be built. | . | Setup App Layer: Expand + App Layer and click Setup. | Answer Y to any prompts and wait for your backend services to go live. | . | . Your infrastructure is now live and waiting for you! . ",
-    "url": "/nar/quickstart.html#step-5-provision-your-cloud-stack",
+    "title": "Step 5: Provision Infrastructure",
+    "content": ". | Data Layer: Expand + Data Layer, click Setup, and answer Y to prompts. | Creates versioned S3 storage buckets. | . | App Layer: Expand + App Layer, click Setup, and answer Y to prompts. | Creates Lambda functions, API Gateway, CloudFront distribution, ECR, CodeBuild, and IAM roles. | . | . ",
+    "url": "/nar/quickstart.html#step-5-provision-infrastructure",
     
-    "relUrl": "/nar/quickstart.html#step-5-provision-your-cloud-stack"
-  },"61": {
+    "relUrl": "/nar/quickstart.html#step-5-provision-infrastructure"
+  },"103": {
     "doc": "2 Minutes to Prod",
-    "title": "Step 6: Visit Your Live Site",
-    "content": "Once the setup is complete, the terminal will display the URLs for your new deployment. Find the Site URL (CloudFront), open it in your browser, and celebrate—your React UI is officially live! . ",
-    "url": "/nar/quickstart.html#step-6-visit-your-live-site",
+    "title": "Step 6: Visit Your Site",
+    "content": "When the App Layer setup completes, the terminal displays your deployment URLs. Open the CloudFront URL in your browser — your React app is live. ",
+    "url": "/nar/quickstart.html#step-6-visit-your-site",
     
-    "relUrl": "/nar/quickstart.html#step-6-visit-your-live-site"
-  },"62": {
+    "relUrl": "/nar/quickstart.html#step-6-visit-your-site"
+  },"104": {
     "doc": "2 Minutes to Prod",
-    "title": "What Just Happened?",
-    "content": "In two minutes, Nar has: . | Built secure, scalable data resources. | Provisioned enterprise-grade backend services for authentication. | Deployed a high-performance React UI globally. | Configured secure edge delivery and endpoints. | . Everything is production-ready, automated, and running in your account. ",
-    "url": "/nar/quickstart.html#what-just-happened",
+    "title": "What Was Created",
+    "content": "| AWS Resource | Purpose | . | S3 buckets (versioned) | Persistent data storage | . | S3 bucket (UI) | Hosts frontend assets | . | CloudFront distribution | Serves UI globally from edge locations | . | Lambda function | Runs the auth service | . | API Gateway (HTTP) | Public HTTPS endpoint for the auth service | . | ECR repository | Stores Lambda container images | . | CodeBuild project | Builds and deploys service updates | . | IAM roles | Execution permissions for Lambda and CodeBuild | . | CloudWatch log groups | Logs for Lambda, API Gateway, CodeBuild | . ",
+    "url": "/nar/quickstart.html#what-was-created",
     
-    "relUrl": "/nar/quickstart.html#what-just-happened"
-  },"63": {
+    "relUrl": "/nar/quickstart.html#what-was-created"
+  },"105": {
     "doc": "2 Minutes to Prod",
     "title": "Next Steps",
-    "content": ". | Enable Custom Domains: Point your site to a professional domain by editing your domains.json. | Enable Apex Domain: Configure your root domain via apex.json. | Customize &amp; Iterate: The default code is already live, so you only need to redeploy when you make changes. Run Deploy UI after you make changes to the code. | Configure OAuth: Follow the Auth Service Guide for details. | . ",
+    "content": ". | Custom Domain: Edit domain.json to use your own domain. | Apex Domain: Configure apex.json to serve from the root domain. | Deploy Changes: After editing the frontend code, click Deploy UI in the Control Panel. | Configure OAuth: Follow the Auth Service Guide to set up Google credentials. | . ",
     "url": "/nar/quickstart.html#next-steps",
     
     "relUrl": "/nar/quickstart.html#next-steps"
-  },"64": {
+  },"106": {
+    "doc": "2 Minutes to Prod",
+    "title": "2 Minutes to Prod",
+    "content": " ",
+    "url": "/nar/quickstart.html",
+    
+    "relUrl": "/nar/quickstart.html"
+  },"107": {
     "doc": "React Auth Lambda",
     "title": "React Auth Lambda",
-    "content": "A minimal React + Vite starter with Google OAuth authentication as a Lambda service. | React UI: Frontend documentation. | Auth Service: Shared backend auth service. | . ",
+    "content": "A React + Vite starter with Google OAuth authentication, deployed as a Lambda service. This vertical comes bundled with Nar App — no separate download needed. Includes: . | React UI — Frontend built with React 19, Vite, and Tailwind CSS. | Auth Service — Python Lambda that handles Google OAuth login and session management. | . ",
     "url": "/verticals/ral.html",
     
     "relUrl": "/verticals/ral.html"
-  },"65": {
-    "doc": "SBCS Service",
-    "title": "Features",
-    "content": ". | Payment Processing: Handles one-time and recurring payments securely. | Webhook Integration: Automatically processes Paddle webhooks to keep your user records in sync. | License Logic: Issues and validates software licenses upon successful payment. | . ",
-    "url": "/verticals/ppay/sbcs.html#features",
-    
-    "relUrl": "/verticals/ppay/sbcs.html#features"
-  },"66": {
-    "doc": "SBCS Service",
-    "title": "Configuration",
-    "content": "The sbcs service works in conjunction with the auth service. Ensure your Paddle API credentials and webhook secrets are correctly configured in your nnet/ environment settings. ",
-    "url": "/verticals/ppay/sbcs.html#configuration",
-    
-    "relUrl": "/verticals/ppay/sbcs.html#configuration"
-  },"67": {
-    "doc": "SBCS Service",
-    "title": "Redeployment",
-    "content": "If you update the billing logic or Paddle integration: . | Select sbcs from the Service dropdown in the Nar Control Panel. | Click Deploy Service. | Nar publishes the updated Lambda image to ensure your billing logic is current. | . ",
-    "url": "/verticals/ppay/sbcs.html#redeployment",
-    
-    "relUrl": "/verticals/ppay/sbcs.html#redeployment"
-  },"68": {
+  },"108": {
     "doc": "SBCS Service",
     "title": "SBCS Service",
-    "content": "The Subscription Billing and Customer Service (SBCS) service is a specialized backend codebase provided by Nar. It acts as the engine for the Paddle Payments vertical, running as a Lambda service that manages the critical integration between your AWS environment and the Paddle payment gateway. ",
+    "content": "The Subscription Billing and Customer Service (SBCS) is a Python Lambda that integrates with the Paddle payment gateway. It handles the backend logic for the Paddle Payments vertical. ",
     "url": "/verticals/ppay/sbcs.html",
     
     "relUrl": "/verticals/ppay/sbcs.html"
-  },"69": {
-    "doc": "Sites",
-    "title": "Site Environments",
-    "content": "A Site represents a specific, isolated version of your application running in the cloud—such as Dev, Staging, or Production. ",
-    "url": "/nar/control-panel/sites.html#site-environments",
+  },"109": {
+    "doc": "SBCS Service",
+    "title": "What It Does",
+    "content": ". | Webhook Processing — Receives Paddle webhooks and syncs billing data to S3. | Subscription Management — APIs for checking status, cancelling, resuming, and switching plans. | One-Time Purchases — Tracks completed purchases, handles refunds, and grants product access. | Entity Licenses — Allocates named seats or slots per purchase/subscription. Each product price can grant a configurable number of entities. Entities are automatically cleaned up if a subscription lapses or a purchase is refunded. | Billing History — Provides invoice and transaction data to the frontend. | . ",
+    "url": "/verticals/ppay/sbcs.html#what-it-does",
     
-    "relUrl": "/nar/control-panel/sites.html#site-environments"
-  },"70": {
-    "doc": "Sites",
-    "title": "Managing Your Environments",
-    "content": "To create a new environment for your code, simply click the + (Plus) icon. Provide a clear name (like staging) and select your preferred AWS region (like us-east-1). Once created, you can toggle between environments using the dropdown menu. Any actions you take—from deploying a UI update to provisioning new resources—will occur only within that selected environment. This allows you to test new features safely in Dev and move them to Production only when they are perfect. ",
-    "url": "/nar/control-panel/sites.html#managing-your-environments",
+    "relUrl": "/verticals/ppay/sbcs.html#what-it-does"
+  },"110": {
+    "doc": "SBCS Service",
+    "title": "API Endpoints",
+    "content": "User Routes . | Method | Path | Description | . | GET | /subscriptions/status | Get subscription status by product | . | POST | /subscriptions/cancel | Schedule cancellation at period end | . | POST | /subscriptions/resume | Resume canceled subscription | . | POST | /subscriptions/update | Switch to a different plan | . | GET | /billing/history | Get past transactions | . | GET | /billing/invoice | Download invoice PDF | . | GET | /products/list | List products and pricing | . | GET | /products/access | Check product access (subscriptions and one-time purchases) | . | POST | /licenses/save | Create entity license | . | POST | /licenses/update | Update entity license | . | GET | /licenses/list | List entity licenses | . | GET | /licenses/check | Verify license validity | . | GET | /sync/status | Check if billing sync is complete | . | POST | /sync/force | Force immediate billing data sync | . Admin Routes . Admin routes require the provider path prefix: /paddle/{sandbox|live}. | Method | Path | Description | . | POST | /admin/sync | Sync customer data from Paddle | . | GET | /admin/catalog | List Paddle product catalog | . | GET | /config/products | Get product configuration | . | POST | /config/products | Save product configuration | . | GET | /config/p_ref | Get product reference names | . | POST | /config/p_ref | Save product reference names | . | GET | /config/credentials | Get Paddle API credentials (masked) | . | POST | /config/credentials | Update Paddle webhook secret | . Webhook . | Method | Path | Description | . | POST | /webhook | Process Paddle webhook events | . Config . | Method | Path | Description | . | GET | /config/active | Get active payment provider | . | POST | /config/active | Set active payment provider | . | GET | /config/providers | List available providers | . | GET | /config/is-admin | Check if current user is admin | . Device . | Method | Path | Description | . | POST | /uuid | Register device UUID | . | GET | /uuid/{uuid} | Get device UUID status | . ",
+    "url": "/verticals/ppay/sbcs.html#api-endpoints",
     
-    "relUrl": "/nar/control-panel/sites.html#managing-your-environments"
-  },"71": {
+    "relUrl": "/verticals/ppay/sbcs.html#api-endpoints"
+  },"111": {
+    "doc": "SBCS Service",
+    "title": "Project Structure",
+    "content": "sbcs/src/ ├── lambda_handler.py # Entry point + routing └── lfn/ ├── common/ # Provider config, admin check, S3 config ├── device/ # UUID registration and tracking ├── paddle/ │ ├── api_client.py # Paddle HTTP client with retry logic │ ├── admin/ # Catalog and product config │ └── user/ │ ├── record/ # Sync engine, webhook handler │ ├── status/ # Subscriptions, purchases, history │ ├── operations/ # Cancel, resume, switch │ └── license/ # Product access, entity licenses └── stripe/ # Stripe provider (stub) . ",
+    "url": "/verticals/ppay/sbcs.html#project-structure",
+    
+    "relUrl": "/verticals/ppay/sbcs.html#project-structure"
+  },"112": {
+    "doc": "SBCS Service",
+    "title": "Configuration",
+    "content": "SBCS requires Paddle API credentials. Configure them via the Admin panel at /admin, or directly in your environment settings. The service works alongside the Auth Service — all user routes require authentication. ",
+    "url": "/verticals/ppay/sbcs.html#configuration",
+    
+    "relUrl": "/verticals/ppay/sbcs.html#configuration"
+  },"113": {
+    "doc": "SBCS Service",
+    "title": "Redeployment",
+    "content": "After updating the billing logic: . | Select sbcs from the Service dropdown in the Control Panel. | Click Deploy Service. | . ",
+    "url": "/verticals/ppay/sbcs.html#redeployment",
+    
+    "relUrl": "/verticals/ppay/sbcs.html#redeployment"
+  },"114": {
+    "doc": "Service",
+    "title": "Service Environment Variables",
+    "content": "Nar provides environment variables to every service at runtime. Variables come from two sources: infrastructure that Nar discovers automatically, and your nn_env.json configuration files. All JSON values are converted to strings: arrays become comma-separated, booleans become \"true\" or \"false\", and nulls become empty strings. ",
+    "url": "/nar/workspace/service-environment-variables.html#service-environment-variables",
+    
+    "relUrl": "/nar/workspace/service-environment-variables.html#service-environment-variables"
+  },"115": {
+    "doc": "Service",
+    "title": "Variables Nar Provides",
+    "content": "| Variable | Example | Description | . | SERVICE_AWS_REGION | us-east-1 | The region where this service is deployed. | . | site | dev | The site name. | . | {PREFIX}_BUCKET | perm-dev-ral-us-east-1-059279877465 | One variable per S3 bucket prefix defined in buckets.json (e.g., IMAGES_BUCKET, NOTES_BUCKET, PERM_BUCKET, SCRA_BUCKET). | . | {SERVICE}_SERVICE_URL | https://auth.us-east-1.dev.ral.narambu.com | URL of each sibling service defined in services.lambda[] (e.g., AUTH_SERVICE_URL, SBCS_SERVICE_URL). | . Any values you define in nn_env.json are also injected as environment variables. ",
+    "url": "/nar/workspace/service-environment-variables.html#variables-nar-provides",
+    
+    "relUrl": "/nar/workspace/service-environment-variables.html#variables-nar-provides"
+  },"116": {
+    "doc": "Service",
+    "title": "nn_env.json — Global Config",
+    "content": "services_config/nn_env.json applies to all services. Example: . { \"JWT_ALGORITHM\": \"HS256\", \"JWT_SECRET\": \"your-secret-here\", \"GOOGLE_CLIENT_ID\": \"your-client-id.apps.googleusercontent.com\", \"GOOGLE_CLIENT_SECRET\": \"your-client-secret\" } . ",
+    "url": "/nar/workspace/service-environment-variables.html#nn_envjson--global-config",
+    
+    "relUrl": "/nar/workspace/service-environment-variables.html#nn_envjson--global-config"
+  },"117": {
+    "doc": "Service",
+    "title": "nn_env.json — Per-Service Config",
+    "content": "Each service can have its own {service}/config/nn_env.json. These values override the global config for that service only. ",
+    "url": "/nar/workspace/service-environment-variables.html#nn_envjson--per-service-config",
+    
+    "relUrl": "/nar/workspace/service-environment-variables.html#nn_envjson--per-service-config"
+  },"118": {
+    "doc": "Service",
+    "title": "Merge Priority",
+    "content": "When the same key appears in multiple sources, the highest-priority source wins: . | Priority | Source | Scope | . | 1 (highest) | {service}/config/nn_env.json | Per-service | . | 2 | services_config/nn_env.json | All services | . | 3 (lowest) | Nar-provided | Buckets, service URLs, region, site | . ",
+    "url": "/nar/workspace/service-environment-variables.html#merge-priority",
+    
+    "relUrl": "/nar/workspace/service-environment-variables.html#merge-priority"
+  },"119": {
+    "doc": "Service",
+    "title": "Example",
+    "content": "A service deployed to site dev with the above configuration would see: . SERVICE_AWS_REGION=us-east-1 site=dev IMAGES_BUCKET=images-dev-ral-us-east-1-059279877465 PERM_BUCKET=perm-dev-ral-us-east-1-059279877465 AUTH_SERVICE_URL=https://auth.us-east-1.dev.ral.narambu.com SBCS_SERVICE_URL=https://sbcs.us-east-1.dev.ral.narambu.com JWT_ALGORITHM=HS256 JWT_SECRET=your-secret-here GOOGLE_CLIENT_ID=your-client-id.apps.googleusercontent.com GOOGLE_CLIENT_SECRET=your-client-secret . ",
+    "url": "/nar/workspace/service-environment-variables.html#example",
+    
+    "relUrl": "/nar/workspace/service-environment-variables.html#example"
+  },"120": {
+    "doc": "Service",
+    "title": "Service",
+    "content": " ",
+    "url": "/nar/workspace/service-environment-variables.html",
+    
+    "relUrl": "/nar/workspace/service-environment-variables.html"
+  },"121": {
+    "doc": "service_lambda",
+    "title": "service_lambda",
+    "content": "Each entry in services.lambda[] of your code.json becomes a standalone Lambda function behind an API Gateway endpoint. Services are packaged as container images. The default Dockerfile supports Python 3.13. You can customize Dockerfiles by providing a custom path. VPC support for Lambda functions is coming soon. ",
+    "url": "/nar/workspace/service-lambda.html",
+    
+    "relUrl": "/nar/workspace/service-lambda.html"
+  },"122": {
+    "doc": "service_lambda",
+    "title": "Fields",
+    "content": "{ \"services\": { \"lambda\": [ { \"name\": \"auth\", \"location\": \"orig/auth\" } ], \"sharedLibs\": [ { \"name\": \"common\", \"location\": \"orig/common\" } ], \"configDir\": { \"name\": \"services_config\", \"location\": \"orig/services_config\" } } } . | Field | Description | . | name | Service identifier (e.g., auth, sbcs). Used in resource naming, Deploy Service dropdown, and URL generation. | . | location | Path to the service source code. Defaults to orig/{service}. Can be changed to /your/location/for/service — run Fix Paths after updating. | . | dockerfile | (Optional) Path to a custom Dockerfile. Defaults to Nar’s built-in Dockerfile for Python Lambdas. Can be changed to /your/location/for/Dockerfile. | . ",
+    "url": "/nar/workspace/service-lambda.html#fields",
+    
+    "relUrl": "/nar/workspace/service-lambda.html#fields"
+  },"123": {
+    "doc": "service_lambda",
+    "title": "Shared Libraries",
+    "content": "The sharedLibs array defines Python libraries that get bundled with every service during deployment. \"sharedLibs\": [ { \"name\": \"common\", \"location\": \"orig/common\" } ] . Each shared library is copied into the deployment package alongside the service code. ",
+    "url": "/nar/workspace/service-lambda.html#shared-libraries",
+    
+    "relUrl": "/nar/workspace/service-lambda.html#shared-libraries"
+  },"124": {
+    "doc": "service_lambda",
+    "title": "Dockerfile",
+    "content": "The default Dockerfile expects Python source code in {service}/src/ and pip dependencies in {service}/scripts/requirements.txt. It supports Python 3.13. To use a different Python version, add system packages, or use a non-Python language, provide a custom Dockerfile. ",
+    "url": "/nar/workspace/service-lambda.html#dockerfile",
+    
+    "relUrl": "/nar/workspace/service-lambda.html#dockerfile"
+  },"125": {
+    "doc": "service_lambda",
+    "title": "Environment Variables",
+    "content": "See Service Environment Variables. ",
+    "url": "/nar/workspace/service-lambda.html#environment-variables",
+    
+    "relUrl": "/nar/workspace/service-lambda.html#environment-variables"
+  },"126": {
+    "doc": "site/*.json",
+    "title": "site/*.json",
+    "content": "Each file in the nnet/site/ directory represents a deployable site and region combination. Location: {vertical}/nnet/site/{site}_{region}.json . ",
+    "url": "/nar/workspace/site-json.html",
+    
+    "relUrl": "/nar/workspace/site-json.html"
+  },"127": {
+    "doc": "site/*.json",
+    "title": "Example",
+    "content": "A vertical with two sites: . nnet/ └── site/ ├── dev_us-east-1.json └── prod_us-east-1.json . ",
+    "url": "/nar/workspace/site-json.html#example",
+    
+    "relUrl": "/nar/workspace/site-json.html#example"
+  },"128": {
+    "doc": "site/*.json",
+    "title": "File Contents",
+    "content": "Site files are empty JSON objects: . {} . The site name and region are derived from the filename — the file contents are not used. ",
+    "url": "/nar/workspace/site-json.html#file-contents",
+    
+    "relUrl": "/nar/workspace/site-json.html#file-contents"
+  },"129": {
+    "doc": "site/*.json",
+    "title": "Naming Format",
+    "content": "{site}_{region}.json . | Part | Description | Examples | . | site | Environment name | dev, staging, prod | . | region | AWS region | us-east-1, eu-west-1 | . ",
+    "url": "/nar/workspace/site-json.html#naming-format",
+    
+    "relUrl": "/nar/workspace/site-json.html#naming-format"
+  },"130": {
+    "doc": "site/*.json",
+    "title": "Creating Sites",
+    "content": "You can create sites either by: . | Clicking the + (Plus) icon in the Control Panel’s Sites section. | Manually creating an empty JSON file in nnet/site/ with the correct naming format. | . ",
+    "url": "/nar/workspace/site-json.html#creating-sites",
+    
+    "relUrl": "/nar/workspace/site-json.html#creating-sites"
+  },"131": {
     "doc": "Sites",
     "title": "Sites",
-    "content": " ",
+    "content": "A Site is an isolated deployment of your application — typically representing an environment like dev, staging, or prod. ",
     "url": "/nar/control-panel/sites.html",
     
     "relUrl": "/nar/control-panel/sites.html"
-  },"72": {
+  },"132": {
+    "doc": "Sites",
+    "title": "Creating a Site",
+    "content": "Click the + (Plus) icon, provide a name (e.g., staging) and select an AWS region (e.g., us-east-1). This creates a site configuration file at nnet/site/{name}_{region}.json. ",
+    "url": "/nar/control-panel/sites.html#creating-a-site",
+    
+    "relUrl": "/nar/control-panel/sites.html#creating-a-site"
+  },"133": {
+    "doc": "Sites",
+    "title": "Switching Between Sites",
+    "content": "Use the dropdown to select the active site. All actions in the Control Panel — Setup, Deploy, Delete — apply only to the currently selected site. ",
+    "url": "/nar/control-panel/sites.html#switching-between-sites",
+    
+    "relUrl": "/nar/control-panel/sites.html#switching-between-sites"
+  },"134": {
+    "doc": "Sites",
+    "title": "How Sites Are Isolated",
+    "content": "Each site gets its own independent set of AWS resources: separate S3 buckets, separate Lambda functions, separate CloudFront distribution. This means you can deploy and test in dev without affecting prod. ",
+    "url": "/nar/control-panel/sites.html#how-sites-are-isolated",
+    
+    "relUrl": "/nar/control-panel/sites.html#how-sites-are-isolated"
+  },"135": {
     "doc": "Structure",
     "title": "Workspace Structure",
-    "content": "A Nar workspace can contain multiple projects. Each project is known as a Vertical. In your workspace folder (e.g., /Users/mirasvali/wsnar/), each sub-folder represents a vertical: . wsnar/ ├── ral/ &lt;-- Vertical project folder └── another-app/ &lt;-- Another vertical project folder . ",
+    "content": "A Nar workspace can contain multiple verticals, each in its own sub-folder. my-workspace/ ├── ral/ # React Auth Lambda vertical │ ├── nnet/ # Your configuration (preserved across updates) │ │ ├── code.json │ │ ├── domain.json │ │ ├── apex.json │ │ ├── awsprofile.json │ │ ├── byv/ │ │ └── site/ │ ├── orig/ # Source code (refreshed on import/activate) │ │ ├── ui/ # React + Vite frontend │ │ ├── auth/ # Auth Lambda service │ │ └── common/ # Shared Python library │ └── backup/ # Timestamped backups of orig/ before updates └── ppay/ # Another vertical ├── nnet/ ├── orig/ └── backup/ . ",
     "url": "/nar/workspace/structure.html#workspace-structure",
     
     "relUrl": "/nar/workspace/structure.html#workspace-structure"
-  },"73": {
+  },"136": {
+    "doc": "Structure",
+    "title": "Key Directories",
+    "content": "| Directory | Purpose | . | nnet/ | Your configuration — tells Nar what to deploy and how. Preserved across updates. | . ",
+    "url": "/nar/workspace/structure.html#key-directories",
+    
+    "relUrl": "/nar/workspace/structure.html#key-directories"
+  },"137": {
     "doc": "Structure",
     "title": "Structure",
     "content": " ",
     "url": "/nar/workspace/structure.html",
     
     "relUrl": "/nar/workspace/structure.html"
-  },"74": {
-    "doc": "Tools",
-    "title": "Management Tools",
-    "content": "Nar includes a suite of utilities to help you maintain your sites, monitor their health, and resolve common configuration issues. ",
-    "url": "/nar/control-panel/tools.html#management-tools",
-    
-    "relUrl": "/nar/control-panel/tools.html#management-tools"
-  },"75": {
-    "doc": "Tools",
-    "title": "State Recovery &amp; Monitoring",
-    "content": "Recover . Cloud systems track their resources in a local “state file”. If a deployment is interrupted or the local file becomes out of sync, click Recover. Nar will scan your real-time cloud account and update your local project to perfectly match the current state of your AWS resources. State List . For an in-depth look at your project’s infrastructure, click State List. This provides a transparent inventory of every professional resource Nar is managing for the selected site. ",
-    "url": "/nar/control-panel/tools.html#state-recovery--monitoring",
-    
-    "relUrl": "/nar/control-panel/tools.html#state-recovery--monitoring"
-  },"76": {
-    "doc": "Tools",
-    "title": "Storage Management",
-    "content": "List Buckets . This utility provides an audit report of your file storage buckets, verifying that each represents a healthy, active cloud resource. ",
-    "url": "/nar/control-panel/tools.html#storage-management",
-    
-    "relUrl": "/nar/control-panel/tools.html#storage-management"
-  },"77": {
-    "doc": "Tools",
-    "title": "Connectivity &amp; CORS",
-    "content": "Enable/Disable CORS . If your website encounters cross-origin errors (CORS) in the browser console, it means your cloud storage is protecting your files from unauthorized access. To authorize your website to communicate with your storage buckets: . | Select the appropriate bucket prefix. | Click Enable. | . Nar will automatically configure the necessary security headers so your application can securely and seamlessly serve its assets. ",
-    "url": "/nar/control-panel/tools.html#connectivity--cors",
-    
-    "relUrl": "/nar/control-panel/tools.html#connectivity--cors"
-  },"78": {
+  },"138": {
     "doc": "Tools",
     "title": "Tools",
-    "content": " ",
+    "content": "Utilities for inspecting and maintaining your deployed infrastructure. ",
     "url": "/nar/control-panel/tools.html",
     
     "relUrl": "/nar/control-panel/tools.html"
-  },"79": {
-    "doc": "React UI",
-    "title": "RAL: React UI",
-    "content": "The React Auth Lambda (RAL) vertical includes a production-ready frontend codebase provided by Nar. Built with React 19 and Vite, it serves as a high-performance interface that integrates seamlessly with backend Lambda services and is served globally via CloudFront. ",
-    "url": "/verticals/ral/ui.html#ral-react-ui",
+  },"139": {
+    "doc": "Tools",
+    "title": "State Recovery",
+    "content": "Recover . If a deployment was interrupted or your local state is out of sync with AWS, click Recover. Nar scans your AWS account for resources tagged with this site and re-imports them into the state file, bringing your local state back in sync with reality. State List . Displays a list of every AWS resource Nar is currently tracking for the selected site. Useful for auditing exactly what’s been provisioned. ",
+    "url": "/nar/control-panel/tools.html#state-recovery",
     
-    "relUrl": "/verticals/ral/ui.html#ral-react-ui"
-  },"80": {
-    "doc": "React UI",
-    "title": "Features",
-    "content": ". | Fast &amp; Modern: Built with React 19, Vite, and Tailwind CSS. | Integrated Auth: Pre-configured to communicate with the shared auth service. | Customizable: Clean structure ready for your specific features. | . ",
-    "url": "/verticals/ral/ui.html#features",
+    "relUrl": "/nar/control-panel/tools.html#state-recovery"
+  },"140": {
+    "doc": "Tools",
+    "title": "Storage",
+    "content": "List Buckets . Lists all S3 buckets associated with the selected site and verifies they exist in AWS. ",
+    "url": "/nar/control-panel/tools.html#storage",
     
-    "relUrl": "/verticals/ral/ui.html#features"
-  },"81": {
+    "relUrl": "/nar/control-panel/tools.html#storage"
+  },"141": {
+    "doc": "Tools",
+    "title": "CORS",
+    "content": "Enable / Disable CORS . Configures Cross-Origin Resource Sharing (CORS) headers on your S3 storage buckets. If your frontend is getting CORS errors when accessing files from a bucket: . | Select the bucket prefix. | Click Enable. | . Nar sets the appropriate CORS policy on the bucket so your application can access its contents from the browser. ",
+    "url": "/nar/control-panel/tools.html#cors",
+    
+    "relUrl": "/nar/control-panel/tools.html#cors"
+  },"142": {
+    "doc": "ui_vite",
+    "title": "ui_vite Environment Variables",
+    "content": "Nar generates VITE_ environment variables available to your React code at build time via import.meta.env. All JSON values are converted to strings: arrays become comma-separated, booleans become \"true\" or \"false\", and nulls become empty strings. ",
+    "url": "/nar/workspace/ui-environment-variables.html#ui_vite-environment-variables",
+    
+    "relUrl": "/nar/workspace/ui-environment-variables.html#ui_vite-environment-variables"
+  },"143": {
+    "doc": "ui_vite",
+    "title": "Variables Nar Provides",
+    "content": "| Variable | Example | Description | . | VITE_{SERVICE}_SERVICE_URL | https://auth.us-east-1.dev.ral.narambu.com | URL of each service defined in services.lambda[]. | . | VITE_HOME_URL | https://daw8sipu4p6qe.cloudfront.net | The CloudFront distribution domain. | . With a custom domain, VITE_{SERVICE}_SERVICE_URL values follow the pattern https://{service}.{region}.{site}.{vertical}.{domain}. Without one, they contain the raw API Gateway endpoint URL. Any values you define in nn_env.json are also injected, automatically prefixed with VITE_. ",
+    "url": "/nar/workspace/ui-environment-variables.html#variables-nar-provides",
+    
+    "relUrl": "/nar/workspace/ui-environment-variables.html#variables-nar-provides"
+  },"144": {
+    "doc": "ui_vite",
+    "title": "nn_env.json — UI Config",
+    "content": "ui_config/nn_env.json defines additional environment variables for the UI. Example: . { \"name\": \"myapp\", \"FEATURE_FLAGS\": \"dark_mode,notifications\" } . This produces: . VITE_name=myapp VITE_FEATURE_FLAGS=dark_mode,notifications . ",
+    "url": "/nar/workspace/ui-environment-variables.html#nn_envjson--ui-config",
+    
+    "relUrl": "/nar/workspace/ui-environment-variables.html#nn_envjson--ui-config"
+  },"145": {
+    "doc": "ui_vite",
+    "title": "Merge Priority",
+    "content": "| Priority | Source | Description | . | 1 (highest) | ui_config/nn_env.json | UI config | . | 2 (lowest) | Nar-provided | Service URLs and CloudFront domain | . ",
+    "url": "/nar/workspace/ui-environment-variables.html#merge-priority",
+    
+    "relUrl": "/nar/workspace/ui-environment-variables.html#merge-priority"
+  },"146": {
+    "doc": "ui_vite",
+    "title": "Accessing Variables in React",
+    "content": "Use import.meta.env to access any VITE_ variable: . const authUrl = import.meta.env.VITE_AUTH_SERVICE_URL; const appName = import.meta.env.VITE_name; . ",
+    "url": "/nar/workspace/ui-environment-variables.html#accessing-variables-in-react",
+    
+    "relUrl": "/nar/workspace/ui-environment-variables.html#accessing-variables-in-react"
+  },"147": {
+    "doc": "ui_vite",
+    "title": "ui_vite",
+    "content": " ",
+    "url": "/nar/workspace/ui-environment-variables.html",
+    
+    "relUrl": "/nar/workspace/ui-environment-variables.html"
+  },"148": {
+    "doc": "ui_vite",
+    "title": "ui_vite",
+    "content": "The ui.vite entry in your code.json defines a React + Vite project that gets built locally and deployed to S3 behind a CloudFront CDN. ",
+    "url": "/nar/workspace/ui-vite.html",
+    
+    "relUrl": "/nar/workspace/ui-vite.html"
+  },"149": {
+    "doc": "ui_vite",
+    "title": "Fields",
+    "content": "{ \"ui\": { \"vite\": { \"name\": \"ui\", \"location\": \"orig/ui\" }, \"configDir\": { \"name\": \"ui_config\", \"location\": \"orig/ui_config\" } } } . | Field | Description | . | ui.vite.location | Path to the Vite project root (must contain package.json). Defaults to orig/ui. Can be changed to /your/location/for/ui — run Fix Paths after updating. | . | ui.configDir.location | Path to the UI configuration directory (contains nn_env.json). Defaults to orig/ui_config. Can be changed to /your/location/for/ui_config. | . ",
+    "url": "/nar/workspace/ui-vite.html#fields",
+    
+    "relUrl": "/nar/workspace/ui-vite.html#fields"
+  },"150": {
+    "doc": "ui_vite",
+    "title": "Deployment Process",
+    "content": "When you click Deploy UI (or run the CLI equivalent), Nar: . | Generates .env.production and .env.development files in the project root | Runs npm install | Runs npm run build | Clears the UI S3 bucket | Uploads the build output to S3 | Invalidates the CloudFront distribution so users see the latest version | . ",
+    "url": "/nar/workspace/ui-vite.html#deployment-process",
+    
+    "relUrl": "/nar/workspace/ui-vite.html#deployment-process"
+  },"151": {
+    "doc": "ui_vite",
+    "title": "Environment Variables",
+    "content": "See UI Environment Variables. ",
+    "url": "/nar/workspace/ui-vite.html#environment-variables",
+    
+    "relUrl": "/nar/workspace/ui-vite.html#environment-variables"
+  },"152": {
+    "doc": "React UI",
+    "title": "React UI (RAL)",
+    "content": "The React Auth Lambda vertical includes a frontend built with React 19 and Vite, served globally via CloudFront. nar.narambu.com is built using Nar itself, and some of the code packaged in this vertical is also used by that website — you can check out the authentication flow there. ",
+    "url": "/verticals/ral/ui.html#react-ui-ral",
+    
+    "relUrl": "/verticals/ral/ui.html#react-ui-ral"
+  },"153": {
+    "doc": "React UI",
+    "title": "Stack",
+    "content": ". | React 19, Vite, TypeScript | Tailwind CSS, MUI | UI Auth pages from uicommon | . ",
+    "url": "/verticals/ral/ui.html#stack",
+    
+    "relUrl": "/verticals/ral/ui.html#stack"
+  },"154": {
     "doc": "React UI",
     "title": "Project Structure",
-    "content": "ui/ ├── src/ │ ├── auth/ # Authentication hooks and logic │ ├── components/ # Reusable React components │ ├── pages/ # Page components (Home, Dashboard) │ └── common/ # Shared utilities . ",
+    "content": "ui/src/ ├── App.tsx # Router: /, /versions ├── index.tsx # React entry point ├── components/ │ ├── NavBar.tsx # Navigation bar with login/logout │ └── Footer.tsx # Page footer └── pages/ ├── Home.tsx # Landing page └── Versions.tsx # Version info . ",
     "url": "/verticals/ral/ui.html#project-structure",
     
     "relUrl": "/verticals/ral/ui.html#project-structure"
-  },"82": {
+  },"155": {
+    "doc": "React UI",
+    "title": "Shared Packages",
+    "content": "RAL imports uicommon for authentication and utilities. The alias is configured in vite.config.ts: . resolve: { alias: { 'nnet-uicommon': path.resolve(__dirname, '../../../uipackages/uicommon'), }, } . Components used from uicommon: . | AuthProvider, useAuth — authentication state management | useTheme — dark mode support | . ",
+    "url": "/verticals/ral/ui.html#shared-packages",
+    
+    "relUrl": "/verticals/ral/ui.html#shared-packages"
+  },"156": {
+    "doc": "React UI",
+    "title": "Customization",
+    "content": "The code lives at {workspace}/{vertical}/ui/. Edit the source files to build your application on top of the auth scaffold. ",
+    "url": "/verticals/ral/ui.html#customization",
+    
+    "relUrl": "/verticals/ral/ui.html#customization"
+  },"157": {
     "doc": "React UI",
     "title": "Redeployment",
-    "content": "When you make visual or logic changes to your frontend: . | In the Nar Control Panel, click Deploy UI. | Nar builds your assets and publishes them to the global CDN. | . ",
+    "content": "After making changes: . | Click Deploy UI in the Control Panel. | Nar builds the Vite project, uploads assets to S3, and invalidates the CloudFront cache. | . ",
     "url": "/verticals/ral/ui.html#redeployment",
     
     "relUrl": "/verticals/ral/ui.html#redeployment"
-  },"83": {
+  },"158": {
     "doc": "React UI",
     "title": "React UI",
     "content": " ",
     "url": "/verticals/ral/ui.html",
     
     "relUrl": "/verticals/ral/ui.html"
-  },"84": {
+  },"159": {
     "doc": "Payments UI",
-    "title": "PPAY: Payments UI",
-    "content": "The Paddle Payments (PPAY) vertical includes a comprehensive frontend codebase provided by Nar. It provides a professional React interface for managing subscriptions, checkouts, and billing history. ",
-    "url": "/verticals/ppay/ui.html#ppay-payments-ui",
+    "title": "Payments UI (PPay)",
+    "content": "The Paddle Payments vertical includes a React frontend for managing subscriptions, checkout flows, and billing. nar.narambu.com is built using Nar itself, and some of the code packaged in this vertical is also used by that website — you can check out the authentication and payments flow there. ",
+    "url": "/verticals/ppay/ui.html#payments-ui-ppay",
     
-    "relUrl": "/verticals/ppay/ui.html#ppay-payments-ui"
-  },"85": {
+    "relUrl": "/verticals/ppay/ui.html#payments-ui-ppay"
+  },"160": {
     "doc": "Payments UI",
-    "title": "Features",
-    "content": ". | Subscription Management: Built-in pages for viewing and changing plans. | License Tracking: Dedicated UI for managing issued software licenses. | Admin Panel: Secure dashboard for product and customer management. | . ",
-    "url": "/verticals/ppay/ui.html#features",
+    "title": "Stack",
+    "content": ". | React 19, Vite, TypeScript | Tailwind CSS, MUI | UI Auth pages from uicommon | UI Payment pages from payments package | . ",
+    "url": "/verticals/ppay/ui.html#stack",
     
-    "relUrl": "/verticals/ppay/ui.html#features"
-  },"86": {
+    "relUrl": "/verticals/ppay/ui.html#stack"
+  },"161": {
     "doc": "Payments UI",
     "title": "Project Structure",
-    "content": "ui/ ├── src/ │ ├── pages/ │ │ └── Payment/ │ │ └── Paddle/ # Paddle-specific checkout and status pages │ ├── services/ │ │ └── sbcs_paddle/ # Integration with the backend SBCS service │ └── components/ # Shared React components . ",
+    "content": "ui/src/ ├── App.tsx # Router with protected routes ├── index.tsx # React entry point ├── components/ │ ├── NavBar.tsx # Navigation with auth + admin check │ ├── Footer.tsx # Page footer │ └── Notice.tsx # Alert/notification component └── pages/ └── Home.tsx # Landing page . Most pages come from the shared payments package. ",
     "url": "/verticals/ppay/ui.html#project-structure",
     
     "relUrl": "/verticals/ppay/ui.html#project-structure"
-  },"87": {
+  },"162": {
+    "doc": "Payments UI",
+    "title": "Routes",
+    "content": "| Path | Page | Auth Required | Source | . | / | Home | No | Local | . | /billing | Billing | Yes | nnet-payments | . | /invoices | Invoices | Yes | nnet-payments | . | /entities | Entities | Yes | nnet-payments | . | /admin | Admin | Yes | nnet-payments | . | /paddle/:env/admin/products | Product Config | Yes | nnet-payments | . | /token_for_login | Token Login | Yes | nnet-payments | . ",
+    "url": "/verticals/ppay/ui.html#routes",
+    
+    "relUrl": "/verticals/ppay/ui.html#routes"
+  },"163": {
+    "doc": "Payments UI",
+    "title": "Shared Packages",
+    "content": "PPay imports both uicommon and payments. The aliases are configured in vite.config.ts: . resolve: { alias: { 'nnet-uicommon': path.resolve(__dirname, '../../../uipackages/uicommon'), 'nnet-payments': path.resolve(__dirname, '../../../uipackages/payments'), }, } . ",
+    "url": "/verticals/ppay/ui.html#shared-packages",
+    
+    "relUrl": "/verticals/ppay/ui.html#shared-packages"
+  },"164": {
     "doc": "Payments UI",
     "title": "Redeployment",
-    "content": ". | Click Deploy UI in the Nar Control Panel. | Nar will rebuild your frontend and update the global CloudFront distribution. | . ",
+    "content": "After making changes: . | Click Deploy UI in the Control Panel. | Nar builds the Vite project, uploads assets to S3, and invalidates the CloudFront cache. | . ",
     "url": "/verticals/ppay/ui.html#redeployment",
     
     "relUrl": "/verticals/ppay/ui.html#redeployment"
-  },"88": {
+  },"165": {
     "doc": "Payments UI",
     "title": "Payments UI",
     "content": " ",
     "url": "/verticals/ppay/ui.html",
     
     "relUrl": "/verticals/ppay/ui.html"
-  },"89": {
-    "doc": "Vertical",
-    "title": "Understanding Verticals",
-    "content": "A Vertical is a production-ready blueprint that packages everything your application needs—code, configuration, and infrastructure—into a single, deployable feature. It is always designed to be a complete, self-contained solution to a business requirement, whether that involves a full-stack application or a simple resource connection. ",
-    "url": "/nar/control-panel/vertical.html#understanding-verticals",
+  },"166": {
+    "doc": "uicommon",
+    "title": "uicommon",
+    "content": "Used by all verticals. Provides authentication, HTTP utilities, and theming. ",
+    "url": "/verticals/common/uicommon.html",
     
-    "relUrl": "/nar/control-panel/vertical.html#understanding-verticals"
-  },"90": {
+    "relUrl": "/verticals/common/uicommon.html"
+  },"167": {
+    "doc": "uicommon",
+    "title": "Project Structure",
+    "content": "uicommon/ ├── auth/ │ ├── auth.tsx # AuthProvider, useAuth, ProtectedRoute, LoginButton │ └── logout.tsx # performLogout ├── config/ │ └── runtimeConfig.ts # getRuntimeConfig, useRuntimeConfig ├── services/ │ └── auth_api.ts # get_session, logout (calls Auth Service) └── utils/ ├── ffb_api.ts # fetchJson, postJson, uploadToS3 ├── ffb_cache.ts # Client-side caching with TTL ├── result.ts # Result&lt;T&gt; response type └── useTheme.ts # Dark mode hook . ",
+    "url": "/verticals/common/uicommon.html#project-structure",
+    
+    "relUrl": "/verticals/common/uicommon.html#project-structure"
+  },"168": {
+    "doc": "uicommon",
+    "title": "Key Exports",
+    "content": "| Module | Exports | Description | . | auth/auth | AuthProvider, useAuth, ProtectedRoute, LoginButton | Authentication state and route protection | . | utils/useTheme | useTheme | Dark/light mode based on system preference | . | utils/ffb_api | fetchJson, postJson, uploadToS3 | HTTP client with built-in caching | . | services/auth_api | get_session, logout | Calls the Auth Service | . ",
+    "url": "/verticals/common/uicommon.html#key-exports",
+    
+    "relUrl": "/verticals/common/uicommon.html#key-exports"
+  },"169": {
+    "doc": "UI Packages",
+    "title": "UI Packages",
+    "content": "Shared React packages imported by verticals via vite.config.ts path aliases. The same source code is duplicated to all verticals provided by Nar. | uicommon — Authentication, HTTP utilities, and theming. Used by all verticals. | payments — Billing pages and Paddle API client. Used by PPay. | . ",
+    "url": "/verticals/common/uipackages.html",
+    
+    "relUrl": "/verticals/common/uipackages.html"
+  },"170": {
+    "doc": "UI Packages",
+    "title": "How Verticals Import Packages",
+    "content": "Each vertical configures path aliases in vite.config.ts: . RAL — imports uicommon only: . resolve: { alias: { 'nnet-uicommon': path.resolve(__dirname, '../../../uipackages/uicommon'), }, } . PPay — imports uicommon + payments: . resolve: { alias: { 'nnet-uicommon': path.resolve(__dirname, '../../../uipackages/uicommon'), 'nnet-payments': path.resolve(__dirname, '../../../uipackages/payments'), }, } . Then import in code: . import { AuthProvider } from 'nnet-uicommon/auth/auth'; import PaddleBilling from 'nnet-payments/pages/Payment/Paddle/Billing'; . A custom Vite plugin (resolvePackageDeps) ensures that npm dependencies imported by these packages resolve from the vertical’s own node_modules. ",
+    "url": "/verticals/common/uipackages.html#how-verticals-import-packages",
+    
+    "relUrl": "/verticals/common/uipackages.html#how-verticals-import-packages"
+  },"171": {
+    "doc": "Vertical",
+    "title": "Verticals",
+    "content": "A Vertical is a packaged application stack — code, configuration, and infrastructure definitions — distributed as a .nar file (a zip archive). ",
+    "url": "/nar/control-panel/vertical.html#verticals",
+    
+    "relUrl": "/nar/control-panel/vertical.html#verticals"
+  },"172": {
+    "doc": "Vertical",
+    "title": "What’s Inside a Vertical",
+    "content": "| Component | Description | . | vertical_ui/ | Frontend source code (React + Vite). | . | vertical_service/ | Backend service code (Python Lambda functions). | . | vertical_shared/ | Shared libraries bundled with every service. | . | vertical_conf/ | Configuration templates (environment variables, service config). | . | resources/ | Nar metadata — default site definitions, display name, code mappings. | . ",
+    "url": "/nar/control-panel/vertical.html#whats-inside-a-vertical",
+    
+    "relUrl": "/nar/control-panel/vertical.html#whats-inside-a-vertical"
+  },"173": {
     "doc": "Vertical",
     "title": "Example: React Auth Lambda",
-    "content": "When you activate a vertical like React Auth Lambda, Nar provides the specific components required for that feature: . | Frontend Interface: High-performance UI code (e.g., React or Vite). | Backend Services: Robust server-side logic (e.g., Python code running as a Lambda service for secure OAuth). | Intelligent Configuration: Best-practice instructions that tell Nar exactly how to provision and secure your AWS resources. | . ",
+    "content": "Activating this vertical gives you: . | A React + Vite frontend with Google OAuth integration. | A Python Lambda auth service handling OAuth login, session management, and token validation. | Pre-configured nnet/ files that wire everything together. | . ",
     "url": "/nar/control-panel/vertical.html#example-react-auth-lambda",
     
     "relUrl": "/nar/control-panel/vertical.html#example-react-auth-lambda"
-  },"91": {
+  },"174": {
     "doc": "Vertical",
     "title": "Example: Paddle Payments",
-    "content": "For more complex business requirements like Paddle Payments, the vertical packages both frontend and specialized backend components: . | Payments UI: A comprehensive React interface for managing subscriptions, checkout flows, and customer billing history. | SBCS Service: A backend “Subscription Billing and Customer Service” component that handles Paddle webhooks, plan logic, and license issuance. | Shared Authentication: Integration with the common Auth service (running as a Lambda service) to ensure all payment actions are performed by verified users. | . Verticals allow you to deploy sophisticated, enterprise-grade features with just a few clicks, abstracting away the underlying complexity of cloud architecture. ",
+    "content": "A more complete vertical with: . | A React + Vite frontend for subscriptions, checkout, billing history, and admin management. | An SBCS (Subscription Billing and Customer Service) Lambda that processes Paddle webhooks, manages licenses, and handles payment logic. | A shared auth service for user authentication. | . ",
     "url": "/nar/control-panel/vertical.html#example-paddle-payments",
     
     "relUrl": "/nar/control-panel/vertical.html#example-paddle-payments"
-  },"92": {
+  },"175": {
+    "doc": "Vertical",
+    "title": "Activating and Importing",
+    "content": ". | Activate: Select a vertical from the dropdown and click Activate. If it’s your first time using this vertical in this workspace, Nar unpacks the code into your project folder. | Import: Click the + button to import a .nar package file into your vertical library. | . ",
+    "url": "/nar/control-panel/vertical.html#activating-and-importing",
+    
+    "relUrl": "/nar/control-panel/vertical.html#activating-and-importing"
+  },"176": {
     "doc": "Vertical",
     "title": "Vertical",
     "content": " ",
     "url": "/nar/control-panel/vertical.html",
     
     "relUrl": "/nar/control-panel/vertical.html"
-  },"93": {
+  },"177": {
     "doc": "Verticals",
     "title": "Verticals",
-    "content": "A vertical is code and configuration that solves a business use case, deployable to AWS via Nar. Nar provides production-ready Verticals—complete application stacks for common business use cases. ",
+    "content": "A vertical is a complete application stack — frontend, backend services, and configuration — packaged for deployment to AWS via Nar. ",
     "url": "/nar/verticals.html",
     
     "relUrl": "/nar/verticals.html"
-  },"94": {
+  },"178": {
     "doc": "Verticals",
-    "title": "Vertical Selection",
-    "content": "You can have multiple verticals installed in your library. | Activate: Pick a vertical from the dropdown and click Activate. This switches your focus to that vertical. Note: If this is your first time using this vertical in this project, clicking Activate will also unpack the code files into your folder. | Import: If you have a new package file (.nar), click the + (Import) button to add it to your library. | . ",
-    "url": "/nar/verticals.html#vertical-selection",
+    "title": "Managing Verticals",
+    "content": ". | Activate: Select a vertical from the dropdown and click Activate. This switches your workspace to that vertical. On first activation, Nar unpacks the source code into your project folder. | Import: Click the + (Import) button to add a new vertical from a .nar package file. | . You can have multiple verticals installed and switch between them. ",
+    "url": "/nar/verticals.html#managing-verticals",
     
-    "relUrl": "/nar/verticals.html#vertical-selection"
-  },"95": {
+    "relUrl": "/nar/verticals.html#managing-verticals"
+  },"179": {
     "doc": "Verticals",
     "title": "Available Verticals",
-    "content": ". | React Auth Lambda: Modern React + Google OAuth. | Paddle Payments: Subscriptions and customer management. | Auth Service: Shared backend auth service. | . ",
+    "content": "| Vertical | What it includes | . | React Auth Lambda | React + Vite UI with Google OAuth via Lambda. Bundled with Nar. | . | Paddle Payments | Subscription billing, license management, and admin dashboard using Paddle. | . Both verticals share a common Auth Service for Google OAuth. ",
     "url": "/nar/verticals.html#available-verticals",
     
     "relUrl": "/nar/verticals.html#available-verticals"
-  },"96": {
+  },"180": {
     "doc": "Your Workspace",
     "title": "Your Workspace",
-    "content": "Your workspace is the local directory where Nar manages your projects and configurations. Understanding the Structure is essential, as Nar is built for a multi-project experience where each folder represents a specific vertical. Choosing Your Workspace . When you first launch Nar, you’ll be prompted to select your workspace folder. This is the root directory where all your vertical projects and nnet/ configurations will be stored. The heart of your customization lives within the nnet/ Configuration directory. This folder contains the vital instructions Nar uses to bridge your local code with the cloud. Master Your Config . Manage how your services are mapped via code.json, connect your professional brand with domains.json, and ensure your identity is consistent at the root of your domain with apex.json. ",
+    "content": "Your workspace is the local folder where Nar manages your project code and configuration. Each sub-folder in the workspace represents a vertical. ",
     "url": "/nar/workspace.html",
     
     "relUrl": "/nar/workspace.html"
+  },"181": {
+    "doc": "Your Workspace",
+    "title": "Choosing Your Workspace",
+    "content": "When you first launch Nar, you’ll be prompted to select a workspace folder. This is where your vertical projects and their nnet/ configuration directories will live. ",
+    "url": "/nar/workspace.html#choosing-your-workspace",
+    
+    "relUrl": "/nar/workspace.html#choosing-your-workspace"
+  },"182": {
+    "doc": "Your Workspace",
+    "title": "Key Directories",
+    "content": ". | Structure — How the workspace is organized. | nnet/ Configuration — The configuration directory inside each vertical that controls what gets deployed and how. | . ",
+    "url": "/nar/workspace.html#key-directories",
+    
+    "relUrl": "/nar/workspace.html#key-directories"
+  },"183": {
+    "doc": "Your Workspace",
+    "title": "Configuration Reference",
+    "content": "| File | What it controls | . | code.json | Which services and UI to deploy, and where the source code lives. | . | domain.json | Custom domain name for your deployment. | . | apex.json | Root domain routing to a specific site. | . ",
+    "url": "/nar/workspace.html#configuration-reference",
+    
+    "relUrl": "/nar/workspace.html#configuration-reference"
   }
 }

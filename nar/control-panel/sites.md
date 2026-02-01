@@ -6,12 +6,18 @@ grand_parent: Nar
 nav_order: 2
 ---
 
-# Site Environments
+# Sites
 
-A **Site** represents a specific, isolated version of your application running in the cloud—such as `Dev`, `Staging`, or `Production`.
+A **Site** is an isolated deployment of your application — typically representing an environment like `dev`, `staging`, or `prod`.
 
-## Managing Your Environments
+## Creating a Site
 
-To create a new environment for your code, simply click the **+ (Plus)** icon. Provide a clear name (like `staging`) and select your preferred AWS region (like `us-east-1`).
+Click the **+ (Plus)** icon, provide a name (e.g., `staging`) and select an AWS region (e.g., `us-east-1`). This creates a site configuration file at `nnet/site/{name}_{region}.json`.
 
-Once created, you can toggle between environments using the dropdown menu. Any actions you take—from deploying a UI update to provisioning new resources—will occur only within that selected environment. This allows you to test new features safely in `Dev` and move them to `Production` only when they are perfect.
+## Switching Between Sites
+
+Use the dropdown to select the active site. All actions in the Control Panel — Setup, Deploy, Delete — apply only to the currently selected site.
+
+## How Sites Are Isolated
+
+Each site gets its own independent set of AWS resources: separate S3 buckets, separate Lambda functions, separate CloudFront distribution. This means you can deploy and test in `dev` without affecting `prod`.

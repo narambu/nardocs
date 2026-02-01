@@ -9,15 +9,23 @@ has_toc: false
 
 # Your Workspace
 
-Your workspace is the local directory where Nar manages your projects and configurations. Understanding the [Structure](workspace/structure.html) is essential, as Nar is built for a multi-project experience where each folder represents a specific vertical.
+Your workspace is the local folder where Nar manages your project code and configuration. Each sub-folder in the workspace represents a [vertical](control-panel/vertical.html).
 
-### Choosing Your Workspace
+## Choosing Your Workspace
 
-When you first launch Nar, you'll be prompted to select your workspace folder. This is the root directory where all your vertical projects and `nnet/` configurations will be stored.
+When you first launch Nar, you'll be prompted to select a workspace folder. This is where your vertical projects and their `nnet/` configuration directories will live.
 
 ![Initial Control Panel](../assets/images/control-panel-initial.png)
 
-The heart of your customization lives within the **[nnet/ Configuration](workspace/config.html)** directory. This folder contains the vital instructions Nar uses to bridge your local code with the cloud.
+## Key Directories
 
-### Master Your Config
-Manage how your services are mapped via **[code.json](workspace/code-json.html)**, connect your professional brand with **[domains.json](workspace/domains-json.html)**, and ensure your identity is consistent at the root of your domain with **[apex.json](workspace/apex-json.html)**.
+- **[Structure](workspace/structure.html)** — How the workspace is organized.
+- **[nnet/ Configuration](workspace/config.html)** — The configuration directory inside each vertical that controls what gets deployed and how.
+
+## Configuration Reference
+
+| File | What it controls |
+|:-----|:-----------------|
+| [code.json](workspace/code-json.html) | Which services and UI to deploy, and where the source code lives. |
+| [domain.json](workspace/domains-json.html) | Custom domain name for your deployment. |
+| [apex.json](workspace/apex-json.html) | Root domain routing to a specific site. |

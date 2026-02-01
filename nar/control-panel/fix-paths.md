@@ -8,12 +8,6 @@ nav_order: 5
 
 # Fix Paths
 
-Configuration files in Nar use absolute paths to link resources correctly.
+The `location` fields in [code.json](../workspace/code-json.html) can point to directories inside or outside the workspace. Nar resolves these paths and creates symlinks in your workspace that point to the actual source code directories.
 
-## Fix Paths
-
-Configuration files in Nar often rely on absolute paths. This means if you move your project folder, rename a parent directory, or clone the repo to a new machine, things might break.
-
-If you've moved your project, just click **Fix Paths**.
-
-Nar will scan the `nnet` configuration files and automatically update all the old paths to match your current workspace location. It's a quick fix that saves you from manually editing config files.
+Whenever you update a `location` in code.json, click **Fix Paths** to recreate the symlinks.

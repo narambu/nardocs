@@ -6,23 +6,29 @@ has_children: true
 has_toc: false
 ---
 
-# Nar: Cloud Deployment, Simplified
+# Nar: Deploy to AWS without the complexity
 
-**Nar** abstracts away deployment complexity, letting developers focus on building features. Whether you prefer the simplicity of a user interface (UI) or the power of automated CI/CD, Nar ensures you can deploy professional-grade applications to AWS with ease.
+**Nar** is a deployment tool that ships serverless applications to your own AWS account — without wrestling with the AWS console or writing complex IaC. Use the visual interface to deploy interactively, or run the CLI to automate deployments in your CI/CD pipelines.
 
 ![Nar Screenshot](assets/images/nar-screenshot.png)
 
-## The Nar Philosophy
+## Philosophy
 
-Nar is built on the principle of **True Ownership**, ensuring everything runs in your own AWS account—you own the code, the data, and the infrastructure. With **Zero Lock-in** (including Nar itself), you can build with Nar without being trapped by proprietary dependencies, relying instead on clean cloud architecture. Nar provides **Expertise on Tap**, allowing you to deploy complex stacks like Lambda, CloudFront, and secure Data Layers with professional-grade configurations by default.
+- **True Ownership** — Everything runs in your AWS account. You own the code, the data, and the infrastructure.
+- **Zero Lock-in** — Nar provisions standard AWS resources (Lambda, CloudFront, S3, API Gateway). There's no proprietary runtime or abstraction layer. If you stop using Nar, your infrastructure keeps running — and you can import your resources into any IaC tool of your choice and continue from there.
+- **Opinionated by Design** — Nar makes deliberate choices about how your application is deployed. That means fewer decisions for you and tested paths that work every time. We're confident that once you experience the simplicity, you'll want to stay.
 
-## What Nar Delivers
+## What Nar Does
 
-Nar handles the "heavy lifting" of cloud deployment so you don't have to. The **Intuitive Control Panel** provides a user interface (UI) for managing sites, environments, and deployments with a single click. For teams, Nar is **CI/CD Ready**, seamlessly integrating into automated pipelines for consistent, reliable releases. 
-
-You can jumpstart your project with **Curated Verticals**, which are production-ready features like Google OAuth or Subscription payments. Best of all, Nar provides **Automated Cloud Infrastructure**, provisioning and connecting the AWS resources required to run your application so you can focus entirely on your code.
+| Feature | Description |
+|:--------|:------------|
+| **Control Panel** | Visual interface for managing sites, environments, and deployments. |
+| **CLI** | Run `nar.sh` with `--auto-approve` for scripted or pipeline-based deployments. |
+| **Verticals** | Ready-to-deploy application stacks — like Google OAuth or Paddle-based subscription billing — that you can activate and customize. |
+| **Infrastructure Management** | Provisions and connects the AWS resources your application needs: Lambda, API Gateway, CloudFront, S3, ECR, CodeBuild, IAM roles, and more. |
 
 ---
 
 ## Quick Start
-Ready to see it in action? **[2 Minutes to Prod](nar/quickstart.html)** will walk you through deploying a React app with Google OAuth to AWS in record time.
+
+**[2 Minutes to Prod](nar/quickstart.html)** — Deploy a React app with Google OAuth to AWS from scratch.

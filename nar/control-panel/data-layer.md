@@ -6,12 +6,21 @@ grand_parent: Nar
 nav_order: 3
 ---
 
-# Data Storage
+# Data Layer
 
-Behind every great application is a reliable place to store information—from user profiles to file uploads. In Nar, this is your **Data Layer**.
+The Data Layer creates the S3 storage buckets your application needs for persistent data.
 
-## Setting Up Your Infrastructure
+## Setup
 
-When you start a new site, your storage resources don't yet exist in the cloud. Clicking **Setup** commands AWS to build the actual data resources and file buckets your application needs.
+Clicking **Setup** provisions versioned S3 buckets for the selected site. These buckets are **protected** — they have versioning enabled and `force_destroy` disabled, meaning they survive App Layer deletion and cannot be accidentally removed with data still inside.
 
-You generally only need to run this once per environment. Nar handles the complex configuration and security settings, ensuring your data is stored in a scalable and best-practice architecture.
+You typically run this once per site. The Data Layer is separate from the App Layer so that your stored data is safe even if you tear down and rebuild your application infrastructure.
+
+## What's Created
+
+- **Protected S3 buckets** with versioning enabled.
+- Any additional buckets defined in `nnet/byv/buckets.json`.
+
+## Relationship to the App Layer
+
+The App Layer references the Data Layer's state to discover bucket names and pass them as environment variables to your Lambda functions. This means you must set up the Data Layer **before** the App Layer.

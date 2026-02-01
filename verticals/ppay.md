@@ -10,8 +10,9 @@ nav_order: 2
 
 # Paddle Payments
 
-A complete payment integration vertical using Paddle for subscriptions and license management.
+A complete payment integration vertical using Paddle for subscriptions, one-time purchases, and license management.
 
-- **[Payments UI](ppay/ui.html)**: Frontend documentation.
-- **[SBCS Service](ppay/sbcs.html)**: Backend billing service.
-- **[Auth Service](/verticals/common/auth.html)**: Shared backend auth service.
+**Includes:**
+- **[Payments UI](ppay/ui.html)** — React frontend for checkout, billing, subscriptions, and admin.
+- **[SBCS Service](ppay/sbcs.html)** — Backend Lambda for Paddle webhook processing, license logic, and customer management.
+- **[Auth Service](/verticals/common/auth.html)** — Shared Google OAuth authentication.

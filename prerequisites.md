@@ -9,5 +9,5 @@ has_children: true
 
 Before using Nar, you need:
 
-1. **Node.js 20** - Required for building and running your application
-2. **AWS Credentials** - So Nar can deploy to your AWS account
+1. **[Node.js 20](prerequisites/node.html)** — Required for building your frontend UI.
+2. **[AWS Credentials](prerequisites/aws-setup.html)** — So Nar can deploy resources to your AWS account.

@@ -8,23 +8,23 @@ nav_order: 11
 
 # Destructive Actions
 
-⚠ **Warning**: These buttons effectively delete your website and data.
+{: .warning }
+These operations permanently delete AWS resources and data. They cannot be undone.
 
 ## Empty Bucket
-Cloud rules prevent you from deleting a storage bucket if it still has files inside.
 
-If you are trying to delete a site and it fails, it might be because the buckets are full. Select the bucket and click **Empty** to permanently wipe all files inside it.
+AWS prevents deleting an S3 bucket that still contains objects. If a layer deletion fails because of non-empty buckets, select the bucket and click **Empty** to delete all objects inside it.
 
-## Delete App/Data Layer
+## Delete App Layer
 
-Use these to dismantle parts of your site.
+Removes the compute and delivery resources for the selected site — Lambda functions, API Gateway, CloudFront, ECR, CodeBuild, and associated IAM roles. Your Data Layer (storage buckets and their contents) is **not** affected.
 
-- **Delete App Layer**: Removes the compute resources and API endpoints. Your user data remains safe.
-- **Delete Data Layer**: Removes the data resources and file storage. **Your data will be deleted forever.**
+## Delete Data Layer
+
+Removes the storage buckets and their contents for the selected site. **All data in these buckets will be permanently deleted.** Make sure you have backups if needed.
 
 ## Nuke
-When standard deletion fails.
 
-If "Delete" isn't working—maybe the tracking file is corrupt—click **Nuke**.
+Force-deletes all resources for a site when standard deletion fails — for example, if the state file is corrupt or missing. Nuke uses the `discover` action to scan AWS for resources tagged with this site and destroys them directly, bypassing the state file.
 
-This is the "Force Delete" option. It ignores the tracking files, scans the cloud for anything tagged with this site, and destroys it immediately. Use with extreme caution.
+Use this as a last resort.

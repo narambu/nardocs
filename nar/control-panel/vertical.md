@@ -6,24 +6,35 @@ grand_parent: Nar
 nav_order: 7
 ---
 
-# Understanding Verticals
+# Verticals
 
-A **Vertical** is a production-ready blueprint that packages everything your application needs—code, configuration, and infrastructure—into a single, deployable feature. It is always designed to be a complete, self-contained solution to a business requirement, whether that involves a full-stack application or a simple resource connection.
+A **Vertical** is a packaged application stack — code, configuration, and infrastructure definitions — distributed as a `.nar` file (a zip archive).
+
+## What's Inside a Vertical
+
+| Component | Description |
+|:----------|:------------|
+| `vertical_ui/` | Frontend source code (React + Vite). |
+| `vertical_service/` | Backend service code (Python Lambda functions). |
+| `vertical_shared/` | Shared libraries bundled with every service. |
+| `vertical_conf/` | Configuration templates (environment variables, service config). |
+| `resources/` | Nar metadata — default site definitions, display name, code mappings. |
 
 ## Example: React Auth Lambda
 
-When you activate a vertical like **React Auth Lambda**, Nar provides the specific components required for that feature:
-
-- **Frontend Interface**: High-performance UI code (e.g., React or Vite).
-- **Backend Services**: Robust server-side logic (e.g., Python code running as a **Lambda service** for secure OAuth).
-- **Intelligent Configuration**: Best-practice instructions that tell Nar exactly how to provision and secure your AWS resources.
+Activating this vertical gives you:
+- A **React + Vite** frontend with Google OAuth integration.
+- A **Python Lambda** auth service handling OAuth login, session management, and token validation.
+- Pre-configured `nnet/` files that wire everything together.
 
 ## Example: Paddle Payments
 
-For more complex business requirements like **Paddle Payments**, the vertical packages both frontend and specialized backend components:
+A more complete vertical with:
+- A **React + Vite** frontend for subscriptions, checkout, billing history, and admin management.
+- An **SBCS** (Subscription Billing and Customer Service) Lambda that processes Paddle webhooks, manages licenses, and handles payment logic.
+- A shared **auth** service for user authentication.
 
-- **Payments UI**: A comprehensive React interface for managing subscriptions, checkout flows, and customer billing history.
-- **SBCS Service**: A backend "Subscription Billing and Customer Service" component that handles Paddle webhooks, plan logic, and license issuance.
-- **Shared Authentication**: Integration with the common Auth service (running as a **Lambda service**) to ensure all payment actions are performed by verified users.
+## Activating and Importing
 
-Verticals allow you to deploy sophisticated, enterprise-grade features with just a few clicks, abstracting away the underlying complexity of cloud architecture.
+- **Activate**: Select a vertical from the dropdown and click Activate. If it's your first time using this vertical in this workspace, Nar unpacks the code into your project folder.
+- **Import**: Click the **+** button to import a `.nar` package file into your vertical library.

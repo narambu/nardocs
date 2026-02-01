@@ -6,28 +6,39 @@ grand_parent: Nar
 nav_order: 4
 ---
 
-# Application Layer
+# App Layer
 
-The **App Layer** is the engine room of your project. If the Data Layer is your hard drive, the App Layer is the processor that runs your application logic and serves your user interface.
+The App Layer contains the compute, delivery, and build resources that run your application.
 
-## Infrastructure Provisioning
+## Setup
 
-Once your storage is ready, you need to set up the specialized cloud compute resources that will run your code.
+Clicking **Setup** provisions the following AWS resources for the selected site:
 
-Clicking **Setup** builds the professional "skeleton" of your backend, including the secure API endpoints where your code lives and executes.
+- **Lambda functions** — One per service defined in [code.json](../workspace/code-json.html).
+- **API Gateway (HTTP)** — Public HTTPS endpoints for each Lambda function.
+- **CloudFront distribution** — CDN for serving your frontend UI globally.
+- **ECR repository** — Container registry for Lambda deployment images.
+- **CodeBuild project** — Builds and packages your service code for Lambda.
+- **IAM roles** — Execution roles for Lambda and CodeBuild.
+- **CloudWatch log groups** — Logs for Lambda, API Gateway, and CodeBuild.
+- **Route 53 records + ACM certificates** — If you've configured a [custom domain](../workspace/domains-json.html).
 
-## Deploying Your Interface (Deploy UI)
+You typically run Setup once per site. After that, use Deploy UI and Deploy Service for updates.
 
-This action publishes the visual part of your website—everything your users interact with in their browser.
+## Deploy UI
 
-When you make a frontend change (e.g., in React or Vue) and are ready to share it with the world, simply click **Deploy UI**. Nar builds your project, uploads it to the global CloudFront CDN, and clears old caches so your users see the update instantly.
+Publishes your React + Vite frontend to the CloudFront CDN.
 
-## Deploying Your Logic (Deploy Service)
+When you click **Deploy UI**, Nar:
+1. Builds your Vite project.
+2. Uploads the output to the site's S3 bucket.
+3. Invalidates the CloudFront cache so users see the latest version.
 
-Use this for backend updates—the "brain" of your application.
+## Deploy Service
 
-If you’ve updated your backend code:
-1. Select the specific service (e.g., `auth`) from the dropdown.
+Updates a specific backend Lambda function.
+
+1. Select the service (e.g., `auth`, `sbcs`) from the dropdown.
 2. Click **Deploy Service**.
 
-Nar zips and publishes your new logic directly to the cloud, providing a fast and reliable deployment without rebuilding your entire system.
+Nar packages the service code along with shared libraries, pushes a container image to ECR, and triggers a CodeBuild job to update the Lambda function.

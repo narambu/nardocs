@@ -6,27 +6,68 @@ grand_parent: Verticals
 nav_order: 1
 ---
 
-# PPAY: Payments UI
+# Payments UI (PPay)
 
-The **Paddle Payments (PPAY)** vertical includes a comprehensive frontend codebase provided by **Nar**. It provides a professional React interface for managing subscriptions, checkouts, and billing history.
+The Paddle Payments vertical includes a React frontend for managing subscriptions, checkout flows, and billing. [nar.narambu.com](https://nar.narambu.com) is built using Nar itself, and some of the code packaged in this vertical is also used by that website — you can check out the authentication and payments flow there.
 
-## Features
-- **Subscription Management**: Built-in pages for viewing and changing plans.
-- **License Tracking**: Dedicated UI for managing issued software licenses.
-- **Admin Panel**: Secure dashboard for product and customer management.
+## Stack
+
+- React 19, Vite, TypeScript
+- Tailwind CSS, MUI
+- UI Auth pages from [uicommon](/verticals/common/uicommon.html)
+- UI Payment pages from [payments](/verticals/common/payments.html) package
+
+---
 
 ## Project Structure
+
 ```text
-ui/
-├── src/
-│   ├── pages/
-│   │   └── Payment/
-│   │       └── Paddle/     # Paddle-specific checkout and status pages
-│   ├── services/
-│   │   └── sbcs_paddle/    # Integration with the backend SBCS service
-│   └── components/         # Shared React components
+ui/src/
+├── App.tsx              # Router with protected routes
+├── index.tsx            # React entry point
+├── components/
+│   ├── NavBar.tsx       # Navigation with auth + admin check
+│   ├── Footer.tsx       # Page footer
+│   └── Notice.tsx       # Alert/notification component
+└── pages/
+    └── Home.tsx         # Landing page
 ```
 
+Most pages come from the shared [payments](/verticals/common/payments.html) package.
+
+---
+
+## Routes
+
+| Path | Page | Auth Required | Source |
+|:-----|:-----|:--------------|:-------|
+| `/` | Home | No | Local |
+| `/billing` | Billing | Yes | nnet-payments |
+| `/invoices` | Invoices | Yes | nnet-payments |
+| `/entities` | Entities | Yes | nnet-payments |
+| `/admin` | Admin | Yes | nnet-payments |
+| `/paddle/:env/admin/products` | Product Config | Yes | nnet-payments |
+| `/token_for_login` | Token Login | Yes | nnet-payments |
+
+---
+
+## Shared Packages
+
+PPay imports both [uicommon](/verticals/common/uicommon.html) and [payments](/verticals/common/payments.html). The aliases are configured in `vite.config.ts`:
+
+```typescript
+resolve: {
+  alias: {
+    'nnet-uicommon': path.resolve(__dirname, '../../../uipackages/uicommon'),
+    'nnet-payments': path.resolve(__dirname, '../../../uipackages/payments'),
+  },
+}
+```
+
+---
+
 ## Redeployment
-1. Click **Deploy UI** in the Nar Control Panel.
-2. Nar will rebuild your frontend and update the global CloudFront distribution.
+
+After making changes:
+1. Click **Deploy UI** in the Control Panel.
+2. Nar builds the Vite project, uploads assets to S3, and invalidates the CloudFront cache.

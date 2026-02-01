@@ -7,38 +7,35 @@ nav_order: 2
 
 # Setting Up AWS for Nar
 
-This guide walks you through creating AWS credentials so Nar can deploy to your account.
+Create AWS credentials so Nar can deploy to your account.
 
 ---
 
 ## What You'll Need
 
 - An AWS account ([create one here](https://aws.amazon.com) if you don't have one)
-- Your laptop
 
 ---
 
 ## Step 1: Create a User for Nar
 
 1. Sign in to [AWS Console](https://console.aws.amazon.com)
-2. In the search bar at the top, type **IAM** and click on it
-3. Click **Users** in the left menu
-4. Click **Create user**
-5. For username, type: `nar-deployer`
-6. Click **Next**
-7. Select **Attach policies directly**
-8. Don't select anything yet — click **Next**
-9. Click **Create user**
+2. Search for **IAM** and open it
+3. Click **Users** → **Create user**
+4. Username: `nar-deployer`
+5. Click **Next**
+6. Select **Attach policies directly**
+7. Don't select anything yet — click **Next**
+8. Click **Create user**
 
 ---
 
 ## Step 2: Give the User Permissions
 
 1. Click on your new user **nar-deployer**
-2. Click the **Permissions** tab
+2. Go to the **Permissions** tab
 3. Click **Add permissions** → **Create inline policy**
-4. Click the **JSON** tab
-5. Delete everything in the box and paste this:
+4. Switch to the **JSON** tab and paste:
 
 ```json
 {
@@ -79,35 +76,33 @@ This guide walks you through creating AWS credentials so Nar can deploy to your 
 }
 ```
 
-6. Click **Next**
-7. Name it: `nar_iam_bootstrap`
-8. Click **Create policy**
+5. Click **Next**
+6. Name it: `nar_iam_bootstrap`
+7. Click **Create policy**
 
 ---
 
 ## Step 3: Get Your Access Keys
 
-1. Still on the **nar-deployer** user page, click **Security credentials**
-2. Scroll down to **Access keys**
-3. Click **Create access key**
-4. Select **Command Line Interface (CLI)**
-5. Check the confirmation checkbox at the bottom
-6. Click **Next**, then **Create access key**
+1. On the **nar-deployer** user page, click **Security credentials**
+2. Scroll to **Access keys** → **Create access key**
+3. Select **Command Line Interface (CLI)**
+4. Check the confirmation box, click **Next**, then **Create access key**
 
 {: .warning }
-Copy both the **Access key ID** and **Secret access key** somewhere safe. You won't be able to see the secret again.
+Copy both the **Access key ID** and **Secret access key** now. The secret won't be shown again.
 
 ---
 
-## Step 4: Save Keys on Your Laptop
+## Step 4: Save Keys on Your Machine
 
-Open Terminal and run:
+Open Terminal:
 
 ```bash
 mkdir -p ~/.aws
 ```
 
-Create the config file:
+Create `~/.aws/config`:
 ```bash
 cat > ~/.aws/config << 'EOF'
 [default]
@@ -115,7 +110,7 @@ region = us-east-1
 EOF
 ```
 
-Create the credentials file (replace with YOUR keys):
+Create `~/.aws/credentials` (replace with your keys):
 ```bash
 cat > ~/.aws/credentials << 'EOF'
 [default]
@@ -126,37 +121,35 @@ EOF
 
 ---
 
-## Done!
+## Done
 
-Nar uses the `default` AWS profile. You're ready to run Init.
+Nar uses the `default` AWS profile by default. You're ready to run [Init](../nar/control-panel/init.html).
 
 ---
 
 ## Using a Different Profile
 
-If you already use AWS and want to keep Nar separate:
+If you already use AWS and want a separate profile for Nar:
 
-**1. Update `~/.aws/config`:**
+**1. Add to `~/.aws/config`:**
 ```ini
-[default]
-region = us-east-1
-
 [profile myprofile]
 region = us-east-1
 ```
 
-**2. Update `~/.aws/credentials`:**
+**2. Add to `~/.aws/credentials`:**
 ```ini
-[default]
-aws_access_key_id = YOUR_OTHER_KEY
-aws_secret_access_key = YOUR_OTHER_SECRET
-
 [myprofile]
 aws_access_key_id = PASTE_YOUR_ACCESS_KEY_HERE
 aws_secret_access_key = PASTE_YOUR_SECRET_KEY_HERE
 ```
 
-**3.** Update your workspace to use the profile. See [awsprofile.json](../nar/workspace.html#awsprofilejson).
+**3.** Set the profile in your vertical's `nnet/awsprofile.json`:
+```json
+{
+  "iamAwsProfile": "myprofile"
+}
+```
 
 ---
 
@@ -164,6 +157,6 @@ aws_secret_access_key = PASTE_YOUR_SECRET_KEY_HERE
 
 | Problem | Solution |
 |:--------|:---------|
-| "Unable to locate credentials" | Check that `~/.aws/credentials` exists and has the right format |
-| "AccessDenied" when running init | Make sure you added the `nar_iam_bootstrap` policy in Step 2 |
-| "InvalidClientTokenId" | Your access key ID is wrong — create new access keys in AWS |
+| "Unable to locate credentials" | Check that `~/.aws/credentials` exists and has the right format. |
+| "AccessDenied" when running Init | Verify you added the `nar_iam_bootstrap` policy in Step 2. |
+| "InvalidClientTokenId" | The access key ID is wrong — create new access keys in AWS. |
