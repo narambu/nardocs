@@ -12,6 +12,8 @@ nav_order: 2
 
 A complete payment integration vertical using Paddle for subscriptions, one-time purchases, and license management.
 
+**[Getting Started](ppay/getting-started.html)** — Configure auth, Paddle keys, and admin access.
+
 **Includes:**
 - **[Payments UI](ppay/ui.html)** — React frontend for checkout, billing, subscriptions, and admin.
 - **[SBCS Service](ppay/sbcs.html)** — Backend Lambda for Paddle webhook processing, license logic, and customer management.
