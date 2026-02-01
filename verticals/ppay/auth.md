@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Auth Service
-parent: Paddle Payments
+parent: Paddle Payment Integration
 grand_parent: Verticals
 nav_order: 3
 ---

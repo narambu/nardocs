@@ -1,14 +1,14 @@
 ---
 layout: default
 title: Payments UI
-parent: Paddle Payments
+parent: Paddle Payment Integration
 grand_parent: Verticals
 nav_order: 1
 ---
 
 # Payments UI (PPay)
 
-The Paddle Payments vertical includes a React frontend for managing subscriptions, checkout flows, and billing. [nar.narambu.com](https://nar.narambu.com) is built using Nar itself, and some of the code packaged in this vertical is also used by that website — you can check out the authentication and payments flow there.
+The Paddle Payment Integration vertical includes a React frontend for managing subscriptions, checkout flows, and billing. [nar.narambu.com](https://nar.narambu.com) is built using Nar itself, and some of the code packaged in this vertical is also used by that website — you can check out the authentication and payments flow there.
 
 ## Stack
 

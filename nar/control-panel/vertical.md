@@ -27,7 +27,7 @@ Activating this vertical gives you:
 - A **Python Lambda** auth service handling OAuth login, session management, and token validation.
 - Pre-configured `nnet/` files that wire everything together.
 
-## Example: Paddle Payments
+## Example: Paddle Payment Integration
 
 A more complete vertical with:
 - A **React + Vite** frontend for subscriptions, checkout, billing history, and admin management.
