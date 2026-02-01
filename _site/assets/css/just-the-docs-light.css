@@ -788,6 +788,7 @@ blockquote {
   padding-top: 0.75rem;
   padding-bottom: 0.75rem;
   color: #27262b;
+  outline-offset: -1px;
   padding-right: 1rem;
   padding-left: 1rem;
 }
@@ -818,6 +819,7 @@ blockquote {
   height: 100%;
   padding: 1rem;
   align-items: center;
+  outline-offset: -1px;
 }
 
 @media (min-width: 50rem) {
@@ -1137,6 +1139,7 @@ blockquote {
   padding-top: 0.25rem;
   padding-bottom: 0.25rem;
   line-height: 2.5rem;
+  outline-offset: -1px;
   padding-right: 3rem;
   padding-left: 1rem;
 }
@@ -1168,6 +1171,7 @@ blockquote {
   height: 3rem;
   padding: 0.75rem;
   color: #7253ed;
+  outline-offset: -1px;
 }
 @media (min-width: 50rem) {
   .nav-list .nav-list-item .nav-list-expander {
@@ -1681,8 +1685,7 @@ h6,
   }
 }
 .search-input:focus {
-  outline: 2px solid #7253ed;
-  outline-offset: -2px;
+  outline-offset: -1px;
 }
 .search-input:focus + .search-label .search-icon {
   color: #7253ed;
@@ -1759,6 +1762,7 @@ h6,
 .search-result {
   display: block;
   padding: 0.25rem 0.75rem;
+  outline-offset: -1px;
 }
 .search-result:hover, .search-result.active {
   background-color: rgb(234.8, 236.82, 244.9);

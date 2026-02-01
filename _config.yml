@@ -12,6 +12,8 @@ search.previews: 3
 heading_anchors: true
 
 aux_links:
+  "Nar":
+    - "https://nar.narambu.com"
   "Report an Issue":
     - "https://github.com/narambu/nardocs/issues"
 
