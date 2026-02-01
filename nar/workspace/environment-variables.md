@@ -2,7 +2,7 @@
 layout: default
 title: Environment Variables
 parent: code.json
-grand_parent: Your Workspace
+grand_parent: Workspace
 nav_order: 3
 has_children: true
 ---

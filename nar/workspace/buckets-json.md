@@ -1,7 +1,7 @@
 ---
 layout: default
 title: byv/buckets.json
-parent: Your Workspace
+parent: Workspace
 grand_parent: Nar
 nav_order: 7
 ---

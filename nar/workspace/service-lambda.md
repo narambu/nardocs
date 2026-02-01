@@ -2,7 +2,7 @@
 layout: default
 title: service_lambda
 parent: code.json
-grand_parent: Your Workspace
+grand_parent: Workspace
 nav_order: 1
 ---
 

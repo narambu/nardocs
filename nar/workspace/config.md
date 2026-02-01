@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Configuration (nnet/)
-parent: Your Workspace
+parent: Workspace
 grand_parent: Nar
 nav_order: 2
 ---

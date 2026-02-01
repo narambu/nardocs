@@ -13,7 +13,7 @@ Utilities for inspecting and maintaining your deployed infrastructure.
 ## State Recovery
 
 ### Recover
-If a deployment was interrupted or your local state is out of sync with AWS, click **Recover**. Nar scans your AWS account for resources tagged with this site and re-imports them into the state file, bringing your local state back in sync with reality.
+If a deployment was interrupted or your local state is out of sync with AWS, click **Recover**. Nar uses naming patterns to find resources belonging to the selected site, checks if they exist in AWS, and re-imports them into the state file — bringing your local state back in sync with reality.
 
 ### State List
 Displays a list of every AWS resource Nar is currently tracking for the selected site. Useful for auditing exactly what's been provisioned.
@@ -32,4 +32,4 @@ If your frontend is getting CORS errors when accessing files from a bucket:
 1. Select the bucket prefix.
 2. Click **Enable**.
 
-Nar sets the appropriate CORS policy on the bucket so your application can access its contents from the browser.
+Nar sets the appropriate CORS policy on the bucket so your application can access its contents from the browser. You can also configure additional CORS origins per bucket via [cors.json](/nar/workspace/cors-json.html).

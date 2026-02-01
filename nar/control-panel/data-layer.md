@@ -8,18 +8,18 @@ nav_order: 3
 
 # Data Layer
 
-The Data Layer creates the S3 storage buckets your application needs for persistent data.
+The Data Layer provisions the infrastructure your application uses for persistent storage. This is where any resources that hold data live — separate from the App Layer so your data is safe even if you tear down and rebuild your application.
 
 ## Setup
 
-Clicking **Setup** provisions versioned S3 buckets for the selected site. These buckets are **protected** — they have versioning enabled and `force_destroy` disabled, meaning they survive App Layer deletion and cannot be accidentally removed with data still inside.
+Clicking **Setup** creates the Data Layer for the selected site. Resources in this layer are **protected** — S3 buckets have versioning enabled and `force_destroy` disabled, meaning they survive App Layer deletion and cannot be accidentally removed with data still inside.
 
-You typically run this once per site. The Data Layer is separate from the App Layer so that your stored data is safe even if you tear down and rebuild your application infrastructure.
+You typically run this once per site.
 
 ## What's Created
 
-- **Protected S3 buckets** with versioning enabled.
-- Any additional buckets defined in `nnet/byv/buckets.json`.
+- [Built-in buckets](/nar/workspace/buckets-json.html#built-in-buckets) that Nar provides automatically (e.g., `perm` for persistent data).
+- Any additional buckets you define in [byv/buckets.json](/nar/workspace/buckets-json.html).
 
 ## Relationship to the App Layer
 

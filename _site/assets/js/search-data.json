@@ -358,21 +358,21 @@
   },"51": {
     "doc": "Data Layer",
     "title": "Data Layer",
-    "content": "The Data Layer creates the S3 storage buckets your application needs for persistent data. ",
+    "content": "The Data Layer provisions the infrastructure your application uses for persistent storage. This is where any resources that hold data live — separate from the App Layer so your data is safe even if you tear down and rebuild your application. ",
     "url": "/nar/control-panel/data-layer.html",
     
     "relUrl": "/nar/control-panel/data-layer.html"
   },"52": {
     "doc": "Data Layer",
     "title": "Setup",
-    "content": "Clicking Setup provisions versioned S3 buckets for the selected site. These buckets are protected — they have versioning enabled and force_destroy disabled, meaning they survive App Layer deletion and cannot be accidentally removed with data still inside. You typically run this once per site. The Data Layer is separate from the App Layer so that your stored data is safe even if you tear down and rebuild your application infrastructure. ",
+    "content": "Clicking Setup creates the Data Layer for the selected site. Resources in this layer are protected — S3 buckets have versioning enabled and force_destroy disabled, meaning they survive App Layer deletion and cannot be accidentally removed with data still inside. You typically run this once per site. ",
     "url": "/nar/control-panel/data-layer.html#setup",
     
     "relUrl": "/nar/control-panel/data-layer.html#setup"
   },"53": {
     "doc": "Data Layer",
     "title": "What’s Created",
-    "content": ". | Protected S3 buckets with versioning enabled. | Any additional buckets defined in nnet/byv/buckets.json. | . ",
+    "content": ". | Built-in buckets that Nar provides automatically (e.g., perm for persistent data). | Any additional buckets you define in byv/buckets.json. | . ",
     "url": "/nar/control-panel/data-layer.html#whats-created",
     
     "relUrl": "/nar/control-panel/data-layer.html#whats-created"
@@ -568,14 +568,14 @@
   },"81": {
     "doc": "Context",
     "title": "What Init Does",
-    "content": "Clicking Init performs these steps: . | Creates a DeployIAM role — A temporary IAM role that Nar assumes to provision infrastructure. | Creates the state bucket — An S3 bucket (nar-tfstate-{account}) that stores deployment state, so Nar can track what it has created. | Initializes configurations — Prepares both the Data Layer and App Layer for deployment. | . ",
+    "content": "Clicking Init performs these steps: . | Creates the state bucket — An S3 bucket (nar-tfstate-{account}) that stores deployment state. This is shared across all verticals in the same AWS account. | Creates a DeployIAM role — An IAM role that Nar assumes to provision infrastructure. This is created per vertical. | Initializes configurations — Prepares both the Data Layer and App Layer for deployment. | . ",
     "url": "/nar/control-panel/init.html#what-init-does",
     
     "relUrl": "/nar/control-panel/init.html#what-init-does"
   },"82": {
     "doc": "Context",
     "title": "When to Run",
-    "content": ". | First time deploying from this workspace to a given AWS account. | If you switch AWS accounts or profiles. | Answer Y to any terminal prompts during the process. | . Once Init completes, you won’t need to run it again for this account unless you change your AWS configuration. ",
+    "content": "Run Init once per vertical. You also need to re-run it if you switch AWS accounts or profiles. Answer Y to any terminal prompts during the process. ",
     "url": "/nar/control-panel/init.html#when-to-run",
     
     "relUrl": "/nar/control-panel/init.html#when-to-run"
@@ -974,7 +974,7 @@
   },"139": {
     "doc": "Tools",
     "title": "State Recovery",
-    "content": "Recover . If a deployment was interrupted or your local state is out of sync with AWS, click Recover. Nar scans your AWS account for resources tagged with this site and re-imports them into the state file, bringing your local state back in sync with reality. State List . Displays a list of every AWS resource Nar is currently tracking for the selected site. Useful for auditing exactly what’s been provisioned. ",
+    "content": "Recover . If a deployment was interrupted or your local state is out of sync with AWS, click Recover. Nar uses naming patterns to find resources belonging to the selected site, checks if they exist in AWS, and re-imports them into the state file — bringing your local state back in sync with reality. State List . Displays a list of every AWS resource Nar is currently tracking for the selected site. Useful for auditing exactly what’s been provisioned. ",
     "url": "/nar/control-panel/tools.html#state-recovery",
     
     "relUrl": "/nar/control-panel/tools.html#state-recovery"
@@ -988,7 +988,7 @@
   },"141": {
     "doc": "Tools",
     "title": "CORS",
-    "content": "Enable / Disable CORS . Configures Cross-Origin Resource Sharing (CORS) headers on your S3 storage buckets. If your frontend is getting CORS errors when accessing files from a bucket: . | Select the bucket prefix. | Click Enable. | . Nar sets the appropriate CORS policy on the bucket so your application can access its contents from the browser. ",
+    "content": "Enable / Disable CORS . Configures Cross-Origin Resource Sharing (CORS) headers on your S3 storage buckets. If your frontend is getting CORS errors when accessing files from a bucket: . | Select the bucket prefix. | Click Enable. | . Nar sets the appropriate CORS policy on the bucket so your application can access its contents from the browser. You can also configure additional CORS origins per bucket via cors.json. ",
     "url": "/nar/control-panel/tools.html#cors",
     
     "relUrl": "/nar/control-panel/tools.html#cors"
@@ -1259,28 +1259,28 @@
     
     "relUrl": "/nar/verticals.html#available-verticals"
   },"180": {
-    "doc": "Your Workspace",
-    "title": "Your Workspace",
+    "doc": "Workspace",
+    "title": "Workspace",
     "content": "Your workspace is the local folder where Nar manages your project code and configuration. Each sub-folder in the workspace represents a vertical. ",
     "url": "/nar/workspace.html",
     
     "relUrl": "/nar/workspace.html"
   },"181": {
-    "doc": "Your Workspace",
-    "title": "Choosing Your Workspace",
+    "doc": "Workspace",
+    "title": "Choosing Workspace",
     "content": "When you first launch Nar, you’ll be prompted to select a workspace folder. This is where your vertical projects and their nnet/ configuration directories will live. ",
-    "url": "/nar/workspace.html#choosing-your-workspace",
+    "url": "/nar/workspace.html#choosing-workspace",
     
-    "relUrl": "/nar/workspace.html#choosing-your-workspace"
+    "relUrl": "/nar/workspace.html#choosing-workspace"
   },"182": {
-    "doc": "Your Workspace",
+    "doc": "Workspace",
     "title": "Key Directories",
     "content": ". | Structure — How the workspace is organized. | nnet/ Configuration — The configuration directory inside each vertical that controls what gets deployed and how. | . ",
     "url": "/nar/workspace.html#key-directories",
     
     "relUrl": "/nar/workspace.html#key-directories"
   },"183": {
-    "doc": "Your Workspace",
+    "doc": "Workspace",
     "title": "Configuration Reference",
     "content": "| File | What it controls | . | code.json | Which services and UI to deploy, and where the source code lives. | . | domain.json | Custom domain name for your deployment. | . | apex.json | Root domain routing to a specific site. | . ",
     "url": "/nar/workspace.html#configuration-reference",

@@ -1,7 +1,7 @@
 ---
 layout: default
 title: code.json
-parent: Your Workspace
+parent: Workspace
 grand_parent: Nar
 nav_order: 3
 has_children: true
