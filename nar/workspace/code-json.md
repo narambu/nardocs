@@ -68,6 +68,8 @@ In this example:
 
 ## services.lambda
 
+Deploys to the [Lambda + API Gateway](service-lambda.html) composite.
+
 | Field | Description |
 |:------|:------------|
 | `name` | Service identifier (e.g., `auth`, `sbcs`). Used in resource naming, Deploy Service dropdown, and URL generation. |
@@ -81,6 +83,8 @@ The `sharedLibs` array defines libraries that get bundled with **every** service
 ---
 
 ## ui.vite
+
+Deploys to the [CloudFront + S3](ui-vite.html) composite.
 
 | Field | Description |
 |:------|:------------|

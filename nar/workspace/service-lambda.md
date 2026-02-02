@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "AWS: Lambda + API Gateway"
+title: Lambda + API Gateway
 parent: Composites
 grand_parent: Nar
 nav_order: 1
@@ -8,9 +8,7 @@ nav_order: 1
 
 # Lambda + API Gateway
 
-Configured as **`services.lambda`** in [code.json](code-json.html).
-
-Each entry in `services.lambda[]` becomes a standalone **Lambda function** behind an **API Gateway** endpoint. Services are packaged as container images. The default Dockerfile supports Python 3.13. You can [customize Dockerfiles](../faq/aws.html) by providing a custom path.
+Each backend service becomes a standalone **Lambda function** behind an **API Gateway** endpoint. Services are packaged as container images. The default Dockerfile supports Python 3.13. You can [customize Dockerfiles](../faq/aws.html).
 
 {: .note }
 VPC support for Lambda functions is coming soon.
@@ -36,7 +34,7 @@ Lambda Function (Container Image)
 
 **How it works:**
 
-- Each service defined in your [code.json](code-json.html) becomes its own Lambda function.
+- Each backend service you define becomes its own Lambda function.
 - Lambda functions run as container images stored in **ECR** (Elastic Container Registry).
 - **CodeBuild** handles packaging and deploying new versions when you click Deploy Service.
 - API Gateway provides a public HTTPS endpoint for each service.

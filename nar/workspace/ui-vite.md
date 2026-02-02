@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "AWS: CloudFront + S3"
+title: CloudFront + S3
 parent: Composites
 grand_parent: Nar
 nav_order: 2
@@ -8,9 +8,7 @@ nav_order: 2
 
 # CloudFront + S3
 
-Configured as **`ui.vite`** in [code.json](code-json.html).
-
-The `ui.vite` entry in your [code.json](code-json.html) defines a **React + Vite** project that gets built locally and deployed to **S3** behind a **CloudFront** CDN.
+Your **React + Vite** frontend gets built locally and deployed to **S3** behind a **CloudFront** CDN.
 
 ---
 
