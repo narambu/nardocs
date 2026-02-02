@@ -34,7 +34,7 @@ A more complete vertical with:
 - An **SBCS** (Subscription and Billing Service) Lambda that processes Paddle webhooks, manages licenses, and handles payment logic.
 - A shared **auth** service for user authentication.
 
-## Activating and Importing
+## Selecting and Importing
 
-- **Activate**: Select a vertical from the dropdown and click Activate. If it's your first time using this vertical in this workspace, Nar unpacks the code into your project folder.
+- **Select**: Choose a vertical from the dropdown. If it's your first time using this vertical in this workspace, Nar unpacks the code into your project folder.
 - **Import**: Click the **+** button to import a `.nar` package file into your vertical library.

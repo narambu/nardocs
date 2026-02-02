@@ -13,7 +13,7 @@ A vertical is a complete application stack — frontend, backend services, and c
 
 ## Managing Verticals
 
-- **Activate**: Select a vertical from the dropdown and click **Activate**. This switches your workspace to that vertical. On first activation, Nar unpacks the source code into your project folder.
+- **Select**: Choose a vertical from the dropdown to switch your workspace to it. On first selection, Nar unpacks the source code into your project folder.
 - **Import**: Click the **+ (Import)** button to add a new vertical from a `.nar` package file.
 
 You can have multiple verticals installed and switch between them.
