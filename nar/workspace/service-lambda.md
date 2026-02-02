@@ -43,7 +43,7 @@ VPC support for Lambda functions is coming soon.
 | Field | Description |
 |:------|:------------|
 | `name` | Service identifier (e.g., `auth`, `sbcs`). Used in resource naming, Deploy Service dropdown, and URL generation. |
-| `location` | Path to the service source code. Defaults to `orig/{service}`. Can be changed to `/your/location/for/service` — run [Fix Paths](../control-panel/fix-paths.html) after updating. |
+| `location` | Path to the service source code. Defaults to `orig/{service}`. Can be changed to `/your/location/for/service` — run [Fix Paths](../nar-actions/fix-paths.html) after updating. |
 | `dockerfile` | *(Optional)* Path to a custom Dockerfile. Defaults to Nar's built-in Dockerfile for Python Lambdas. Can be changed to `/your/location/for/Dockerfile`. |
 
 ---

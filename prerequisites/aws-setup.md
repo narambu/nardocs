@@ -123,7 +123,7 @@ EOF
 
 ## Done
 
-Nar uses the `default` AWS profile by default. You're ready to run [Init](../nar/control-panel/init.html).
+Nar uses the `default` AWS profile by default. You're ready to run [Init](../nar/nar-actions/init.html).
 
 ---
 

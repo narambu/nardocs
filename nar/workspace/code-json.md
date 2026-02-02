@@ -67,7 +67,7 @@ All paths are relative to the vertical folder. If you want to deploy code from a
 }
 ```
 
-After updating paths, run [Fix Paths](../control-panel/fix-paths.html) to apply the changes.
+After updating paths, run [Fix Paths](../nar-actions/fix-paths.html) to apply the changes.
 
 ---
 

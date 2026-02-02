@@ -7,7 +7,7 @@ nav_order: 1.5
 
 # Supported AWS Architectures
 
-Nar deploys your application using proven, serverless AWS architectures. Each architecture is fully provisioned and managed through the Nar [UI](control-panel.html) or [CLI](../index.html).
+Nar deploys your application using proven, serverless AWS architectures. Each architecture is fully provisioned and managed through the Nar [UI](nar-actions.html) or [CLI](../index.html).
 
 ---
 

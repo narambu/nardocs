@@ -51,5 +51,5 @@ The site name and region are derived from the filename — the file contents are
 ## Creating Sites
 
 You can create sites either by:
-- Clicking the **+ (Plus)** icon in the Nar Actions [Sites](../../nar/control-panel/sites.html) section.
+- Clicking the **+ (Plus)** icon in the Nar Actions [Sites](../../nar/nar-actions/sites.html) section.
 - Manually creating an empty JSON file in `nnet/site/` with the correct naming format.

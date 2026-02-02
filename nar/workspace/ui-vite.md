@@ -31,7 +31,7 @@ The `ui.vite` entry in your [code.json](code-json.html) defines a **React + Vite
 
 | Field | Description |
 |:------|:------------|
-| `ui.vite.location` | Path to the Vite project root (must contain `package.json`). Defaults to `orig/ui`. Can be changed to `/your/location/for/ui` — run [Fix Paths](../control-panel/fix-paths.html) after updating. |
+| `ui.vite.location` | Path to the Vite project root (must contain `package.json`). Defaults to `orig/ui`. Can be changed to `/your/location/for/ui` — run [Fix Paths](../nar-actions/fix-paths.html) after updating. |
 | `ui.configDir.location` | Path to the UI configuration directory (contains `nn_env.json`). Defaults to `orig/ui_config`. Can be changed to `/your/location/for/ui_config`. |
 
 ---
