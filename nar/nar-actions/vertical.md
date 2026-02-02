@@ -31,7 +31,7 @@ Activating this vertical gives you:
 
 A more complete vertical with:
 - A **React + Vite** frontend for subscriptions, checkout, billing history, and admin management.
-- An **SBCS** (Subscription Billing and Customer Service) Lambda that processes Paddle webhooks, manages licenses, and handles payment logic.
+- An **SBCS** (Subscription and Billing Service) Lambda that processes Paddle webhooks, manages licenses, and handles payment logic.
 - A shared **auth** service for user authentication.
 
 ## Activating and Importing

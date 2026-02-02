@@ -8,45 +8,38 @@ nav_order: 0
 
 # Getting Started with React Auth Lambda
 
-This guide walks you through configuring the React Auth Lambda vertical after deploying it with Nar.
+Follow these steps in order. This vertical comes bundled with Nar — no separate download needed.
 
 ---
 
-## 1. Configure Authentication
+1. Open `<workspace>/<vertical>/nnet/services_config/nn_env.json`.
 
-The auth service uses Google OAuth for user sign-in. You need to provide Google OAuth credentials so your users can log in.
+2. Set a unique value for `JWT_SECRET`.
 
-1. Create OAuth credentials in the [Google Cloud Console](https://console.cloud.google.com/apis/credentials).
-2. Add `GOOGLE_CLIENT_ID` and `GOOGLE_CLIENT_SECRET` to your service config (`services_config/nn_env.json`).
-3. Set a unique `JWT_SECRET` for session tokens.
-4. Set the authorized redirect URI in Google Console.
+3. Go to the [Google Cloud Console](https://console.cloud.google.com/apis/credentials) and create an **OAuth 2.0 Client ID** (Web application).
 
-For full instructions, see the [Auth Service Setup Guide](/verticals/common/auth.html#setup).
+4. Copy the **Client ID** and **Client Secret** into `nn_env.json`:
+   ```json
+   {
+     "GOOGLE_CLIENT_ID": "your-client-id.apps.googleusercontent.com",
+     "GOOGLE_CLIENT_SECRET": "your-client-secret"
+   }
+   ```
 
----
+5. In Nar Actions, deploy the **auth** service.
 
-## 2. Deploy
+6. Copy the auth service URL from the deploy output. In the Google Cloud Console, add the **Authorized redirect URI**:
+   `https://<auth-service-url>/oauth/loggedin`
 
-From Nar Actions, deploy:
+7. In Nar Actions, deploy the **UI**.
 
-1. **auth** service — handles Google OAuth login.
-2. **UI** — the React frontend.
+8. Open your site and log in to verify everything works.
 
-After deploying, visit your site URL to verify login works.
-
----
-
-## 3. Customize
-
-This vertical is your starting point. The code lives at `{workspace}/{vertical}/ui/` — edit the React source files to build your application on top of the auth scaffold.
-
-See the [React UI guide](/verticals/ral/ui.html) for project structure and shared packages.
+9. Edit the React source files at `<workspace>/<vertical>/ui/` to build your application. See the [React UI guide](/verticals/ral/ui.html) for project structure.
 
 ---
 
-## Configuration Reference
-
-Your `services_config/nn_env.json` should contain:
+## Full nn_env.json reference
 
 ```json
 {
@@ -57,4 +50,6 @@ Your `services_config/nn_env.json` should contain:
 }
 ```
 
-For details on environment variables, see [Service Environment Variables](/nar/workspace/service-environment-variables.html).
+See [Service Environment Variables](/nar/workspace/service-environment-variables.html) for details.
+
+See [Auth Service Setup](/verticals/common/auth.html#setup) for more on Google OAuth configuration.

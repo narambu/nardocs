@@ -8,7 +8,7 @@ nav_order: 2
 
 # payments
 
-Used by **PPay vertical**. Provides billing pages and Paddle API client for subscriptions and one-time purchases.
+Used by the **Paddle Payment Integration** vertical. Provides billing pages and Paddle API client for subscriptions and one-time purchases.
 
 ---
 

@@ -8,79 +8,58 @@ nav_order: 0
 
 # Getting Started with Paddle Payment Integration
 
-This guide walks you through configuring the Paddle Payment Integration vertical after deploying it with Nar.
+Follow these steps in order after importing the vertical into your workspace.
 
 ---
 
-## 1. Configure Authentication
+1. Open `<workspace>/<vertical>/nnet/services_config/nn_env.json`.
 
-The auth service uses Google OAuth for user sign-in. You need to provide Google OAuth credentials so your users can log in.
+2. Set a unique value for `JWT_SECRET`.
 
-1. Create OAuth credentials in the [Google Cloud Console](https://console.cloud.google.com/apis/credentials).
-2. Add `GOOGLE_CLIENT_ID` and `GOOGLE_CLIENT_SECRET` to your service config (`services_config/nn_env.json`).
-3. Set a unique `JWT_SECRET` for session tokens.
-4. Set the authorized redirect URI in Google Console.
+3. Go to the [Google Cloud Console](https://console.cloud.google.com/apis/credentials) and create an **OAuth 2.0 Client ID** (Web application).
 
-For full instructions, see the [Auth Service Setup Guide](/verticals/common/auth.html#setup).
+4. Copy the **Client ID** and **Client Secret** into `nn_env.json`:
+   ```json
+   {
+     "GOOGLE_CLIENT_ID": "your-client-id.apps.googleusercontent.com",
+     "GOOGLE_CLIENT_SECRET": "your-client-secret"
+   }
+   ```
 
----
-
-## 2. Set Up Admin Access
-
-Admin access is required to configure Paddle credentials and manage products. Only emails listed in `admin_emails` are granted admin privileges.
-
-1. Open `services_config/nn_env.json`.
-2. Add your email address:
+5. Add your email to `admin_emails` so you can access the Admin panel:
    ```json
    {
      "admin_emails": "your-email@example.com"
    }
    ```
-3. Deploy the **sbcs** service from Nar Actions.
-4. Log in — the **Admin** link will appear in the navigation bar.
 
-See also: [How do I log in as admin?](/nar/faq/ppay/admin-login.html)
+6. In Nar Actions, deploy the **auth** service.
 
----
+7. In Nar Actions, deploy the **sbcs** service.
 
-## 3. Configure Paddle Keys
+8. Copy the auth service URL from the deploy output. In the Google Cloud Console, add the **Authorized redirect URI**:
+   `https://<auth-service-url>/oauth/loggedin`
 
-Paddle API credentials connect your deployment to your Paddle account. You configure them through the Admin panel in your deployed application.
+9. In Nar Actions, deploy the **UI**.
 
-1. Log in as an admin (see step 2 above).
-2. Go to **Admin** and click **Manage Products**.
-3. Select the **Credentials** tab.
-4. Enter your Paddle credentials:
-   - **API Key** — from your Paddle dashboard (Developer Tools > Authentication).
-   - **Client Token** — from Paddle (used for frontend checkout).
-   - **Webhook Secret** — from Paddle (Developer Tools > Notifications). Set up a webhook endpoint pointing to your sbcs service URL + `/webhook`.
+10. Open your site and log in. You should see the **Admin** link in the navigation bar.
 
-You can configure credentials separately for **Sandbox** and **Live** environments using the Environment dropdown.
+11. Go to **Admin** → **Manage Products** → **Credentials** tab.
 
----
+12. Enter your Paddle credentials:
+    - **API Key** — from your [Paddle dashboard](https://vendors.paddle.com/) (Developer Tools → Authentication).
+    - **Client Token** — from Paddle (used for frontend checkout).
+    - **Webhook Secret** — from Paddle (Developer Tools → Notifications). Set the webhook URL to your sbcs service URL + `/webhook`.
 
-## 4. Sync Products
+13. Use the **Environment** dropdown to configure credentials for **Sandbox** or **Live** separately.
 
-After entering credentials:
+14. Go to the **Sync** tab and sync your product catalog from Paddle.
 
-1. Go to the **Sync** tab and sync your product catalog from Paddle.
-2. Go to the **Classify** tab to review and configure which products are shown to users.
+15. Go to the **Classify** tab to review and select which products are shown to users.
 
 ---
 
-## 5. Deploy
-
-From Nar Actions, deploy:
-
-1. **auth** service — handles Google OAuth login.
-2. **sbcs** service — handles Paddle webhooks, billing, and licensing.
-3. **UI** — the React frontend.
-
----
-
-## Configuration Reference
-
-Your `services_config/nn_env.json` should contain:
+## Full nn_env.json reference
 
 ```json
 {
@@ -92,4 +71,6 @@ Your `services_config/nn_env.json` should contain:
 }
 ```
 
-For details on environment variables, see [Service Environment Variables](/nar/workspace/service-environment-variables.html).
+See [Service Environment Variables](/nar/workspace/service-environment-variables.html) for details.
+
+See [Auth Service Setup](/verticals/common/auth.html#setup) for more on Google OAuth configuration.

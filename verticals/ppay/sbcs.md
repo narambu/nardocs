@@ -8,7 +8,7 @@ nav_order: 2
 
 # SBCS Service
 
-The **Subscription Billing and Customer Service (SBCS)** is a Python Lambda that integrates with the Paddle payment gateway. It handles the backend logic for the Paddle Payment Integration vertical.
+The **Subscription and Billing Service (SBCS)** is a Python Lambda that integrates with the Paddle payment gateway. It handles the backend logic for the Paddle Payment Integration vertical.
 
 ## What It Does
 

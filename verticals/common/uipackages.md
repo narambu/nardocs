@@ -13,7 +13,7 @@ nav_order: 2
 Shared React packages imported by verticals via `vite.config.ts` path aliases. The same source code is duplicated to all verticals provided by Nar.
 
 - **[uicommon](/verticals/common/uicommon.html)** — Authentication, HTTP utilities, and theming. Used by all verticals.
-- **[payments](/verticals/common/payments.html)** — Billing pages and Paddle API client. Used by PPay.
+- **[payments](/verticals/common/payments.html)** — Billing pages and Paddle API client. Used by Paddle Payment Integration.
 
 ---
 
@@ -21,7 +21,7 @@ Shared React packages imported by verticals via `vite.config.ts` path aliases. T
 
 Each vertical configures path aliases in `vite.config.ts`:
 
-**RAL** — imports `uicommon` only:
+**React Auth Lambda** — imports `uicommon` only:
 
 ```typescript
 resolve: {
@@ -31,7 +31,7 @@ resolve: {
 }
 ```
 
-**PPay** — imports `uicommon` + `payments`:
+**Paddle Payment Integration** — imports `uicommon` + `payments`:
 
 ```typescript
 resolve: {
