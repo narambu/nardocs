@@ -14,3 +14,4 @@ Each composite below provisions and manages a specific set of AWS resources.
 |:----------|:----------------|
 | [Lambda + API Gateway](workspace/service-lambda.html) | Backend services as Lambda functions behind API Gateway. |
 | [CloudFront + S3](workspace/ui-vite.html) | Frontend as a Vite build to S3 behind CloudFront. |
+
