@@ -9,7 +9,7 @@ has_toc: false
 
 # Verticals
 
-A vertical is a complete application stack — frontend, backend services, and configuration — packaged for deployment to AWS via Nar.
+A vertical is a complete application stack — frontend, backend services, and configuration — packaged for deployment via Nar.
 
 ## Managing Verticals
 

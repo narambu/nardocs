@@ -34,7 +34,10 @@ nav_order: 0
 6. In Nar Actions, deploy the **Subscription and Billing** service.
 7. Copy the auth service URL from the deploy output.
 8. In Google Cloud Console, add the **Authorized redirect URI**:
-   `https://<auth-service-url>/oauth/loggedin`
+
+   ```
+   https://<auth-service-url>/oauth/loggedin
+   ```
 
 ## Deploy UI and Configure Paddle
 
@@ -46,8 +49,11 @@ nav_order: 0
     - **API Key** — from the [Paddle dashboard](https://vendors.paddle.com/) (Developer Tools > Authentication)
     - **Client Token** — from Paddle (used for frontend checkout)
     - **Webhook Secret** — from Paddle (Developer Tools > Notifications)
-13. Set the webhook URL to your Subscription and Billing service URL + `/webhook`:
-    `https://sbcs.us-east-1.{site}.{vertical}.narambu.com/webhook`
+13. In Paddle, set the webhook URL to your Subscription and Billing service endpoint:
+
+    ```
+    https://sbcs.us-east-1.{site}.{vertical}.narambu.com/webhook
+    ```
 14. Use the **Environment** dropdown to configure **Sandbox** or **Live** separately.
 
 ## Sync Product Catalog

@@ -34,7 +34,10 @@ This vertical comes bundled with Nar — no separate download needed.
 5. In Nar Actions, deploy the **Auth** service.
 6. Copy the auth service URL from the deploy output.
 7. In Google Cloud Console, add the **Authorized redirect URI**:
-   `https://<auth-service-url>/oauth/loggedin`
+
+   ```
+   https://<auth-service-url>/oauth/loggedin
+   ```
 
 ## Deploy UI
 

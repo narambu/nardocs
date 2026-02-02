@@ -1,38 +1,48 @@
 ---
 layout: default
-title: ui_vite
-parent: code.json
-grand_parent: Workspace
+title: "AWS: CloudFront + S3"
+parent: Composites
+grand_parent: Nar
 nav_order: 2
 ---
 
-# ui_vite
+# CloudFront + S3
+
+Configured as **`ui.vite`** in [code.json](code-json.html).
 
 The `ui.vite` entry in your [code.json](code-json.html) defines a **React + Vite** project that gets built locally and deployed to **S3** behind a **CloudFront** CDN.
 
 ---
 
-## Fields
+## AWS Architecture
 
-```json
-{
-  "ui": {
-    "vite": {
-      "name": "ui",
-      "location": "orig/ui"
-    },
-    "configDir": {
-      "name": "ui_config",
-      "location": "orig/ui_config"
-    }
-  }
-}
+Frontend assets are built locally and served globally through **CloudFront CDN** backed by an **S3** origin bucket.
+
+```
+User Browser
+    │
+    ▼
+CloudFront CDN (Edge Locations)
+    │
+    ▼
+S3 Bucket (Origin, via OAC)
 ```
 
-| Field | Description |
-|:------|:------------|
-| `ui.vite.location` | Path to the Vite project root (must contain `package.json`). Can be changed to point to an external directory — run [Fix Paths](../nar-actions/fix-paths.html) after updating. |
-| `ui.configDir.location` | Path to the UI configuration directory (contains `nn_env.json`). Can be changed to point to an external directory. |
+**How it works:**
+
+- When you click Deploy UI, Nar builds your React + Vite project and uploads the output to an S3 bucket.
+- **CloudFront** distributes the assets to edge locations worldwide for fast delivery.
+- **Origin Access Control (OAC)** ensures the S3 bucket is only accessible through CloudFront, not directly.
+- Cache invalidation runs automatically after each deployment so users see the latest version.
+- If you configure a [custom domain](domains-json.html), your site is accessible at:
+
+  ```
+  {site}.yourdomain.com
+  ```
+
+**AWS resources created:**
+
+S3 bucket, CloudFront distribution, Origin Access Control, and optionally Route 53 records + ACM certificates for custom domains.
 
 ---
 

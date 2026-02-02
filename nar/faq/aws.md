@@ -1,16 +1,18 @@
 ---
 layout: default
-title: Can I use my own Dockerfile?
+title: Composites
 parent: FAQ
 grand_parent: Nar
 nav_order: 1
 ---
 
-# Can I use my own Dockerfile for services?
+# Composites
 
-Yes. The [service_lambda](../workspace/service-lambda.html) composite deploys services as container images. Nar provides a [default Dockerfile](../workspace/default-dockerfile.html) for Python 3.13 Lambdas, but you can bring your own.
+## Can I use my own Dockerfile for services?
 
-## How to Use a Custom Dockerfile
+Yes. The [Lambda + API Gateway](../workspace/service-lambda.html) composite deploys services as container images. Nar provides a [default Dockerfile](../workspace/default-dockerfile.html) for Python 3.13 Lambdas, but you can bring your own.
+
+### How to Use a Custom Dockerfile
 
 Add a `dockerfile` field to your service entry in [code.json](../workspace/code-json.html):
 
@@ -22,7 +24,7 @@ Add a `dockerfile` field to your service entry in [code.json](../workspace/code-
 }
 ```
 
-## Why Bring Your Own Dockerfile
+### Why Bring Your Own Dockerfile
 
 - **Different language** — Use Node.js, Go, Rust, or any language that supports the AWS Lambda runtime interface. The deploy pipeline (CodeBuild, ECR, Lambda) is language-agnostic.
 - **Different Python version** — Pin to a specific Python version instead of the default 3.13.
@@ -30,7 +32,7 @@ Add a `dockerfile` field to your service entry in [code.json](../workspace/code-
 - **Binary compilation** — Build native extensions or compiled binaries that require a specific build environment.
 - **Custom project layout** — If your service doesn't follow the default `src/` and `scripts/requirements.txt` conventions.
 
-## What Your Custom Dockerfile Receives
+### What Your Custom Dockerfile Receives
 
 When Nar deploys a service, it packages your source code, shared libraries, and generated files into a zip and sends it to CodeBuild. CodeBuild extracts the zip and runs `docker build` with your Dockerfile. The build context looks like this:
 

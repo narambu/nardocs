@@ -72,10 +72,16 @@ Add the credentials to the service environment config. The exact path depends on
 In the Google Cloud Console, add the **Authorized redirect URI**:
 
 - **With a custom domain:**
-  `https://auth.{region}.{site}.{vertical}.yourdomain.com/oauth/loggedin`
+
+  ```
+  https://auth.{region}.{site}.{vertical}.yourdomain.com/oauth/loggedin
+  ```
 
 - **Without a custom domain:**
-  `https://{api-id}.execute-api.{region}.amazonaws.com/oauth/loggedin`
+
+  ```
+  https://{api-id}.execute-api.{region}.amazonaws.com/oauth/loggedin
+  ```
 
 {: .note }
 After deploying the auth service for the first time, check the terminal output for the exact API Gateway URL. Append `/oauth/loggedin` to get the redirect URI.
@@ -83,5 +89,5 @@ After deploying the auth service for the first time, check the terminal output f
 ### 4. Deploy
 
 In Nar Actions:
-1. Select **auth** from the Service dropdown.
+1. Select **Auth** from the Service dropdown.
 2. Click **Deploy Service**.

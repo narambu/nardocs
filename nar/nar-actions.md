@@ -9,7 +9,7 @@ has_toc: false
 
 # Nar Actions
 
-Nar Actions is Nar's visual interface for managing your AWS deployments. It lets you provision infrastructure, deploy code, and manage multiple environments without touching the AWS console. Every action available in Nar Actions can also be run via the CLI for scripted or pipeline-based workflows.
+Nar Actions is the visual interface for managing your deployments. It lets you provision infrastructure, deploy code, and manage multiple environments — all without touching cloud consoles. Every action available in Nar Actions can also be run via the CLI for scripted or pipeline-based workflows.
 
 ![Nar Actions](../assets/images/nar-actions-expanded.png)
 

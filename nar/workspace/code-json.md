@@ -9,7 +9,7 @@ has_children: true
 
 # code.json
 
-The `code.json` file tells Nar what to deploy. It defines two composites — **service_lambda** for backend services and **ui_vite** for the frontend — along with their shared libraries and configuration directories.
+`code.json` is the high-level configuration that connects your source code to [composites](../aws-composites.html). It tells Nar where your code lives and which composite deploys it.
 
 **Location:** `{vertical}/nnet/code.json`
 
@@ -58,7 +58,40 @@ The `code.json` file tells Nar what to deploy. It defines two composites — **s
 }
 ```
 
-All paths are relative to the vertical folder. If you want to deploy code from an existing repo instead of the bundled vertical source, change any `location` to point there. For example, to use your own UI project:
+In this example:
+
+- The `auth` and `sbcs` codebases are mapped to [**`services.lambda`**](service-lambda.html) — each becomes a Lambda function behind API Gateway.
+- The `ui` codebase is mapped to [**`ui.vite`**](ui-vite.html) — it gets built and deployed to CloudFront + S3.
+- `common` is a shared library bundled with every service at deploy time.
+
+---
+
+## services.lambda
+
+| Field | Description |
+|:------|:------------|
+| `name` | Service identifier (e.g., `auth`, `sbcs`). Used in resource naming, Deploy Service dropdown, and URL generation. |
+| `location` | Path to the service source code, relative to the vertical folder. |
+| `dockerfile` | *(Optional)* Path to a custom Dockerfile. Defaults to Nar's built-in Dockerfile for Python Lambdas. |
+
+### Shared Libraries
+
+The `sharedLibs` array defines libraries that get bundled with **every** service during deployment. Each shared library is copied into the deployment package alongside the service code.
+
+---
+
+## ui.vite
+
+| Field | Description |
+|:------|:------------|
+| `ui.vite.location` | Path to the Vite project root (must contain `package.json`). |
+| `ui.configDir.location` | Path to the UI configuration directory (contains `nn_env.json`). |
+
+---
+
+## Custom Paths
+
+All paths are relative to the vertical folder. To deploy code from an existing repo instead of the bundled vertical source, change any `location` to point there. For example, to use your own UI project:
 
 ```json
 "vite": {
@@ -68,12 +101,3 @@ All paths are relative to the vertical folder. If you want to deploy code from a
 ```
 
 After updating paths, run [Fix Paths](../nar-actions/fix-paths.html) to apply the changes.
-
----
-
-## Supported Composites
-
-As of writing, Nar supports the following composites:
-
-- **[service_lambda](service-lambda.html)** — Backend services deployed as Lambda functions behind API Gateway.
-- **[ui_vite](ui-vite.html)** — Frontend deployed as a Vite build to S3 behind CloudFront.

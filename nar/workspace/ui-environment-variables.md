@@ -1,12 +1,12 @@
 ---
 layout: default
-title: ui_vite
+title: UI
 parent: Environment Variables
 grand_parent: code.json
 nav_order: 2
 ---
 
-# ui_vite Environment Variables
+# UI Environment Variables
 
 Nar generates `VITE_` environment variables available to your React code at build time via `import.meta.env`.
 
@@ -21,7 +21,13 @@ All JSON values are converted to strings: arrays become comma-separated, boolean
 | `VITE_{SERVICE}_SERVICE_URL` | `https://auth.us-east-1.dev.ral.narambu.com` | URL of each service defined in `services.lambda[]`. |
 | `VITE_HOME_URL` | `https://daw8sipu4p6qe.cloudfront.net` | The CloudFront distribution domain. |
 
-With a [custom domain](domains-json.html), `VITE_{SERVICE}_SERVICE_URL` values follow the pattern `https://{service}.{region}.{site}.{vertical}.{domain}`. Without one, they contain the raw API Gateway endpoint URL.
+With a [custom domain](domains-json.html), `VITE_{SERVICE}_SERVICE_URL` values follow this pattern:
+
+```
+https://{service}.{region}.{site}.{vertical}.{domain}
+```
+
+Without a custom domain, they contain the raw API Gateway endpoint URL.
 
 Any values you define in `nn_env.json` are also injected, automatically prefixed with `VITE_`.
 

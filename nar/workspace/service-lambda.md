@@ -1,67 +1,54 @@
 ---
 layout: default
-title: service_lambda
-parent: code.json
-grand_parent: Workspace
+title: "AWS: Lambda + API Gateway"
+parent: Composites
+grand_parent: Nar
 nav_order: 1
 ---
 
-# service_lambda
+# Lambda + API Gateway
 
-Each entry in `services.lambda[]` of your [code.json](code-json.html) becomes a standalone **Lambda function** behind an **API Gateway** endpoint. Services are packaged as container images. The default Dockerfile supports Python 3.13. You can [customize Dockerfiles](../faq/dockerfile-faq.html) by providing a custom path.
+Configured as **`services.lambda`** in [code.json](code-json.html).
+
+Each entry in `services.lambda[]` becomes a standalone **Lambda function** behind an **API Gateway** endpoint. Services are packaged as container images. The default Dockerfile supports Python 3.13. You can [customize Dockerfiles](../faq/aws.html) by providing a custom path.
 
 {: .note }
 VPC support for Lambda functions is coming soon.
 
 ---
 
-## Fields
+## AWS Architecture
 
-```json
-{
-  "services": {
-    "lambda": [
-      {
-        "name": "auth",
-        "location": "orig/auth"
-      }
-    ],
-    "sharedLibs": [
-      {
-        "name": "common",
-        "location": "orig/common"
-      }
-    ],
-    "configDir": {
-      "name": "services_config",
-      "location": "orig/services_config"
-    }
-  }
-}
+Backend services run as **AWS Lambda** functions fronted by **HTTP API Gateway** endpoints.
+
+```
+Client Request
+    │
+    ▼
+API Gateway (HTTP)
+    │
+    ▼
+Lambda Function (Container Image)
+    │
+    ├── Reads/writes to S3
+    └── CloudWatch Logs
 ```
 
-| Field | Description |
-|:------|:------------|
-| `name` | Service identifier (e.g., `auth`, `sbcs`). Used in resource naming, Deploy Service dropdown, and URL generation. |
-| `location` | Path to the service source code, relative to the vertical folder. Can be changed to point to an external directory — run [Fix Paths](../nar-actions/fix-paths.html) after updating. |
-| `dockerfile` | *(Optional)* Path to a custom Dockerfile. Defaults to Nar's built-in Dockerfile for Python Lambdas. Can be changed to `/your/location/for/Dockerfile`. |
+**How it works:**
 
----
+- Each service defined in your [code.json](code-json.html) becomes its own Lambda function.
+- Lambda functions run as container images stored in **ECR** (Elastic Container Registry).
+- **CodeBuild** handles packaging and deploying new versions when you click Deploy Service.
+- API Gateway provides a public HTTPS endpoint for each service.
+- If you configure a [custom domain](domains-json.html), each service gets its own subdomain:
 
-## Shared Libraries
+  ```
+  {service}.{region}.{site}.{vertical}.yourdomain.com
+  ```
 
-The `sharedLibs` array defines Python libraries that get bundled with **every** service during deployment.
+**AWS resources created:**
 
-```json
-"sharedLibs": [
-  {
-    "name": "common",
-    "location": "orig/common"
-  }
-]
-```
-
-Each shared library is copied into the deployment package alongside the service code.
+Lambda, API Gateway (HTTP), ECR repository, CodeBuild project, IAM roles, CloudWatch log groups, and optionally Route 53 records + ACM certificates for custom domains.
 
 ---
 
@@ -69,7 +56,7 @@ Each shared library is copied into the deployment package alongside the service 
 
 The [default Dockerfile](default-dockerfile.html) expects Python source code in `{service}/src/` and pip dependencies in `{service}/scripts/requirements.txt`. It supports **Python 3.13**.
 
-To use a different Python version, add system packages, or use a non-Python language, provide a [custom Dockerfile](../faq/dockerfile-faq.html).
+To use a different Python version, add system packages, or use a non-Python language, provide a [custom Dockerfile](../faq/aws.html).
 
 ---
 

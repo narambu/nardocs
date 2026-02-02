@@ -34,7 +34,7 @@ During the build, Nar:
 3. Copies all `src/` directories to the Lambda task root (`/var/task/`)
 4. Sets the entrypoint with Nar-generated [environment variables](service-environment-variables.html)
 
-To use a different Python version, add system packages, or use a non-Python language, provide a [custom Dockerfile](../faq/dockerfile-faq.html).
+To use a different Python version, add system packages, or use a non-Python language, provide a [custom Dockerfile](../faq/aws.html).
 
 <details markdown="block">
 <summary>View the default Dockerfile</summary>

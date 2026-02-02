@@ -22,5 +22,5 @@ A complete payment integration vertical using Paddle for subscriptions, one-time
 ---
 
 **FAQ:**
-- [I edited the price in Paddle but do not see it reflected in users billing options](/nar/faq/ppay/price-update.html)
-- [How do I log in as admin?](/nar/faq/ppay/admin-login.html)
+- [I edited the price in Paddle but do not see it reflected in users billing options](/nar/faq/ppay.html#i-edited-the-price-in-paddle-but-do-not-see-it-reflected-in-users-billing-options)
+- [How do I log in as admin?](/nar/faq/ppay.html#how-do-i-log-in-as-admin)
