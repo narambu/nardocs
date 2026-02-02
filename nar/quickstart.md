@@ -13,7 +13,7 @@ Deploy a React application with Google OAuth to your AWS account.
 
 ---
 
-1. Open the Nar app.
+1. Open the [Nar app](https://nar.narambu.com/nar).
 2. Click **Open** and select an empty folder. This becomes your workspace.
 3. In the **Vertical** dropdown, select **React Auth Lambda**.
 4. Expand **Context** and click **Init**. Answer **Y** to prompts.
