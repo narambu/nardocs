@@ -1,8 +1,8 @@
 ---
 layout: default
 title: CloudFront + S3
-parent: Composites
-grand_parent: Nar
+parent: AWS
+grand_parent: Composites
 nav_order: 2
 ---
 
