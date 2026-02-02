@@ -10,15 +10,6 @@ nav_order: 7
 
 A **Vertical** is a packaged application stack — code, configuration, and infrastructure definitions — distributed as a `.nar` file (a zip archive).
 
-## What's Inside a Vertical
-
-| Component | Description |
-|:----------|:------------|
-| `vertical_ui/` | Frontend source code (React + Vite). |
-| `vertical_service/` | Backend service code (Python Lambda functions). |
-| `vertical_shared/` | Shared libraries bundled with every service. |
-| `vertical_conf/` | Configuration templates (environment variables, service config). |
-| `resources/` | Nar metadata — default site definitions, display name, code mappings. |
 
 ## Example: React Auth Lambda
 
