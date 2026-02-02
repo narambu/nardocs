@@ -110,5 +110,5 @@ SBCS requires Paddle API credentials. Configure them via the Admin panel at `/ad
 ## Redeployment
 
 After updating the billing logic:
-1. Select **sbcs** from the Service dropdown in the Control Panel.
+1. Select **sbcs** from the Service dropdown in Nar Actions.
 2. Click **Deploy Service**.

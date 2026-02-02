@@ -36,7 +36,7 @@ Admin access is required to configure Paddle credentials and manage products. On
      "admin_emails": "your-email@example.com"
    }
    ```
-3. Deploy the **sbcs** service from the Control Panel.
+3. Deploy the **sbcs** service from Nar Actions.
 4. Log in — the **Admin** link will appear in the navigation bar.
 
 See also: [How do I log in as admin?](/nar/faq/ppay/admin-login.html)
@@ -70,7 +70,7 @@ After entering credentials:
 
 ## 5. Deploy
 
-From the Nar Control Panel, deploy:
+From Nar Actions, deploy:
 
 1. **auth** service — handles Google OAuth login.
 2. **sbcs** service — handles Paddle webhooks, billing, and licensing.

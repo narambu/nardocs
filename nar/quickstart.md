@@ -92,5 +92,5 @@ When the App Layer setup completes, the terminal displays your deployment URLs. 
 
 - **Custom Domain**: Edit [domain.json](workspace/domains-json.html) to use your own domain.
 - **Apex Domain**: Configure [apex.json](workspace/apex-json.html) to serve from the root domain.
-- **Deploy Changes**: After editing the frontend code, click **[Deploy UI](../verticals/ral/ui.html#redeployment)** in the Control Panel.
+- **Deploy Changes**: After editing the frontend code, click **[Deploy UI](../verticals/ral/ui.html#redeployment)** in Nar Actions.
 - **Configure OAuth**: Follow the [Auth Service Guide](/verticals/common/auth.html) to set up Google credentials.

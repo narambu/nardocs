@@ -19,7 +19,7 @@ Admin access is controlled by the `nn_env.json` configuration file in your servi
      "admin_emails": ["your-email@example.com"]
    }
    ```
-3. **Redeploy the service** — select **sbcs** from the Service dropdown in the Control Panel and click **Deploy Service**.
+3. **Redeploy the service** — select **sbcs** from the Service dropdown in Nar Actions and click **Deploy Service**.
 4. Log in to your application using the email address you added.
 
 Once logged in with an admin email, the **Admin** link will appear in the navigation bar.

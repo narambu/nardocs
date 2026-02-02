@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Tools
-parent: Control Panel
+parent: Nar Actions
 grand_parent: Nar
 nav_order: 6
 ---

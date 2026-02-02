@@ -27,7 +27,7 @@ For full instructions, see the [Auth Service Setup Guide](/verticals/common/auth
 
 ## 2. Deploy
 
-From the Nar Control Panel, deploy:
+From Nar Actions, deploy:
 
 1. **auth** service — handles Google OAuth login.
 2. **UI** — the React frontend.

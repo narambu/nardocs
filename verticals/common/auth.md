@@ -80,6 +80,6 @@ After deploying the auth service for the first time, check the terminal output f
 
 ### 4. Deploy
 
-In the Control Panel:
+In Nar Actions:
 1. Select **auth** from the Service dropdown.
 2. Click **Deploy Service**.

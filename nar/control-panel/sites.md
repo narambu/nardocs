@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Sites
-parent: Control Panel
+parent: Nar Actions
 grand_parent: Nar
 nav_order: 2
 ---
@@ -16,7 +16,7 @@ Click the **+ (Plus)** icon, provide a name (e.g., `staging`) and select an AWS 
 
 ## Switching Between Sites
 
-Use the dropdown to select the active site. All actions in the Control Panel — Setup, Deploy, Delete — apply only to the currently selected site.
+Use the dropdown to select the active site. All actions in Nar Actions — Setup, Deploy, Delete — apply only to the currently selected site.
 
 ## How Sites Are Isolated
 

@@ -61,5 +61,5 @@ The code lives at `{workspace}/{vertical}/ui/`. Edit the source files to build y
 ## Redeployment
 
 After making changes:
-1. Click **Deploy UI** in the Control Panel.
+1. Click **Deploy UI** in Nar Actions.
 2. Nar builds the Vite project, uploads assets to S3, and invalidates the CloudFront cache.

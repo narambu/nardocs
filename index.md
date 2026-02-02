@@ -22,7 +22,7 @@ has_toc: false
 
 | Feature | Description |
 |:--------|:------------|
-| **Control Panel** | Visual interface for managing sites, environments, and deployments. |
+| **Nar Actions** | Visual interface for managing sites, environments, and deployments. |
 | **CLI** | Run `nar.sh` with `--auto-approve` for scripted or pipeline-based deployments. |
 | **Verticals** | Ready-to-deploy application stacks — like Google OAuth or Paddle-based subscription billing — that you can activate and customize. |
 | **Infrastructure Management** | Provisions and connects the AWS resources your application needs: Lambda, API Gateway, CloudFront, S3, ECR, CodeBuild, IAM roles, and more. |

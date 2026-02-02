@@ -15,7 +15,7 @@ Your workspace is the local folder where Nar manages your project code and confi
 
 When you first launch Nar, you'll be prompted to select a workspace folder. This is where your vertical projects and their `nnet/` configuration directories will live.
 
-![Initial Control Panel](../assets/images/control-panel-initial.png)
+![Initial Nar Actions](../assets/images/control-panel-initial.png)
 
 ## Key Directories
 
