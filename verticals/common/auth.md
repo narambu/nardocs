@@ -34,6 +34,8 @@ The auth service is a Python Lambda that handles Google OAuth authentication. Th
 
 ## Project Structure
 
+**Location:** `{vertical}/auth/`
+
 ```text
 auth/src/
 ├── lambda_handler.py       # Entry point + routing

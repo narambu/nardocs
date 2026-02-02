@@ -21,6 +21,8 @@ The Paddle Payment Integration vertical includes a React frontend for managing s
 
 ## Project Structure
 
+**Location:** `{vertical}/ui/`
+
 ```text
 ui/src/
 ├── App.tsx              # Router with protected routes

@@ -82,6 +82,8 @@ Admin routes require the provider path prefix: `/paddle/{sandbox|live}`.
 
 ## Project Structure
 
+**Location:** `{vertical}/sbcs/`
+
 ```text
 sbcs/src/
 ├── lambda_handler.py          # Entry point + routing

@@ -14,6 +14,8 @@ Used by the **Paddle Payment Integration** vertical. Provides billing pages and 
 
 ## Project Structure
 
+Resolved via the `nnet-payments` alias in `{workspace}/{vertical}/ui/vite.config.ts`.
+
 ```text
 payments/
 ├── pages/Payment/

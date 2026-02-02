@@ -29,7 +29,7 @@ Any values you define in `nn_env.json` are also injected as environment variable
 
 ## nn_env.json — Global Config
 
-`services_config/nn_env.json` applies to **all** services.
+`{vertical}/services_config/nn_env.json` applies to **all** services.
 
 Example:
 
@@ -46,7 +46,7 @@ Example:
 
 ## nn_env.json — Per-Service Config
 
-Each service can have its own `{service}/config/nn_env.json`. These values override the global config for that service only.
+Each service can have its own `{vertical}/{service}/config/nn_env.json`. These values override the global config for that service only.
 
 ---
 
@@ -56,8 +56,8 @@ When the same key appears in multiple sources, the highest-priority source wins:
 
 | Priority | Source | Scope |
 |:---------|:-------|:------|
-| 1 (highest) | `{service}/config/nn_env.json` | Per-service |
-| 2 | `services_config/nn_env.json` | All services |
+| 1 (highest) | `{vertical}/{service}/config/nn_env.json` | Per-service |
+| 2 | `{vertical}/services_config/nn_env.json` | All services |
 | 3 (lowest) | Nar-provided | Buckets, service URLs, region, site |
 
 ---

@@ -29,7 +29,7 @@ Any values you define in `nn_env.json` are also injected, automatically prefixed
 
 ## nn_env.json — UI Config
 
-`ui_config/nn_env.json` defines additional environment variables for the UI.
+`{vertical}/ui_config/nn_env.json` defines additional environment variables for the UI.
 
 Example:
 
@@ -53,7 +53,7 @@ VITE_FEATURE_FLAGS=dark_mode,notifications
 
 | Priority | Source | Description |
 |:---------|:-------|:------------|
-| 1 (highest) | `ui_config/nn_env.json` | UI config |
+| 1 (highest) | `{vertical}/ui_config/nn_env.json` | UI config |
 | 2 (lowest) | Nar-provided | Service URLs and CloudFront domain |
 
 ---

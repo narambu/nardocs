@@ -12,7 +12,7 @@ A **Site** is an isolated deployment of your application — typically represent
 
 ## Creating a Site
 
-Click the **+ (Plus)** icon, provide a name (e.g., `staging`) and select an AWS region (e.g., `us-east-1`). This creates a site configuration file at `nnet/site/{name}_{region}.json`.
+Click the **+ (Plus)** icon, provide a name (e.g., `staging`) and select an AWS region (e.g., `us-east-1`). This creates a site configuration file at `{vertical}/nnet/site/{name}_{region}.json`.
 
 ## Switching Between Sites
 

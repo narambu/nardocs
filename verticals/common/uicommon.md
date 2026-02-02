@@ -14,6 +14,8 @@ Used by **all verticals**. Provides authentication, HTTP utilities, and theming.
 
 ## Project Structure
 
+Resolved via the `nnet-uicommon` alias in `{workspace}/{vertical}/ui/vite.config.ts`.
+
 ```text
 uicommon/
 ├── auth/

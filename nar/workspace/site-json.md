@@ -8,7 +8,7 @@ nav_order: 8
 
 # site/*.json
 
-Each file in the `nnet/site/` directory represents a deployable site and region combination.
+Each file in the `{vertical}/nnet/site/` directory represents a deployable site and region combination.
 
 **Location:** `{vertical}/nnet/site/{site}_{region}.json`
 
@@ -19,7 +19,7 @@ Each file in the `nnet/site/` directory represents a deployable site and region 
 A vertical with two sites:
 
 ```text
-nnet/
+{vertical}/nnet/
 └── site/
     ├── dev_us-east-1.json
     └── prod_us-east-1.json
@@ -52,4 +52,4 @@ The site name and region are derived from the filename — the file contents are
 
 You can create sites either by:
 - Clicking the **+ (Plus)** icon in the Nar Actions [Sites](../../nar/nar-actions/sites.html) section.
-- Manually creating an empty JSON file in `nnet/site/` with the correct naming format.
+- Manually creating an empty JSON file in `{vertical}/nnet/site/` with the correct naming format.

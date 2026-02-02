@@ -12,7 +12,7 @@ Admin access is controlled by the `nn_env.json` configuration file in your servi
 
 ## Steps
 
-1. Open your service configuration file at `services/config/nn_env.json`.
+1. Open your service configuration file at `{vertical}/services_config/nn_env.json`.
 2. Add your email address to the `admin_emails` list:
    ```json
    {

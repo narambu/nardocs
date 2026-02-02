@@ -20,6 +20,8 @@ The React Auth Lambda vertical includes a frontend built with React 19 and Vite,
 
 ## Project Structure
 
+**Location:** `{vertical}/ui/`
+
 ```text
 ui/src/
 ├── App.tsx              # Router: /, /versions
