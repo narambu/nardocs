@@ -1,4 +1,4 @@
-theme: just-the-docs
+remote_theme: just-the-docs/just-the-docs
 
 title: Nar Docs
 description: Documentation for Nar
@@ -21,4 +21,5 @@ footer_content: ""
 
 ga_tracking: false
 
-plugins: []
+plugins:
+  - jekyll-remote-theme
