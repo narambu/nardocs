@@ -12,7 +12,7 @@ A **Site** is an isolated deployment of your application — typically represent
 
 ## Creating a Site
 
-Click the **+ (Plus)** icon, provide a name (e.g., `staging`) and select an AWS region (e.g., `us-east-1`). This creates a site configuration file at `{vertical}/nnet/site/{name}_{region}.json`.
+Click the **+ (Plus)** icon, provide a name (e.g., `staging`) and select a region (e.g., `us-east-1`). This creates a site configuration file at `{vertical}/nnet/site/{name}_{region}.json`.
 
 ## Switching Between Sites
 
@@ -20,4 +20,4 @@ Use the dropdown to select the active site. All actions in Nar Actions — Setup
 
 ## How Sites Are Isolated
 
-Each site gets its own independent set of AWS resources: separate S3 buckets, separate Lambda functions, separate CloudFront distribution. This means you can deploy and test in `dev` without affecting `prod`.
+Each site gets its own independent set of resources — separate storage, separate services, separate CDN. This means you can deploy and test in `dev` without affecting `prod`.

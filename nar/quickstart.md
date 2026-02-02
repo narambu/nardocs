@@ -20,7 +20,7 @@ Deploy a React application with Google OAuth to your AWS account.
 5. Confirm `dev` appears in the **Site** dropdown.
 6. Expand **Data Layer** and click **Setup**. Answer **Y** to prompts.
 7. Expand **App Layer** and click **Setup**. Answer **Y** to prompts.
-8. Open the CloudFront URL from the terminal output. Your React app is live.
+8. Open the URL from the terminal output. Your React app is live.
 
 ---
 

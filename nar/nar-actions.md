@@ -17,10 +17,10 @@ Nar Actions is the visual interface for managing your deployments. It lets you p
 
 The typical deployment flow through Nar Actions:
 
-1. **[Context (Init)](nar-actions/init.html)** — One-time setup: create IAM role and state bucket in your AWS account.
+1. **[Context (Init)](nar-actions/init.html)** — One-time setup: create a role and state storage in your cloud account.
 2. **[Sites](nar-actions/sites.html)** — Create and switch between environments (dev, staging, prod).
-3. **[Data Layer](nar-actions/data-layer.html)** — Provision S3 storage buckets.
-4. **[App Layer](nar-actions/app-layer.html)** — Provision compute resources (Lambda, API Gateway, CloudFront) and deploy your code.
+3. **[Data Layer](nar-actions/data-layer.html)** — Provision storage buckets.
+4. **[App Layer](nar-actions/app-layer.html)** — Provision [composites](aws-composites.html) and deploy your code.
 
 ## Maintenance
 

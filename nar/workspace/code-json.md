@@ -60,15 +60,17 @@ has_children: true
 
 In this example:
 
-- The `auth` and `sbcs` codebases are mapped to [**`services.lambda`**](service-lambda.html) — each becomes a Lambda function behind API Gateway.
-- The `ui` codebase is mapped to [**`ui.vite`**](ui-vite.html) — it gets built and deployed to CloudFront + S3.
+- The `auth` and `sbcs` codebases are mapped to **`services.lambda`** — each is deployed as a serverless function.
+- The `ui` codebase is mapped to **`ui.vite`** — a Vite-built frontend deployed to a CDN.
 - `common` is a shared library bundled with every service at deploy time.
 
 ---
 
 ## services.lambda
 
-Deploys to the [Lambda + API Gateway](service-lambda.html) composite.
+Defines serverless backend services. Each entry becomes an independently deployable function with its own API endpoint.
+
+By default, deploys to the [Lambda + API Gateway](service-lambda.html) composite.
 
 | Field | Description |
 |:------|:------------|
@@ -84,7 +86,9 @@ The `sharedLibs` array defines libraries that get bundled with **every** service
 
 ## ui.vite
 
-Deploys to the [CloudFront + S3](ui-vite.html) composite.
+Defines a Vite-built frontend application.
+
+By default, deploys to the [CloudFront + S3](ui-vite.html) composite.
 
 | Field | Description |
 |:------|:------------|

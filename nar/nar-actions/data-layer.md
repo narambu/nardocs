@@ -12,7 +12,7 @@ The Data Layer provisions the infrastructure your application uses for persisten
 
 ## Setup
 
-Clicking **Setup** creates the Data Layer for the selected site. Resources in this layer are **protected** — S3 buckets have versioning enabled and `force_destroy` disabled, meaning they survive App Layer deletion and cannot be accidentally removed with data still inside.
+Clicking **Setup** creates the Data Layer for the selected site. Resources in this layer are **protected** — buckets have versioning enabled and force-destroy disabled, meaning they survive App Layer deletion and cannot be accidentally removed with data still inside.
 
 You typically run this once per site.
 
@@ -23,4 +23,4 @@ You typically run this once per site.
 
 ## Relationship to the App Layer
 
-The App Layer references the Data Layer's state to discover bucket names and pass them as environment variables to your Lambda functions. This means you must set up the Data Layer **before** the App Layer.
+The App Layer references the Data Layer's state to discover bucket names and pass them as environment variables to your services. This means you must set up the Data Layer **before** the App Layer.
