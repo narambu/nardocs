@@ -38,7 +38,7 @@ When you click **Deploy UI**, Nar:
 
 Updates a specific backend Lambda function.
 
-1. Select the service (e.g., `auth`, `sbcs`) from the dropdown.
+1. Select the service (e.g., **Auth**, **Subscription and Billing**) from the dropdown.
 2. Click **Deploy Service**.
 
 Nar packages the service code along with shared libraries, pushes a container image to ECR, and triggers a CodeBuild job to update the Lambda function.

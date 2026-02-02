@@ -6,7 +6,7 @@ grand_parent: Verticals
 nav_order: 1
 ---
 
-# React UI (RAL)
+# React UI
 
 The React Auth Lambda vertical includes a frontend built with React 19 and Vite, served globally via CloudFront. [nar.narambu.com](https://nar.narambu.com) is built using Nar itself, and some of the code packaged in this vertical is also used by that website — you can check out the authentication flow there.
 
@@ -38,7 +38,7 @@ ui/src/
 
 ## Shared Packages
 
-RAL imports [uicommon](/verticals/common/uicommon.html) for authentication and utilities. The alias is configured in `vite.config.ts`:
+This vertical imports [uicommon](/verticals/common/uicommon.html) for authentication and utilities. The alias is configured in `vite.config.ts`:
 
 ```typescript
 resolve: {

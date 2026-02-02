@@ -13,11 +13,11 @@ A Nar workspace can contain multiple verticals, each in its own sub-folder.
 ```text
 {workspace}/
 ├── ral/                            # React Auth Lambda vertical
-│   ├── auth/                       # → orig/auth (symlink)
-│   ├── common/                     # → orig/common (symlink)
-│   ├── services_config/            # → orig/services_config (symlink)
-│   ├── ui/                         # → orig/ui (symlink)
-│   ├── ui_config/                  # → orig/ui_config (symlink)
+│   ├── auth/                       # Auth service source code
+│   ├── common/                     # Shared Python libraries
+│   ├── services_config/            # Service environment variables (nn_env.json)
+│   ├── ui/                         # React + Vite frontend source
+│   ├── ui_config/                  # UI environment variables (nn_env.json)
 │   ├── nnet/                       # Your configuration (preserved across updates)
 │   │   ├── code.json
 │   │   ├── domain.json
@@ -26,21 +26,18 @@ A Nar workspace can contain multiple verticals, each in its own sub-folder.
 │   │   ├── cors.json
 │   │   ├── byv/
 │   │   └── site/
-│   ├── orig/                       # Source code (refreshed on import/activate)
-│   └── backup/                     # Timestamped backups of orig/ before updates
-└── ppay/                           # Another vertical
+│   └── backup/                     # Timestamped backups before updates
+└── ppay/                           # Paddle Payment Integration vertical
     ├── auth/
     ├── common/
     ├── sbcs/
     ├── services_config/
     ├── ui/
     ├── ui_config/
-    ├── nnet/
-    ├── orig/
-    └── backup/
+    └── nnet/
 ```
 
-Nar creates symlinks at the vertical root that point into `orig/`. Use the symlink names (e.g., `{workspace}/{vertical}/auth/`, `{workspace}/{vertical}/services_config/`) when navigating your code.
+Use the directory names shown above (e.g., `{workspace}/{vertical}/auth/`, `{workspace}/{vertical}/ui/`) when navigating your code.
 
 ## Key Directories
 
@@ -49,4 +46,3 @@ Nar creates symlinks at the vertical root that point into `orig/`. Use the symli
 | `nnet/` | Your configuration — tells Nar what to deploy and how. Preserved across updates. |
 | `services_config/` | Global service environment variables (`nn_env.json`). |
 | `ui_config/` | UI environment variables (`nn_env.json`). |
-| `orig/` | Source code — refreshed on import/activate. Accessed via symlinks above. |

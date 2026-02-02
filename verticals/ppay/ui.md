@@ -6,7 +6,7 @@ grand_parent: Verticals
 nav_order: 1
 ---
 
-# Payments UI (PPay)
+# Payments UI
 
 The Paddle Payment Integration vertical includes a React frontend for managing subscriptions, checkout flows, and billing. [nar.narambu.com](https://nar.narambu.com) is built using Nar itself, and some of the code packaged in this vertical is also used by that website — you can check out the authentication and payments flow there.
 
@@ -55,7 +55,7 @@ Most pages come from the shared [payments](/verticals/common/payments.html) pack
 
 ## Shared Packages
 
-PPay imports both [uicommon](/verticals/common/uicommon.html) and [payments](/verticals/common/payments.html). The aliases are configured in `vite.config.ts`:
+This vertical imports both [uicommon](/verticals/common/uicommon.html) and [payments](/verticals/common/payments.html). The aliases are configured in `vite.config.ts`:
 
 ```typescript
 resolve: {

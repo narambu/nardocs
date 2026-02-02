@@ -1,14 +1,14 @@
 ---
 layout: default
-title: SBCS Service
+title: Subscription and Billing Service
 parent: Paddle Payment Integration
 grand_parent: Verticals
 nav_order: 2
 ---
 
-# SBCS Service
+# Subscription and Billing Service
 
-The **Subscription and Billing Service (SBCS)** is a Python Lambda that integrates with the Paddle payment gateway. It handles the backend logic for the Paddle Payment Integration vertical.
+The Subscription and Billing Service is a Python Lambda that integrates with the Paddle payment gateway. It handles the backend logic for the Paddle Payment Integration vertical.
 
 ## What It Does
 
@@ -105,12 +105,17 @@ sbcs/src/
 
 ## Configuration
 
-SBCS requires Paddle API credentials. Configure them via the Admin panel at `/admin`, or directly in your environment settings. The service works alongside the [Auth Service](/verticals/common/auth.html) — all user routes require authentication.
+This service requires Paddle API credentials. You can configure them in two ways:
+
+- Via the **Admin** panel at `/admin`
+- Directly in your environment settings
+
+The service works alongside the [Auth Service](/verticals/common/auth.html) — all user routes require authentication.
 
 ---
 
 ## Redeployment
 
 After updating the billing logic:
-1. Select **sbcs** from the Service dropdown in Nar Actions.
+1. Select **Subscription and Billing** from the Service dropdown in Nar Actions.
 2. Click **Deploy Service**.
