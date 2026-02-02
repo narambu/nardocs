@@ -2,7 +2,6 @@
 layout: default
 title: Lambda + API Gateway
 parent: AWS
-grand_parent: Composites
 nav_order: 1
 ---
 

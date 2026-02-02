@@ -3,13 +3,12 @@ layout: default
 title: AWS
 parent: Composites
 nav_order: 1
-has_children: true
 has_toc: false
 ---
 
 # AWS Composites
 
-Nar currently deploys to AWS. Each composite below provisions and manages a specific set of AWS resources.
+Each composite below provisions and manages a specific set of AWS resources.
 
 | Composite | What it deploys |
 |:----------|:----------------|

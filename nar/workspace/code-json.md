@@ -9,7 +9,7 @@ has_children: true
 
 # code.json
 
-`code.json` is the high-level configuration that connects your source code to [composites](../aws-composites.html). It tells Nar where your code lives and which composite deploys it.
+`code.json` is the high-level configuration that connects your source code to [composites](../aws.html). It tells Nar where your code lives and which composite deploys it.
 
 **Location:** `{vertical}/nnet/code.json`
 
@@ -70,7 +70,7 @@ In this example:
 
 Defines serverless backend services. Each entry becomes an independently deployable function with its own API endpoint.
 
-By default, deploys to the [Lambda + API Gateway](service-lambda.html) composite.
+By default, deploys to the [Lambda + API Gateway](../aws.html) composite.
 
 | Field | Description |
 |:------|:------------|
@@ -88,7 +88,7 @@ The `sharedLibs` array defines libraries that get bundled with **every** service
 
 Defines a Vite-built frontend application.
 
-By default, deploys to the [CloudFront + S3](ui-vite.html) composite.
+By default, deploys to the [CloudFront + S3](../aws.html) composite.
 
 | Field | Description |
 |:------|:------------|

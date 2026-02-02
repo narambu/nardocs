@@ -8,13 +8,13 @@ nav_order: 4
 
 # App Layer
 
-The App Layer provisions the [composites](../aws-composites.html) that run your application and provides actions to deploy your code.
+The App Layer provisions the [composites](../aws.html) that run your application and provides actions to deploy your code.
 
 ## Setup
 
 Clicking **Setup** provisions all composite resources for the selected site. This includes the backend service infrastructure, frontend CDN, build pipeline, and (optionally) [custom domain](../workspace/domains-json.html) records.
 
-See [Composites](../aws-composites.html) for the full list of resources created.
+See [Composites](../aws.html) for the full list of resources created.
 
 You typically run Setup once per site. After that, use Deploy UI and Deploy Service for updates.
 
