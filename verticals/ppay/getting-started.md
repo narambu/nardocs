@@ -46,7 +46,8 @@ nav_order: 0
     - **API Key** — from the [Paddle dashboard](https://vendors.paddle.com/) (Developer Tools > Authentication)
     - **Client Token** — from Paddle (used for frontend checkout)
     - **Webhook Secret** — from Paddle (Developer Tools > Notifications)
-13. Set the webhook URL to your Subscription and Billing service URL + `/webhook`.
+13. Set the webhook URL to your Subscription and Billing service URL + `/webhook`:
+    `https://sbcs.us-east-1.{site}.{vertical}.narambu.com/webhook`
 14. Use the **Environment** dropdown to configure **Sandbox** or **Live** separately.
 
 ## Sync Product Catalog
