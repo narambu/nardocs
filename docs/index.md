@@ -22,7 +22,7 @@ slug: /
 |:--------|:------------|
 | **Nar Actions** | Visual interface for managing sites, environments, and deployments. |
 | **CLI** | Run `nar.sh` with `--auto-approve` for scripted or pipeline-based deployments. |
-| **Verticals** | Ready-to-deploy application stacks — like Google OAuth or Paddle-based subscription billing — that you can select and customize. |
+| **Verticals** | Ready-to-deploy application stacks — like Paddle-based subscription billing — that you can select and customize. |
 | **Infrastructure Management** | Provisions and connects the cloud resources your application needs. See [Composites](nar/composites/aws) for currently supported infrastructure. |
 
 ---
