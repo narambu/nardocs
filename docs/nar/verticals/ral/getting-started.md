@@ -49,4 +49,4 @@ Your React source files are at `{workspace}/{vertical}/ui/`. See the [React UI g
 ## Related
 
 - **Environment Variables** — Services receive region, site, bucket names, and service URLs automatically. Custom variables go in `nn_env.json`.
-- [Auth Service](auth) — more on Google OAuth configuration
+- [Auth Service](/nar/verticals/common/auth) — more on Google OAuth configuration

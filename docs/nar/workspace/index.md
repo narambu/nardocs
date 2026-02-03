@@ -4,7 +4,7 @@ title: Workspace
 
 # Workspace
 
-Your workspace is the local folder where Nar manages your project code and configuration. Each sub-folder in the workspace represents a [vertical](nar-actions/vertical).
+Your workspace is the local folder where Nar manages your project code and configuration. Each sub-folder in the workspace represents a [vertical](/nar/nar-actions/vertical).
 
 ## Choosing Workspace
 
@@ -14,13 +14,13 @@ When you first launch Nar, you'll be prompted to select a workspace folder. This
 
 ## Key Directories
 
-- **[Structure](workspace/structure)** — How the workspace is organized.
-- **[nnet/ Configuration](workspace/nnet)** — The configuration directory inside each vertical that controls what gets deployed and how.
+- **[Structure](/nar/workspace/structure)** — How the workspace is organized.
+- **[nnet/ Configuration](/nar/workspace/nnet)** — The configuration directory inside each vertical that controls what gets deployed and how.
 
 ## Configuration Reference
 
 | File | What it controls |
 |:-----|:-----------------|
-| [code.json](workspace/nnet/code-json) | Which services and UI to deploy, and where the source code lives. |
-| [domain.json](workspace/nnet/domains-json) | Custom domain name for your deployment. |
-| [apex.json](workspace/nnet/apex-json) | Root domain routing to a specific site. |
+| [code.json](/nar/workspace/nnet/code-json) | Which services and UI to deploy, and where the source code lives. |
+| [domain.json](/nar/workspace/nnet/domains-json) | Custom domain name for your deployment. |
+| [apex.json](/nar/workspace/nnet/apex-json) | Root domain routing to a specific site. |

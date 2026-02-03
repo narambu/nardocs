@@ -48,7 +48,7 @@ Lambda, API Gateway (HTTP), ECR repository, CodeBuild project, IAM roles, CloudW
 
 ## Dockerfile
 
-The [default Dockerfile](lambda-api-gateway/default-dockerfile) expects Python source code in `{service}/src/` and pip dependencies in `{service}/scripts/requirements.txt`. It supports **Python 3.13**.
+The [default Dockerfile](/nar/composites/aws/lambda-api-gateway/default-dockerfile) expects Python source code in `{service}/src/` and pip dependencies in `{service}/scripts/requirements.txt`. It supports **Python 3.13**.
 
 To use a different Python version, add system packages, or use a non-Python language, add a `dockerfile` field to your service entry in `code.json`.
 

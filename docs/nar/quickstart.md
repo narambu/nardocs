@@ -7,7 +7,7 @@ sidebar_position: 1
 
 Deploy a React application with Google OAuth to your AWS account.
 
-**Prerequisite:** [Node.js 20 + AWS credentials](../prerequisites)
+**Prerequisite:** [Node.js 20 + AWS credentials](/prerequisites)
 
 ---
 
@@ -25,6 +25,6 @@ Deploy a React application with Google OAuth to your AWS account.
 ## Next Steps
 
 - **Configure OAuth** — Follow the [React Auth Lambda Getting Started](/nar/verticals/ral/getting-started) guide to set up Google login.
-- **Custom Domain** — Edit [`{workspace}/{vertical}/nnet/domain.json`](workspace/nnet/domains-json).
-- **Apex Domain** — Configure [`{workspace}/{vertical}/nnet/apex.json`](workspace/nnet/apex-json).
+- **Custom Domain** — Edit [`{workspace}/{vertical}/nnet/domain.json`](/nar/workspace/nnet/domains-json).
+- **Apex Domain** — Configure [`{workspace}/{vertical}/nnet/apex.json`](/nar/workspace/nnet/apex-json).
 - **Deploy Changes** — After editing code, click **Deploy UI** in Nar Actions.

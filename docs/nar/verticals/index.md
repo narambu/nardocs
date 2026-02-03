@@ -18,7 +18,7 @@ You can have multiple verticals installed and switch between them at any time.
 
 | Vertical | What it includes |
 |:---------|:-----------------|
-| [React Auth Lambda](../nar/verticals/ral) | React + Vite UI with Google OAuth via Lambda. Bundled with Nar. |
-| [Paddle Payment Integration](../nar/verticals/ppay) | Subscription billing, license management, and admin dashboard using Paddle. |
+| [React Auth Lambda](/nar/verticals/ral) | React + Vite UI with Google OAuth via Lambda. Bundled with Nar. |
+| [Paddle Payment Integration](/nar/verticals/ppay) | Subscription billing, license management, and admin dashboard using Paddle. |
 
-Both verticals share a common [Auth Service](../nar/verticals/common/auth) for Google OAuth.
+Both verticals share a common [Auth Service](/nar/verticals/common/auth) for Google OAuth.
