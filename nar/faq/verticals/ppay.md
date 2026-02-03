@@ -1,6 +1,6 @@
 ---
 layout: default
-title: PPay
+title: Paddle Payment Integration
 parent: Verticals
 grand_parent: FAQ
 nav_order: 1
