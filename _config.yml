@@ -11,6 +11,13 @@ search.previews: 3
 
 heading_anchors: true
 
+# Disable table of contents on all pages
+defaults:
+  - scope:
+      path: ""
+    values:
+      has_toc: false
+
 aux_links:
   "Nar":
     - "https://nar.narambu.com"

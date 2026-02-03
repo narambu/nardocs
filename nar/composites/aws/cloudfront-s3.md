@@ -2,6 +2,7 @@
 layout: default
 title: CloudFront + S3
 parent: AWS
+grand_parent: Composites
 nav_order: 2
 ---
 
@@ -31,7 +32,7 @@ S3 Bucket (Origin, via OAC)
 - **CloudFront** distributes the assets to edge locations worldwide for fast delivery.
 - **Origin Access Control (OAC)** ensures the S3 bucket is only accessible through CloudFront, not directly.
 - Cache invalidation runs automatically after each deployment so users see the latest version.
-- If you configure a [custom domain](domains-json.html), your site is accessible at:
+- If you configure a [custom domain](../../workspace/domains-json.html), your site is accessible at:
 
   ```
   {site}.yourdomain.com
@@ -58,4 +59,4 @@ When you click **Deploy UI** (or run the CLI equivalent), Nar:
 
 ## Environment Variables
 
-See [UI Environment Variables](ui-environment-variables.html).
+See [UI Environment Variables](../../workspace/code-json/environment-variables/ui.html).

@@ -4,7 +4,6 @@ title: UI Packages
 parent: Common Sources
 grand_parent: Verticals
 has_children: true
-has_toc: false
 nav_order: 2
 ---
 
@@ -12,8 +11,8 @@ nav_order: 2
 
 Shared React packages imported by verticals via `vite.config.ts` path aliases. The same source code is duplicated to all verticals provided by Nar.
 
-- **[uicommon](/verticals/common/uicommon.html)** — Authentication, HTTP utilities, and theming. Used by all verticals.
-- **[payments](/verticals/common/payments.html)** — Billing pages and Paddle API client. Used by Paddle Payment Integration.
+- **[uicommon](/verticals/common/uipackages/uicommon.html)** — Authentication, HTTP utilities, and theming. Used by all verticals.
+- **[payments](/verticals/common/uipackages/payments.html)** — Billing pages and Paddle API client. Used by Paddle Payment Integration.
 
 ---
 

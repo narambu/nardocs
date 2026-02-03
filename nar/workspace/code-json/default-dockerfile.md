@@ -32,9 +32,9 @@ During the build, Nar:
 1. Installs `requirements.txt` from each shared library
 2. Installs `requirements.txt` from the service
 3. Copies all `src/` directories to the Lambda task root (`/var/task/`)
-4. Sets the entrypoint with Nar-generated [environment variables](service-environment-variables.html)
+4. Sets the entrypoint with Nar-generated [environment variables](environment-variables/service.html)
 
-To use a different Python version, add system packages, or use a non-Python language, provide a [custom Dockerfile](../faq/aws.html).
+To use a different Python version, add system packages, or use a non-Python language, provide a [custom Dockerfile](../../faq/aws.html).
 
 <details markdown="block">
 <summary>View the default Dockerfile</summary>

@@ -4,7 +4,6 @@ title: Common Sources
 parent: Verticals
 grand_parent: Nar
 has_children: true
-has_toc: false
 nav_order: 3
 ---
 

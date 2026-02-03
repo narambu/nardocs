@@ -4,7 +4,6 @@ title: Nar Actions
 parent: Nar
 nav_order: 1
 has_children: true
-has_toc: false
 ---
 
 # Nar Actions
@@ -20,7 +19,7 @@ The typical deployment flow through Nar Actions:
 1. **[Context (Init)](nar-actions/init.html)** — One-time setup: create a role and state storage in your cloud account.
 2. **[Sites](nar-actions/sites.html)** — Create and switch between environments (dev, staging, prod).
 3. **[Data Layer](nar-actions/data-layer.html)** — Provision storage buckets.
-4. **[App Layer](nar-actions/app-layer.html)** — Provision [composites](aws.html) and deploy your code.
+4. **[App Layer](nar-actions/app-layer.html)** — Provision [composites](composites/aws.html) and deploy your code.
 
 ## Maintenance
 

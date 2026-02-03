@@ -2,12 +2,13 @@
 layout: default
 title: Lambda + API Gateway
 parent: AWS
+grand_parent: Composites
 nav_order: 1
 ---
 
 # Lambda + API Gateway
 
-Each backend service becomes a standalone **Lambda function** behind an **API Gateway** endpoint. Services are packaged as container images. The default Dockerfile supports Python 3.13. You can [customize Dockerfiles](../faq/aws.html).
+Each backend service becomes a standalone **Lambda function** behind an **API Gateway** endpoint. Services are packaged as container images. The default Dockerfile supports Python 3.13. You can [customize Dockerfiles](../../faq/aws.html).
 
 {: .note }
 VPC support for Lambda functions is coming soon.
@@ -37,7 +38,7 @@ Lambda Function (Container Image)
 - Lambda functions run as container images stored in **ECR** (Elastic Container Registry).
 - **CodeBuild** handles packaging and deploying new versions when you click Deploy Service.
 - API Gateway provides a public HTTPS endpoint for each service.
-- If you configure a [custom domain](domains-json.html), each service gets its own subdomain:
+- If you configure a [custom domain](../../workspace/domains-json.html), each service gets its own subdomain:
 
   ```
   {service}.{region}.{site}.{vertical}.yourdomain.com
@@ -51,12 +52,12 @@ Lambda, API Gateway (HTTP), ECR repository, CodeBuild project, IAM roles, CloudW
 
 ## Dockerfile
 
-The [default Dockerfile](default-dockerfile.html) expects Python source code in `{service}/src/` and pip dependencies in `{service}/scripts/requirements.txt`. It supports **Python 3.13**.
+The [default Dockerfile](../../workspace/code-json/default-dockerfile.html) expects Python source code in `{service}/src/` and pip dependencies in `{service}/scripts/requirements.txt`. It supports **Python 3.13**.
 
-To use a different Python version, add system packages, or use a non-Python language, provide a [custom Dockerfile](../faq/aws.html).
+To use a different Python version, add system packages, or use a non-Python language, provide a [custom Dockerfile](../../faq/aws.html).
 
 ---
 
 ## Environment Variables
 
-See [Service Environment Variables](service-environment-variables.html).
+See [Service Environment Variables](../../workspace/code-json/environment-variables/service.html).

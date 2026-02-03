@@ -3,7 +3,6 @@ layout: default
 title: Nar
 nav_order: 1
 has_children: true
-has_toc: false
 ---
 
 # Nar: Deploy without the complexity
@@ -25,7 +24,7 @@ has_toc: false
 | **Nar Actions** | Visual interface for managing sites, environments, and deployments. |
 | **CLI** | Run `nar.sh` with `--auto-approve` for scripted or pipeline-based deployments. |
 | **Verticals** | Ready-to-deploy application stacks — like Google OAuth or Paddle-based subscription billing — that you can select and customize. |
-| **Infrastructure Management** | Provisions and connects the cloud resources your application needs. See [Composites](nar/aws.html) for currently supported infrastructure. |
+| **Infrastructure Management** | Provisions and connects the cloud resources your application needs. See [Composites](nar/composites/aws.html) for currently supported infrastructure. |
 
 ---
 

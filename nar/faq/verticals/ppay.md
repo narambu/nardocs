@@ -1,9 +1,9 @@
 ---
 layout: default
-title: Paddle Payment Integration
-parent: FAQ
-grand_parent: Nar
-nav_order: 2
+title: PPay
+parent: Verticals
+grand_parent: FAQ
+nav_order: 1
 ---
 
 # Paddle Payment Integration

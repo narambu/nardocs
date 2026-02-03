@@ -14,7 +14,7 @@ The React Auth Lambda vertical includes a frontend built with React 19 and Vite,
 
 - React 19, Vite, TypeScript
 - Tailwind CSS, MUI
-- UI Auth pages from [uicommon](/verticals/common/uicommon.html)
+- UI Auth pages from [uicommon](/verticals/common/uipackages/uicommon.html)
 
 ---
 
@@ -38,7 +38,7 @@ ui/src/
 
 ## Shared Packages
 
-This vertical imports [uicommon](/verticals/common/uicommon.html) for authentication and utilities. The alias is configured in `vite.config.ts`:
+This vertical imports [uicommon](/verticals/common/uipackages/uicommon.html) for authentication and utilities. The alias is configured in `vite.config.ts`:
 
 ```typescript
 resolve: {

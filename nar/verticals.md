@@ -4,7 +4,6 @@ title: Verticals
 parent: Nar
 nav_order: 2
 has_children: true
-has_toc: false
 ---
 
 # Verticals

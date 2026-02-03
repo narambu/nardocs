@@ -14,8 +14,8 @@ The Paddle Payment Integration vertical includes a React frontend for managing s
 
 - React 19, Vite, TypeScript
 - Tailwind CSS, MUI
-- UI Auth pages from [uicommon](/verticals/common/uicommon.html)
-- UI Payment pages from [payments](/verticals/common/payments.html) package
+- UI Auth pages from [uicommon](/verticals/common/uipackages/uicommon.html)
+- UI Payment pages from [payments](/verticals/common/uipackages/payments.html) package
 
 ---
 
@@ -35,7 +35,7 @@ ui/src/
     └── Home.tsx         # Landing page
 ```
 
-Most pages come from the shared [payments](/verticals/common/payments.html) package.
+Most pages come from the shared [payments](/verticals/common/uipackages/payments.html) package.
 
 ---
 
@@ -55,7 +55,7 @@ Most pages come from the shared [payments](/verticals/common/payments.html) pack
 
 ## Shared Packages
 
-This vertical imports both [uicommon](/verticals/common/uicommon.html) and [payments](/verticals/common/payments.html). The aliases are configured in `vite.config.ts`:
+This vertical imports both [uicommon](/verticals/common/uipackages/uicommon.html) and [payments](/verticals/common/uipackages/payments.html). The aliases are configured in `vite.config.ts`:
 
 ```typescript
 resolve: {

@@ -11,5 +11,5 @@ has_children: true
 
 Nar generates environment variables for both services and the UI at build time. See the relevant section for details:
 
-- [Service Environment Variables](service-environment-variables.html) — variables available to Lambda functions at runtime
-- [Vite Environment Variables](ui-environment-variables.html) — `VITE_` variables available to React code via `import.meta.env`
+- [Service Environment Variables](environment-variables/service.html) — variables available to Lambda functions at runtime
+- [Vite Environment Variables](environment-variables/ui.html) — `VITE_` variables available to React code via `import.meta.env`

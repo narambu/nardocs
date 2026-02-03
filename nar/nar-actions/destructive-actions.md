@@ -17,7 +17,7 @@ Your cloud provider prevents deleting a bucket that still contains objects. If a
 
 ## Delete App Layer
 
-Removes the [composite](../aws.html) resources for the selected site. Your Data Layer (storage buckets and their contents) is **not** affected.
+Removes the [composite](../composites/aws.html) resources for the selected site. Your Data Layer (storage buckets and their contents) is **not** affected.
 
 ## Delete Data Layer
 
