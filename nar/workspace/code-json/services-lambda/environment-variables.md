@@ -1,7 +1,7 @@
 ---
 layout: default
-title: Service
-parent: Environment Variables
+title: Environment Variables
+parent: services.lambda
 grand_parent: code.json
 nav_order: 1
 ---
@@ -20,7 +20,7 @@ All JSON values are converted to strings: arrays become comma-separated, boolean
 |:---------|:--------|:------------|
 | `SERVICE_AWS_REGION` | `us-east-1` | The region where this service is deployed. |
 | `site` | `dev` | The site name. |
-| `{PREFIX}_BUCKET` | `perm-dev-ral-us-east-1-059279877465` | One variable per S3 bucket prefix defined in [buckets.json](../../buckets-json.html) (e.g., `IMAGES_BUCKET`, `NOTES_BUCKET`, `PERM_BUCKET`, `SCRA_BUCKET`). |
+| `{PREFIX}_BUCKET` | `perm-dev-ral-us-east-1-059279877465` | One variable per S3 bucket prefix defined in [buckets.json](../../../buckets-json.html) (e.g., `IMAGES_BUCKET`, `NOTES_BUCKET`, `PERM_BUCKET`, `SCRA_BUCKET`). |
 | `{SERVICE}_SERVICE_URL` | `https://auth.us-east-1.dev.ral.narambu.com` | URL of each sibling service defined in `services.lambda[]` (e.g., `AUTH_SERVICE_URL`, `SBCS_SERVICE_URL`). |
 
 Any values you define in `nn_env.json` are also injected as environment variables.

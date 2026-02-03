@@ -59,4 +59,4 @@ When you click **Deploy UI** (or run the CLI equivalent), Nar:
 
 ## Environment Variables
 
-See [UI Environment Variables](../../workspace/code-json/environment-variables/ui.html).
+See [UI Environment Variables](../../workspace/code-json/ui-vite/environment-variables.html).

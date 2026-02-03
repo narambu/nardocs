@@ -4,6 +4,7 @@ title: Lambda + API Gateway
 parent: AWS
 grand_parent: Composites
 nav_order: 1
+has_children: true
 ---
 
 # Lambda + API Gateway
@@ -52,7 +53,7 @@ Lambda, API Gateway (HTTP), ECR repository, CodeBuild project, IAM roles, CloudW
 
 ## Dockerfile
 
-The [default Dockerfile](../../workspace/code-json/default-dockerfile.html) expects Python source code in `{service}/src/` and pip dependencies in `{service}/scripts/requirements.txt`. It supports **Python 3.13**.
+The [default Dockerfile](lambda-api-gateway/default-dockerfile.html) expects Python source code in `{service}/src/` and pip dependencies in `{service}/scripts/requirements.txt`. It supports **Python 3.13**.
 
 To use a different Python version, add system packages, or use a non-Python language, provide a [custom Dockerfile](../../faq/aws.html).
 
@@ -60,4 +61,4 @@ To use a different Python version, add system packages, or use a non-Python lang
 
 ## Environment Variables
 
-See [Service Environment Variables](../../workspace/code-json/environment-variables/service.html).
+See [Service Environment Variables](../../workspace/code-json/services-lambda/environment-variables.html).

@@ -10,7 +10,7 @@ nav_order: 1
 
 ## Can I use my own Dockerfile for services?
 
-Yes. Nar deploys serverless services as container images. The [default Dockerfile](../workspace/code-json/default-dockerfile.html) targets Python 3.13, but you can bring your own.
+Yes. Nar deploys serverless services as container images. The [default Dockerfile](../composites/aws/lambda-api-gateway/default-dockerfile.html) targets Python 3.13, but you can bring your own.
 
 ### How to Use a Custom Dockerfile
 
@@ -55,7 +55,7 @@ Nar also passes two build arguments so your Dockerfile can locate the right dire
 
 ### Environment Variables
 
-Nar generates `nar_env.sh` containing all [environment variables](../workspace/code-json/environment-variables/service.html) as shell exports (bucket names, service URLs, nn_env.json values). Your Dockerfile should source this file in its entrypoint:
+Nar generates `nar_env.sh` containing all [environment variables](../workspace/code-json/services-lambda/environment-variables.html) as shell exports (bucket names, service URLs, nn_env.json values). Your Dockerfile should source this file in its entrypoint:
 
 ```dockerfile
 ARG API_NAME
@@ -66,4 +66,4 @@ RUN cp /tmp/build/${API_NAME}/src/nar_env.sh /var/task/
 ENTRYPOINT ["/bin/bash", "-c", "source /var/task/nar_env.sh && exec /var/task/bootstrap"]
 ```
 
-See the [default Dockerfile](../workspace/code-json/default-dockerfile.html) for a complete working example.
+See the [default Dockerfile](../composites/aws/lambda-api-gateway/default-dockerfile.html) for a complete working example.

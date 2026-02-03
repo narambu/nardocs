@@ -1,9 +1,9 @@
 ---
 layout: default
-title: UI
-parent: Environment Variables
+title: Environment Variables
+parent: ui.vite
 grand_parent: code.json
-nav_order: 2
+nav_order: 1
 ---
 
 # UI Environment Variables
@@ -21,7 +21,7 @@ All JSON values are converted to strings: arrays become comma-separated, boolean
 | `VITE_{SERVICE}_SERVICE_URL` | `https://auth.us-east-1.dev.ral.narambu.com` | URL of each service defined in `services.lambda[]`. |
 | `VITE_HOME_URL` | `https://daw8sipu4p6qe.cloudfront.net` | The CloudFront distribution domain. |
 
-With a [custom domain](../../domains-json.html), `VITE_{SERVICE}_SERVICE_URL` values follow this pattern:
+With a [custom domain](../../../domains-json.html), `VITE_{SERVICE}_SERVICE_URL` values follow this pattern:
 
 ```
 https://{service}.{region}.{site}.{vertical}.{domain}

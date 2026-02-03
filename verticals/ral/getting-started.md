@@ -51,5 +51,5 @@ Your React source files are at `{workspace}/{vertical}/ui/`. See the [React UI g
 
 ## Related
 
-- [Service Environment Variables](/nar/workspace/code-json/environment-variables/service.html) — details on `nn_env.json`
+- [Service Environment Variables](/nar/workspace/code-json/services-lambda/environment-variables.html) — details on `nn_env.json`
 - [Auth Service Setup](/verticals/common/auth.html#setup) — more on Google OAuth configuration
