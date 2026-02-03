@@ -11,8 +11,8 @@ const config: Config = {
     v4: true,
   },
 
-  url: 'https://narambu.github.io',
-  baseUrl: '/nardocs/',
+  url: 'https://nardocs.narambu.com',
+  baseUrl: '/',
 
   organizationName: 'narambu',
   projectName: 'nardocs',
