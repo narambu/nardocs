@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Paddle Payment Integration
-parent: Verticals
+parent: Vertical Configuration
 grand_parent: FAQ
 nav_order: 1
 ---

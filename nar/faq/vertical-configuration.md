@@ -1,12 +1,12 @@
 ---
 layout: default
-title: Verticals
+title: Vertical Configuration
 parent: FAQ
 grand_parent: Nar
 nav_order: 2
 has_children: true
 ---
 
-# Verticals
+# Vertical Configuration
 
 Commonly asked questions about verticals and their configurations.
