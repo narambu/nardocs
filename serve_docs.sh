@@ -8,6 +8,13 @@ if [ ! -d "node_modules" ]; then
     npm install
 fi
 
-# Serve the site
-echo "Starting Docusaurus server at http://localhost:3000"
-npm start
+# Check for --dev flag
+if [ "$1" = "--dev" ]; then
+    echo "Starting dev server at http://localhost:3000 (no search)"
+    npm start
+else
+    echo "Building site..."
+    npm run build
+    echo "Serving at http://localhost:3000 (with search)"
+    npm run serve
+fi
