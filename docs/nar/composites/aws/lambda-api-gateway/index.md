@@ -4,7 +4,9 @@ title: Lambda + API Gateway
 
 # Lambda + API Gateway
 
-Each backend service becomes a standalone **Lambda function** behind an **API Gateway** endpoint. Services are packaged as container images. The default Dockerfile supports Python 3.13. You can provide a custom Dockerfile for other languages or dependencies.
+**Activated by:** [`services.lambda`](/nar/workspace/nnet/code-json/services-lambda) in `code.json`
+
+Each service entry in `services.lambda` becomes a standalone **Lambda function** behind an **API Gateway** endpoint. A vertical can define one or many services — each gets its own Lambda, ECR repository, and API endpoint. Verticals typically include default Python service code for each entry. Services are packaged as container images. The default Dockerfile supports Python 3.13. You can provide a custom Dockerfile for other languages or dependencies.
 
 
 VPC support for Lambda functions is coming soon.

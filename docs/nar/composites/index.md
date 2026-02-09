@@ -4,6 +4,6 @@ title: Composites
 
 # Composites
 
-Each application component maps to a **composite** — a set of cloud resources that Nar provisions and manages together. Your [code.json](/nar/workspace/nnet/code-json) maps your source code to these composites.
+A **composite** is a bundle of cloud resources that Nar provisions and manages together, typically paired with default application code. Your [code.json](/nar/workspace/nnet/code-json) declares which composites a [vertical](/nar/verticals) uses — only what's declared gets created.
 
 Nar currently supports [AWS Composites](/nar/composites/aws).

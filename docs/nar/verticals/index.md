@@ -4,7 +4,7 @@ title: Verticals
 
 # Verticals
 
-A vertical is a complete application stack — frontend, backend services, and configuration — packaged for deployment via Nar.
+A **vertical** is a complete application stack defined by a [`code.json`](/nar/workspace/nnet/code-json) file. It declares which [composites](/nar/composites) to use and typically includes default application code for each — infrastructure and code packaged together. A vertical can include multiple services, a frontend, shared libraries, and configuration, all wired together and ready to deploy.
 
 ## Managing Verticals
 

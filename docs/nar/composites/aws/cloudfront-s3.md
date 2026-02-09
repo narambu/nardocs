@@ -5,7 +5,9 @@ sidebar_position: 2
 
 # CloudFront + S3
 
-Your **React + Vite** frontend gets built locally and deployed to **S3** behind a **CloudFront** CDN.
+**Activated by:** [`ui.vite`](/nar/workspace/nnet/code-json/ui-vite) in `code.json`
+
+Your frontend gets built locally and deployed to **S3** behind a **CloudFront** CDN. Verticals typically include a default React + Vite app.
 
 ---
 

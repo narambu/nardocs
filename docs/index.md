@@ -10,6 +10,21 @@ slug: /
 
 ![Nar Screenshot](/images/nar-screenshot.png)
 
+## How Nar Works
+
+Infrastructure alone is useless without code running on it. Nar solves this by packaging **infrastructure and application code together**.
+
+A **vertical** is defined by a `code.json` file that declares both which cloud infrastructure to provision *and* what default application code to deploy on it. Each vertical is made up of **composites** — bundles of cloud resources paired with starter code that work as a unit.
+
+| Composite | code.json key | Infrastructure | Default code |
+|:----------|:-------------|:---------------|:-------------|
+| Lambda + API Gateway | `services.lambda` | Lambda, API Gateway, CodeBuild, ECR, IAM, CloudWatch, custom domains | Python service |
+| CloudFront + S3 | `ui.vite` | S3, CloudFront, OAC, Route53, ACM | Vite/React app |
+
+A vertical picks the composites it needs. Only what's declared in `code.json` gets created — nothing more. You can start with just a frontend, just an API, or both. As your application grows, add composites to `code.json` and Nar provisions the infrastructure and wires it together.
+
+Currently AWS-only. The vertical and composite abstraction is designed to be cloud-agnostic.
+
 ## Philosophy
 
 - **True Ownership** — Everything runs in your own cloud account. You own the code, the data, and the infrastructure.

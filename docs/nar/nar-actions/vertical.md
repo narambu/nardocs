@@ -5,7 +5,7 @@ sidebar_position: 5
 
 # Verticals
 
-A **Vertical** is a packaged application stack — code, configuration, and infrastructure definitions — distributed as a `.nar` file (a zip archive).
+A **vertical** is defined by a [`code.json`](/nar/workspace/nnet/code-json) that declares which [composites](/nar/composites) to use and typically includes default application code — infrastructure and code packaged together. Verticals are distributed as `.nar` files (zip archives).
 
 
 ## Example: React Auth Lambda

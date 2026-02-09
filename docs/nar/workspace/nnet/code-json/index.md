@@ -4,7 +4,7 @@ title: code.json
 
 # code.json
 
-`code.json` is the high-level configuration that connects your source code to [composites](/nar/composites). It tells Nar where your code lives and which composite deploys it.
+`code.json` is what defines a [vertical](/nar/verticals). It declares which [composites](/nar/composites) to activate and where the application code for each one lives. Only composites referenced here get created — nothing more.
 
 **Location:** `{vertical}/nnet/code.json`
 
@@ -25,7 +25,7 @@ title: code.json
 }
 ```
 
-Each key under `services` and `ui` maps to a deployment type:
+Each key under `services` and `ui` activates a composite:
 
 | Key | Description |
 |:----|:------------|
