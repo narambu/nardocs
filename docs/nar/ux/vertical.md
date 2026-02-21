@@ -5,7 +5,7 @@ sidebar_position: 5
 
 # Verticals
 
-A **vertical** is defined by a [`code.json`](/nar/workspace/nnet/code-json) that declares which [composites](/nar/composites) to use and typically includes default application code — infrastructure and code packaged together. Verticals are distributed as `.nar` files (zip archives).
+A **vertical** is defined by a [`code.json`](/nar/workspace/nnet/code-json) that declares which [composites](/nar/workspace/nnet/code-json) to use and typically includes default application code — infrastructure and code packaged together. Verticals are distributed as `.nar` files (zip archives).
 
 
 ## Example: React Auth Lambda

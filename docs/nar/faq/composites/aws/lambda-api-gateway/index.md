@@ -31,4 +31,4 @@ Nar passes these build arguments:
 - Different Python version
 - System dependencies (ffmpeg, imagemagick, etc.)
 
-See the [default Dockerfile](/nar/composites/aws/lambda-api-gateway/default-dockerfile) for reference.
+See the [default Dockerfile](/nar/workspace/nnet/code-json/composites/services-lambda/default-dockerfile) for reference.

@@ -25,7 +25,7 @@ To fix this issue, consider the following:
 See: **[AWS Setup Prerequisites](../../../prerequisites/aws-setup)**
 
 Once credentials are configured:
-* Run **[Init](../../nar-actions/init)** to reinitialize the workspace context and state backend.
+* Run **[Init](../../ux/init)** to reinitialize the workspace context and state backend.
 
 Additional check:
 * Check the AWS credentials configuration in the AWS Console: IAM > Users > Your User > Security credentials > Access keys.

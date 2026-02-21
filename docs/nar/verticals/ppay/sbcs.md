@@ -114,5 +114,5 @@ The service works alongside the [Auth Service](/nar/verticals/common/auth) — a
 ## Redeployment
 
 After updating the billing logic:
-1. Select **Subscription and Billing** from the Service dropdown in Nar Actions.
+1. Select **Subscription and Billing** from the Service dropdown in the UX.
 2. Click **Deploy Service**.

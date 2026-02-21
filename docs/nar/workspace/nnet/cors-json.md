@@ -5,7 +5,7 @@ sidebar_position: 5
 
 # cors.json
 
-The `cors.json` file lets you add extra allowed origins for Cross-Origin Resource Sharing (CORS) on your S3 buckets. This is optional — Nar automatically configures CORS with your deployment URLs and localhost origins when you use the [CORS tool](../../nar-actions/tools#cors).
+The `cors.json` file lets you add extra allowed origins for Cross-Origin Resource Sharing (CORS) on your S3 buckets. This is optional — Nar automatically configures CORS with your deployment URLs and localhost origins when you use the [CORS tool](../../ux/tools#cors).
 
 **Location:** `{vertical}/nnet/cors.json`
 
@@ -49,7 +49,7 @@ Each key under `buckets` is a bucket prefix (e.g., `perm`, `uico`, `arti`, `scra
 
 ## How It Works
 
-When you click **Enable CORS** in the [Tools](../../nar-actions/tools#cors) panel for a bucket, Nar merges three sets of origins:
+When you click **Enable CORS** in the [Tools](../../ux/tools#cors) panel for a bucket, Nar merges three sets of origins:
 
 1. **Deployment origins** — Your CloudFront and custom domain URLs (detected automatically).
 2. **Localhost origins** — `http://localhost:5173`, `http://localhost:3000`, and their `127.0.0.1` equivalents (for local development).

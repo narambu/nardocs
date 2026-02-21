@@ -4,13 +4,13 @@ title: Workspace
 
 # Workspace
 
-Your workspace is the local folder where Nar manages your project code and configuration. Each sub-folder in the workspace represents a [vertical](/nar/nar-actions/vertical).
+Your workspace is the local folder where Nar manages your project code and configuration. Each sub-folder in the workspace represents a [vertical](/nar/ux/vertical).
 
 ## Choosing Workspace
 
 When you first launch Nar, you'll be prompted to select a workspace folder. This is where your vertical projects and their `nnet/` configuration directories will live.
 
-![Initial Nar Actions](/images/nar-actions-initial.png)
+![Initial UX](/images/nar-actions-initial.png)
 
 ## Key Directories
 

@@ -6,7 +6,7 @@ title: services.lambda
 
 Defines serverless backend services. Each entry becomes an independently deployable function with its own API endpoint.
 
-By default, deploys to AWS Lambda + API Gateway (container images stored in ECR, fronted by HTTP API Gateway).
+**AWS:** [Lambda + API Gateway](/nar/workspace/nnet/code-json/composites/services-lambda/aws)
 
 ---
 
@@ -22,7 +22,11 @@ By default, deploys to AWS Lambda + API Gateway (container images stored in ECR,
       },
       {
         "name": "sbcs",
-        "location": "orig/sbcs"
+        "location": "orig/sbcs",
+        "network": {
+          "subnets": ["subnet-abc123", "subnet-def456"],
+          "securityGroups": ["sg-abc123"]
+        }
       }
     ]
   }
@@ -33,7 +37,12 @@ By default, deploys to AWS Lambda + API Gateway (container images stored in ECR,
 |:------|:------------|
 | `name` | Service identifier (e.g., `auth`, `sbcs`). Used in resource naming, Deploy Service dropdown, and URL generation. |
 | `location` | Path to the service source code, relative to the vertical folder. |
-| `dockerfile` | *(Optional)* Path to a custom Dockerfile. Defaults to Nar's built-in Dockerfile. |
+| `dockerfile` | *(Optional)* Path to a custom Dockerfile. Defaults to the provider's built-in Dockerfile. |
+| `network` | *(Optional)* Network configuration for private networking. |
+| `network.subnets` | Subnet IDs to place the function in. |
+| `network.securityGroups` | Security group IDs. Required when `subnets` is set. |
+
+Services without `network` run outside any private network.
 
 ---
 

@@ -6,7 +6,7 @@ title: ui.vite
 
 Defines a Vite-built frontend application.
 
-By default, deploys to AWS CloudFront + S3 (static assets served globally via CDN).
+**AWS:** [CloudFront + S3](/nar/workspace/nnet/code-json/composites/ui-vite/aws)
 
 ---
 

@@ -27,8 +27,8 @@ sidebar_position: 1
 ## Deploy Services
 
 
-5. In Nar Actions, deploy the **Auth** service.
-6. In Nar Actions, deploy the **Subscription and Billing** service.
+5. In the UX, deploy the **Auth** service.
+6. In the UX, deploy the **Subscription and Billing** service.
 7. Copy the auth service URL from the deploy output.
 8. In Google Cloud Console, add the **Authorized redirect URI**:
 
@@ -39,7 +39,7 @@ sidebar_position: 1
 ## Deploy UI and Configure Paddle
 
 
-9. In Nar Actions, deploy the **UI**.
+9. In the UX, deploy the **UI**.
 10. Open your site and log in. You should see the **Admin** link in the nav bar.
 11. Go to **Admin** > **Manage Products** > **Credentials** tab.
 12. Enter your Paddle credentials:

@@ -3,7 +3,7 @@ title: Getting Started
 sidebar_position: 1
 ---
 
-# Getting Started with React Auth Lambda
+# Getting Started with React Auth Lambda VPC
 
 This vertical comes bundled with Nar — no separate download needed.
 
@@ -25,6 +25,23 @@ This vertical comes bundled with Nar — no separate download needed.
    }
    ```
 
+## Configure VPC
+
+This vertical's `code.json` includes a `network` block that places Lambda functions inside a VPC. Update the subnet and security group IDs in `code.json` to match your AWS environment:
+
+```json
+{
+  "name": "auth",
+  "location": "orig/auth",
+  "network": {
+    "subnets": ["subnet-your-id-1", "subnet-your-id-2"],
+    "securityGroups": ["sg-your-id"]
+  }
+}
+```
+
+See [services.lambda — Network Configuration](/nar/workspace/nnet/code-json/composites/services-lambda#network-configuration) for details.
+
 ## Deploy Services
 
 
@@ -44,9 +61,10 @@ This vertical comes bundled with Nar — no separate download needed.
 
 ---
 
-Your React source files are at `{workspace}/{vertical}/ui/`. See the [React UI guide](/nar/verticals/ral/ui) for project structure.
+Your React source files are at `{workspace}/{vertical}/ui/`. See the [React UI guide](/nar/verticals/ralvpc/ui) for project structure.
 
 ## Related
 
 - **Environment Variables** — Services receive region, site, bucket names, and service URLs automatically. Custom variables go in `nn_env.json`.
 - [Auth Service](/nar/verticals/common/auth) — more on Google OAuth configuration
+- [VPC Configuration](/nar/workspace/nnet/code-json/composites/services-lambda/aws#vpc) — how `network` maps to AWS VPC resources

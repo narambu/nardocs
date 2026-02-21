@@ -121,7 +121,7 @@ EOF
 
 ## Done
 
-Nar uses the `default` AWS profile by default. You're ready to run [Init](../nar/nar-actions/init).
+Nar uses the `default` AWS profile by default. You're ready to run [Init](../nar/ux/init).
 
 ---
 

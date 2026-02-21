@@ -5,13 +5,13 @@ sidebar_position: 4
 
 # App Layer
 
-The App Layer provisions the [composites](../composites/aws) that run your application and provides actions to deploy your code.
+The App Layer provisions the [composites](/nar/workspace/nnet/code-json) that run your application and provides actions to deploy your code.
 
 ## Setup
 
 Clicking **Setup** provisions all composite resources for the selected site. This includes the backend service infrastructure, frontend CDN, build pipeline, and (optionally) [custom domain](../workspace/nnet/domains-json) records.
 
-See [Composites](../composites/aws) for the full list of resources created.
+See the AWS pages under each [composite](/nar/workspace/nnet/code-json) for the full list of resources created.
 
 You typically run Setup once per site. After that, use Deploy UI and Deploy Service for updates.
 

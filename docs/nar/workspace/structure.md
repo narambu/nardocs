@@ -2,7 +2,6 @@
 sidebar_position: 1
 title: Structure
 ---
-sidebar_position: 1
 
 # Workspace Structure
 
@@ -22,8 +21,7 @@ A Nar workspace can contain multiple verticals, each in its own sub-folder.
 │   │   ├── apex.json
 │   │   ├── awsprofile.json
 │   │   ├── cors.json
-│   │   ├── byv/
-│   │   └── site/
+│   │   └── byv/
 │   └── backup/                     # Timestamped backups before updates
 └── ppay/                           # Paddle Payment Integration vertical
     ├── auth/

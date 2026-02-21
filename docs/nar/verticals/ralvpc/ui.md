@@ -5,7 +5,7 @@ sidebar_position: 2
 
 # React UI
 
-The React Auth Lambda vertical includes a frontend built with React 19 and Vite, served globally via CloudFront. [nar.narambu.com](https://nar.narambu.com) is built using Nar itself, and some of the code packaged in this vertical is also used by that website — you can check out the authentication flow there.
+The React Auth Lambda VPC vertical includes a frontend built with React 19 and Vite, served globally via CloudFront. It is identical to the [ral UI](/nar/verticals/ral/ui) except for the landing page which references VPC documentation.
 
 ## Stack
 
@@ -27,7 +27,7 @@ ui/src/
 │   ├── NavBar.tsx       # Navigation bar with login/logout
 │   └── Footer.tsx       # Page footer
 └── pages/
-    ├── Home.tsx         # Landing page
+    ├── Home.tsx         # Landing page (VPC-specific)
     └── Versions.tsx     # Version info
 ```
 

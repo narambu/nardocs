@@ -1,7 +1,7 @@
 ---
 title: Introduction
-sidebar_position: 0
-slug: /
+sidebar_position: 1
+slug: /introduction
 ---
 
 # Nar: Deploy without the complexity
@@ -16,14 +16,17 @@ Infrastructure alone is useless without code running on it. Nar solves this by p
 
 A **vertical** is defined by a `code.json` file that declares both which cloud infrastructure to provision *and* what default application code to deploy on it. Each vertical is made up of **composites** — bundles of cloud resources paired with starter code that work as a unit.
 
-| Composite | code.json key | Infrastructure | Default code |
-|:----------|:-------------|:---------------|:-------------|
-| Lambda + API Gateway | `services.lambda` | Lambda, API Gateway, CodeBuild, ECR, IAM, CloudWatch, custom domains | Python service |
-| CloudFront + S3 | `ui.vite` | S3, CloudFront, OAC, Route53, ACM | Vite/React app |
+| Composite | code.json key | AWS resources | Launcher code |
+|:----------|:-------------|:-------------|:-------------|
+| [Serverless Backend](/nar/workspace/nnet/code-json/composites/services-lambda) | `services.lambda` | Lambda, API Gateway, CodeBuild, ECR, IAM, CloudWatch | Python service |
+| [Static Frontend](/nar/workspace/nnet/code-json/composites/ui-vite) | `ui.vite` | S3, CloudFront, OAC | Vite/React app |
+| [Data Stores](/nar/workspace/nnet/code-json/composites/stores) | `stores` | S3 buckets with versioning and lifecycle | — |
 
 A vertical picks the composites it needs. Only what's declared in `code.json` gets created — nothing more. You can start with just a frontend, just an API, or both. As your application grows, add composites to `code.json` and Nar provisions the infrastructure and wires it together.
 
-Currently AWS-only. The vertical and composite abstraction is designed to be cloud-agnostic.
+Each vertical ships with launcher UI and services — working implementations that handle common concerns (auth, routing, deployment wiring) so you can focus on your business logic.
+
+Composites and verticals are provider-agnostic. Nar currently implements AWS.
 
 ## Philosophy
 
@@ -35,10 +38,10 @@ Currently AWS-only. The vertical and composite abstraction is designed to be clo
 
 | Feature | Description |
 |:--------|:------------|
-| **Nar Actions** | Visual interface for managing sites, environments, and deployments. |
-| **CLI** | Run `nar.sh` with `--auto-approve` for scripted or pipeline-based deployments. |
+| **[UX](/nar/ux)** | Visual interface for managing sites, environments, and deployments. |
+| **[CLI](/nar/cli)** | Run deployments from the command line or your CI/CD pipeline. |
 | **Verticals** | Ready-to-deploy application stacks — like Paddle-based subscription billing — that you can select and customize. |
-| **Infrastructure Management** | Provisions and connects the cloud resources your application needs. See [Composites](/nar/composites/aws) for currently supported infrastructure. |
+| **Infrastructure Management** | Provisions and connects the cloud resources your application needs. See [code.json](/nar/workspace/nnet/code-json) for currently supported composites. |
 
 ---
 

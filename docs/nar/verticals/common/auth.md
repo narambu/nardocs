@@ -85,6 +85,6 @@ After deploying the auth service for the first time, check the terminal output f
 
 ### 4. Deploy
 
-In Nar Actions:
+In the UX:
 1. Select **Auth** from the Service dropdown.
 2. Click **Deploy Service**.
