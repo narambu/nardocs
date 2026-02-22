@@ -159,19 +159,6 @@ bash narcli/bob/nar.sh \
   --region=us-east-1
 ```
 
-**Deploy all services:**
-```bash
-bash narcli/bob/nar.sh \
-  --data-dir="$NAR_DATA" \
-  --workspace="$NAR_WORKSPACE" \
-  --vertical=ralvpc \
-  --action=deploy-service \
-  --site=dev \
-  --region=us-east-1
-```
-
-Omit `--service` to deploy all services.
-
 ---
 
 ## Action reference
@@ -204,7 +191,7 @@ bash narcli/bob/nar.sh \
 | Action | Requires | Description |
 |:-------|:---------|:------------|
 | `deploy-ui` | `--site --region` | Build and deploy UI to S3 + CloudFront |
-| `deploy-service` | `--site --region` | Build and deploy Lambda services. Use `--service=<name>` for one service |
+| `deploy-service` | `--service --site --region` | Build and deploy a Lambda service |
 
 ### Inspection
 
