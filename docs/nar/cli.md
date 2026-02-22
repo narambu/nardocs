@@ -9,7 +9,7 @@ Run Nar from the command line — on your machine, in a CI pipeline, or on a ser
 
 This guide walks through a full deployment using the **React Auth Lambda VPC** (`ralvpc`) vertical as an example.
 
-**Prerequisites:** [Node.js 20 + AWS credentials](/prerequisites)
+**Prerequisites:** [Node.js 20 + AWS credentials](/before-you-begin)
 
 ---
 

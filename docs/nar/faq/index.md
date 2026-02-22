@@ -20,7 +20,7 @@ Your infrastructure keeps running. Nar provisions standard AWS resources (Lambda
 
 ### Can I use my existing AWS account?
 
-Yes. Nar creates a dedicated deploy role and state bucket — it doesn't touch your existing resources. See [AWS Setup](/prerequisites/aws-setup) for the minimal IAM permissions needed.
+Yes. Nar creates a dedicated deploy role and state bucket — it doesn't touch your existing resources. See [AWS Setup](/before-you-begin/aws-setup) for the minimal IAM permissions needed.
 
 ### How do I add a staging or production site?
 

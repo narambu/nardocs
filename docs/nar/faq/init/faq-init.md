@@ -22,7 +22,7 @@ To fix this issue, consider the following:
 * Verify that the default profile is set up correctly.
 * Ensure home folder `~/.aws` has required credentials.
 
-See: **[AWS Setup Prerequisites](../../../prerequisites/aws-setup)**
+See: **[AWS Setup](../../../before-you-begin/aws-setup)**
 
 Once credentials are configured:
 * Run **[Init](../../ux/init)** to reinitialize the workspace context and state backend.

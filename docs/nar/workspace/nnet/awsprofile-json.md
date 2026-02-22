@@ -43,4 +43,4 @@ To use the default profile:
 
 If you have multiple AWS accounts or profiles configured in `~/.aws/credentials` and want Nar to use a specific one instead of `default`, set it here.
 
-See [AWS Setup](../../../prerequisites/aws-setup#using-a-different-profile) for how to configure multiple AWS profiles.
+See [AWS Setup](../../../before-you-begin/aws-setup#using-a-different-profile) for how to configure multiple AWS profiles.

@@ -7,7 +7,7 @@ sidebar_position: 1
 
 Deploy a React application with Google OAuth to your AWS account.
 
-**Prerequisites:** [Node.js 20 + AWS credentials](/prerequisites)
+**Prerequisites:** [Node.js 20 + AWS credentials](/before-you-begin)
 
 ---
 
