@@ -13,7 +13,7 @@ Deploy a React application with Google OAuth to your AWS account.
 
 ## 1. Install Nar
 
-Download the Nar app from [nar.narambu.com/nar](https://nar.narambu.com/nar) and install it. Nar is a standalone desktop app with a built-in editor and terminal.
+Download the Nar app from [nar.narambu.com/nar](https://nar.narambu.com/nar) and install it. The desktop app is built on VS Code and includes a built-in editor, terminal, and a full UX control panel for managing deployments.
 
 ## 2. Open a Workspace
 
