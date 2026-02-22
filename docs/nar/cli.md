@@ -13,7 +13,7 @@ This guide walks through a full deployment using the **React Auth Lambda VPC** (
 
 ---
 
-## 1. Download narcli
+## Download narcli
 
 Download the latest narcli archive from [GitHub Releases](https://github.com/narambu/nardownloads/releases):
 
@@ -21,7 +21,7 @@ Download the latest narcli archive from [GitHub Releases](https://github.com/nar
 curl -LO https://github.com/narambu/nardownloads/releases/download/latest/narcli-darwin-arm64.zip
 ```
 
-## 2. Extract
+## Extract
 
 ```bash
 unzip narcli-darwin-arm64.zip
@@ -29,7 +29,7 @@ unzip narcli-darwin-arm64.zip
 
 This creates a `narcli/` directory containing the CLI and all supporting files.
 
-## 3. Download a vertical
+## Download a vertical
 
 Download the vertical `.nar` file from the same releases page:
 
@@ -37,7 +37,7 @@ Download the vertical `.nar` file from the same releases page:
 curl -LO https://github.com/narambu/nardownloads/releases/download/latest/ralvpc.nar
 ```
 
-## 4. Set up your directories
+## Set up your directories
 
 Choose a **data directory** and a **workspace directory**. The data directory stores Nar's internal state. The workspace holds your project code.
 
@@ -47,7 +47,7 @@ export NAR_WORKSPACE="$HOME/mynar/workspace"
 mkdir -p "$NAR_DATA" "$NAR_WORKSPACE"
 ```
 
-## 5. Import the vertical
+## Import the vertical
 
 ```bash
 bash narcli/bob/nar.sh \
@@ -70,7 +70,24 @@ nar-workspace/ralvpc/
 └── ...            # Symlinks to service/UI locations
 ```
 
-## 6. Init
+## Authenticate
+
+Actions like deploy and setup require a license or active trial.
+
+1. Open [nar.narambu.com](https://nar.narambu.com) and sign in
+2. Go to **Account** and download `auth.json`
+3. Run:
+
+```bash
+bash narcli/bob/nar.sh \
+  --data-dir="$NAR_DATA" \
+  --action=login \
+  --token-file=./auth.json
+```
+
+This only needs to be done once per data directory.
+
+## Init
 
 Creates a deploy role and Terraform state bucket in your AWS account. Run once per vertical.
 
@@ -85,7 +102,7 @@ bash narcli/bob/nar.sh \
 
 Answer **Y** to the prompts, or pass `--auto-approve=yes` to skip them.
 
-## 7. Setup data layer
+## Setup data layer
 
 Provisions S3 buckets for your site's data stores.
 
@@ -99,7 +116,7 @@ bash narcli/bob/nar.sh \
   --region=us-east-1
 ```
 
-## 8. Setup app layer
+## Setup app layer
 
 Provisions Lambda functions, API Gateway, CloudFront, and all supporting resources. Builds and deploys both the UI and services on first run.
 
@@ -115,7 +132,7 @@ bash narcli/bob/nar.sh \
 
 The output prints your deployment URLs. Your app is live.
 
-## 9. Deploy changes
+## Deploy changes
 
 After editing code, redeploy individual layers:
 
@@ -220,6 +237,7 @@ Run `setup-app` after `recover` to import discovered resources into Terraform st
 
 | Action | Requires | Description |
 |:-------|:---------|:------------|
+| `login` | `--token-file=<path>` | Set auth token from downloaded `auth.json` |
 | `import` | `--nar-file=<path>` | Import a `.nar` vertical file |
 | `workspace-location-fix` | — | Fix symlinks after moving your workspace |
 | `awsconfigure` | — | Recreate the deploy role |
