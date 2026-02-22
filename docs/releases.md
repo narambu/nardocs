@@ -1,6 +1,6 @@
 ---
 title: Releases
-sidebar_position: 99
+sidebar_position: 5
 slug: /releases
 hide_table_of_contents: true
 ---
