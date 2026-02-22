@@ -74,8 +74,8 @@ nar-workspace/ralvpc/
 
 Actions like deploy and setup require a license or active trial.
 
-1. Open [nar.narambu.com](https://nar.narambu.com) and sign in
-2. Go to **Account** and download `auth.json`
+1. Open [nar.narambu.com/token_for_login](https://nar.narambu.com/token_for_login) and sign in
+2. Download `auth.json`
 3. Run:
 
 ```bash
