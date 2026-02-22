@@ -18,13 +18,13 @@ This guide walks through a full deployment using the **React Auth Lambda VPC** (
 Download the latest narcli archive from [GitHub Releases](https://github.com/narambu/nardownloads/releases):
 
 ```bash
-curl -LO https://github.com/narambu/nardownloads/releases/download/latest/narcli-darwin-arm64.tar.gz
+curl -LO https://github.com/narambu/nardownloads/releases/download/latest/narcli-darwin-arm64.zip
 ```
 
 ## 2. Extract
 
 ```bash
-tar -xzf narcli-darwin-arm64.tar.gz
+unzip narcli-darwin-arm64.zip
 ```
 
 This creates a `narcli/` directory containing the CLI and all supporting files.
