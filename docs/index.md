@@ -1,7 +1,7 @@
 ---
 title: Introduction
 sidebar_position: 1
-slug: /introduction
+slug: /
 ---
 
 # Nar: Deploy without the complexity
