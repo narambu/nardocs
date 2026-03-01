@@ -6,6 +6,15 @@ slug: /
 
 # Nar: Deploy without the complexity
 
+:::info Coming Soon
+
+- **Agentic Deployments** — Deploy infrastructure using natural language. Describe what you need, and Nar provisions it.
+- **Webhook Pipelines** — SQS, S3, and Lambda wired together as event-driven workflows.
+- **Managed Databases** — RDS setup with automated networking, security groups, and secret management.
+- **Container Workloads** — ECS with UI, services, and NLB — production-ready container deployments.
+
+:::
+
 **Nar** is a deployment tool that ships applications to your own cloud account — without wrestling with cloud consoles or writing complex IaC. Use the visual interface to deploy interactively, or run the CLI to automate deployments in your CI/CD pipelines.
 
 ![Nar Screenshot](/images/nar-screenshot.png)
